@@ -9,7 +9,14 @@
 import UIKit
 
 class HypnosisView: UIView {
+    var circleColor: UIColor {
+    didSet {
+        setNeedsDisplay()
+    }
+    }
+
     init(frame: CGRect) {
+        circleColor = UIColor.lightGrayColor()
         super.init(frame: frame)
         backgroundColor = UIColor.clearColor()
     }
@@ -30,9 +37,18 @@ class HypnosisView: UIView {
         }
 
         path.lineWidth = 10
-        UIColor.lightGrayColor().setStroke()
+        circleColor.setStroke()
 
         // Draw the line
         path.stroke()
+    }
+
+    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+        NSLog("%@ was touched", self)
+        let red = CGFloat(arc4random() % 100) / CGFloat(100.0)
+        let green = CGFloat(arc4random() % 100) / CGFloat(100.0)
+        let blue = CGFloat(arc4random() % 100) / CGFloat(100.0)
+        let randomColor = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        circleColor = randomColor
     }
 }
