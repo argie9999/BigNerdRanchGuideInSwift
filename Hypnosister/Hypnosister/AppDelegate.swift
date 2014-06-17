@@ -15,21 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
-        if let win = self.window {
-            // Override point for customization after application launch.
-            let firstFrame = CGRectMake(160, 240, 100, 150)
-            let firstView  = HypnosisView(frame: firstFrame)
-            firstView.backgroundColor = UIColor.redColor()
-            win.addSubview(firstView)
-
-            let secondFrame = CGRectMake(20, 30, 50, 50)
-            let secondView  = HypnosisView(frame: secondFrame)
-            secondView.backgroundColor = UIColor.blueColor()
-            firstView.addSubview(secondView)
-
-            win.backgroundColor = UIColor.whiteColor()
-            win.makeKeyAndVisible()
-        }
+        // Override point for customization after application launch.
+        let firstFrame = self.window!.bounds
+        let firstView  = HypnosisView(frame: firstFrame)
+        self.window!.addSubview(firstView)
+        self.window!.backgroundColor = UIColor.whiteColor()
+        self.window!.makeKeyAndVisible()
+        
         return true
     }
 }
