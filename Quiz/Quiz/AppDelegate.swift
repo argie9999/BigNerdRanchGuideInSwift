@@ -10,9 +10,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool
     {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        // Override point for customization after application launch.
-        self.window!.backgroundColor = UIColor.whiteColor()
+
+        var controller: QuizViewController? = QuizViewController()
+        self.window!.rootViewController = controller
         self.window!.makeKeyAndVisible()
+
         return true
     }
 }
