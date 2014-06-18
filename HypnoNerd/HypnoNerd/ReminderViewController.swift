@@ -22,6 +22,11 @@ class ReminderViewController: UIViewController {
         NSLog("ReminderViewController loaded!")
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        datePicker.minimumDate = NSDate(timeIntervalSinceNow: 60)
+    }
+
     @IBAction func addReminder(sender: AnyObject) {
         let date = datePicker.date
         // Use that cool extension.
