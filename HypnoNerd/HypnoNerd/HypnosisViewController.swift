@@ -8,7 +8,12 @@ class HypnosisViewController: UIViewController {
     }
 
     override func loadView() {
-        view = HypnosisView()
+        let backgroundView = HypnosisView(frame: UIScreen.mainScreen().bounds)
+        let textField = UITextField(frame: CGRectMake(40, 70, 240, 30))
+        textField.borderStyle = UITextBorderStyle.RoundedRect
+        backgroundView.addSubview(textField)
+
+        view = backgroundView
     }
 
     override func viewDidLoad() {
