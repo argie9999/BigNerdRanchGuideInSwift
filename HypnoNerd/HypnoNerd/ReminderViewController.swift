@@ -17,6 +17,11 @@ class ReminderViewController: UIViewController {
         tabBarItem.image = UIImage(named: "Time.png")
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NSLog("ReminderViewController loaded!")
+    }
+
     @IBAction func addReminder(sender: AnyObject) {
         let date = datePicker.date
         // Use that cool extension.

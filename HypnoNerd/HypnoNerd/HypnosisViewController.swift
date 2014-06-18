@@ -6,7 +6,13 @@ class HypnosisViewController: UIViewController {
         tabBarItem.title = "Hypnotize"
         tabBarItem.image = UIImage(named: "Hypno.png")
     }
+
     override func loadView() {
         view = HypnosisView()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NSLog("HypnosisViewController loaded!")
     }
 }
