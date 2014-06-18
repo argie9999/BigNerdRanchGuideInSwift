@@ -9,14 +9,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // Override point for customization after application launch.
-        let hvc = HypnosisViewController(nibName: nil, bundle: nil)
-        let appBundle = NSBundle.mainBundle()
-        let rvc = ReminderViewController(nibName: "ReminderViewController",
-                                          bundle: appBundle)
+        let hvc = HypnosisViewController()
+        let rvc = ReminderViewController()
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [hvc, rvc]
         self.window!.rootViewController = tabBarController
+
+        // Allow application to send local notifications
+        application.registerUserNotificationSettings(
+            UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound |
+                                                 UIUserNotificationType.Alert |
+                                                 UIUserNotificationType.Badge, categories: nil))
+
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
         
