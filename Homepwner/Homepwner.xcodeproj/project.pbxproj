@@ -31,7 +31,7 @@
 		3DB3841B1953CDAA00C14E20 /* HomepwnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HomepwnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB384201953CDAA00C14E20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB384211953CDAA00C14E20 /* HomepwnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepwnerTests.swift; sourceTree = "<group>"; };
-		3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemsViewController.swift; path = ../ItemsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,6 @@
 		3DB384051953CDA900C14E20 = {
 			isa = PBXGroup;
 			children = (
-				3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */,
 				3DB384101953CDA900C14E20 /* Homepwner */,
 				3DB3841E1953CDAA00C14E20 /* HomepwnerTests */,
 				3DB3840F1953CDA900C14E20 /* Products */,
@@ -74,6 +73,7 @@
 		3DB384101953CDA900C14E20 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */,
 				3DB384131953CDA900C14E20 /* AppDelegate.swift */,
 				3DB384151953CDA900C14E20 /* Images.xcassets */,
 				3DB384111953CDA900C14E20 /* Supporting Files */,
