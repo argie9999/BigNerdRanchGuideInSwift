@@ -18,9 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Allow application to send local notifications
         application.registerUserNotificationSettings(
-            UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound |
-                                                 UIUserNotificationType.Alert |
-                                                 UIUserNotificationType.Badge, categories: nil))
+            UIUserNotificationSettings(forTypes: .Sound | .Alert | .Badge, categories: nil))
 
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()
