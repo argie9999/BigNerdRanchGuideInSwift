@@ -19,4 +19,8 @@ class ItemsViewController: UITableViewController {
 
         return cell
     }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 }
