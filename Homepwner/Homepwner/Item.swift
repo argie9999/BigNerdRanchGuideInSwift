@@ -30,7 +30,6 @@ class Item {
 
         let randomName = "\(randomAdjectiveList[adjectiveIndex]) \(randomNounList[nounIndex])"
         let randomVal = Int(arc4random()) % 100
-        let a: Character = "A"
         let aStr = "A" + 0
 
         let randomSerial =
