@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D2589EF195580F7004C81AA /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D2589EE195580F7004C81AA /* HeaderView.xib */; };
 		3D25E7BF19542F31005CC519 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25E7BE19542F31005CC519 /* Item.swift */; };
 		3D25E7C119543935005CC519 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25E7C019543935005CC519 /* ItemStore.swift */; };
 		3DB384141953CDA900C14E20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB384131953CDA900C14E20 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D2589EE195580F7004C81AA /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		3D25E7BE19542F31005CC519 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3D25E7C019543935005CC519 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		3DB3840E1953CDA900C14E20 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */,
+				3D2589EE195580F7004C81AA /* HeaderView.xib */,
 				3D25E7BE19542F31005CC519 /* Item.swift */,
 				3D25E7C019543935005CC519 /* ItemStore.swift */,
 				3DB384131953CDA900C14E20 /* AppDelegate.swift */,
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB384161953CDA900C14E20 /* Images.xcassets in Resources */,
+				3D2589EF195580F7004C81AA /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
