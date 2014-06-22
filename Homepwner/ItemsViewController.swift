@@ -25,7 +25,7 @@ class ItemsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
         tableView.tableHeaderView = headerView
     }
     
@@ -46,10 +46,19 @@ class ItemsViewController: UITableViewController {
     }
     
     @IBAction func addNewItem(sender: AnyObject) {
-        
     }
     
     @IBAction func toggleEditingMode(sender: AnyObject) {
-        
+        if let button = sender as? UIButton {
+            // In objective-c this is self.isEditing
+            if editing {
+                sender.setTitle("Edit", forState: .Normal)
+                setEditing(false, animated: true)
+            }
+            else {
+                sender.setTitle("Done", forState: .Normal)
+                setEditing(true, animated: true)
+            }
+        }
     }
 }
