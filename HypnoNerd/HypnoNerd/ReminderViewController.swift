@@ -19,7 +19,7 @@ class ReminderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("ReminderViewController loaded!")
+        println("ReminderViewController loaded!")
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -30,7 +30,7 @@ class ReminderViewController: UIViewController {
     @IBAction func addReminder(sender: AnyObject) {
         let date = datePicker.date
         // Use that cool extension.
-        NSLog("Setting a reminder for %@", date)
+        println("Setting a reminder for %@", date)
         // Using the cool extension to UILocalNotification defined above.
         let note = UILocalNotification(alert: "Hypnotize me!", withDate: date)
         UIApplication.sharedApplication().scheduleLocalNotification(note)
