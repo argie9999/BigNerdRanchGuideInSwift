@@ -17,4 +17,11 @@ class ItemStore {
 
         return item
     }
+
+    func removeItem(item: Item) {
+        let indexOfItem = privateItems.indexOf() { $0 == item }
+        if let index = indexOfItem {
+            privateItems.removeAtIndex(index)
+        }
+    }
 }
