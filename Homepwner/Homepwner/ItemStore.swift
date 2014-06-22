@@ -24,4 +24,16 @@ class ItemStore {
             privateItems.removeAtIndex(index)
         }
     }
+
+    func moveItem(from fromIndex: Int, to toIndex: Int) {
+        if fromIndex == toIndex {
+            return
+        }
+        let item = privateItems.objectAtIndex(fromIndex)
+        if let theItem = item {
+            println("Moving item from row:\(fromIndex) to row:\(toIndex)")
+            privateItems.removeAtIndex(fromIndex)
+            privateItems.insert(theItem, atIndex: toIndex)
+        }
+    }
 }
