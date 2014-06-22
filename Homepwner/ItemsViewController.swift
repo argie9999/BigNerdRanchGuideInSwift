@@ -82,6 +82,13 @@ class ItemsViewController: UITableViewController {
         ItemStore.sharedStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
     }
 
+    // Bronze challenge: Change the label of the delete confirmation button
+    override func tableView(tableView: UITableView!,
+        titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String!
+    {
+        return "Remove"
+    }
+
     @IBAction func addNewItem(sender: AnyObject) {
         if let button = sender as? UIButton {
             // Add a new item to the store.
