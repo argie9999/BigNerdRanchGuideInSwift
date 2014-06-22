@@ -44,7 +44,7 @@ class HypnosisView: UIView {
     }
 
     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-        NSLog("%@ was touched", self)
+        println("%@ was touched", self)
         let red = CGFloat(arc4random() % 100) / CGFloat(100.0)
         let green = CGFloat(arc4random() % 100) / CGFloat(100.0)
         let blue = CGFloat(arc4random() % 100) / CGFloat(100.0)
