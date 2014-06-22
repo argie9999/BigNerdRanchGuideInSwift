@@ -1,8 +1,8 @@
 import UIKit
 
-// For old objectAtIndex behavior
+// Find the index of an object
 extension Array {
-    func objectAtIndex(fn: T -> Bool) -> Int? {
+    func indexOf(fn: T -> Bool) -> Int? {
         for (i, element) in enumerate(self) {
             if fn(element) {
                 return i
@@ -62,7 +62,7 @@ class ItemsViewController: UITableViewController {
             // Add a new item to the store.
             let newItem = ItemStore.sharedStore.createItem()
             let allItems = ItemStore.sharedStore.allItems
-            let rowNumber = allItems.objectAtIndex() { $0 == newItem }
+            let rowNumber = allItems.indexOf() { $0 == newItem }
 
             if let lastRow = rowNumber {
                 let indexPaths: NSIndexPath[] = [NSIndexPath(forRow: lastRow, inSection: 0)]
