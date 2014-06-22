@@ -14,6 +14,8 @@
 		3DB384161953CDA900C14E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB384151953CDA900C14E20 /* Images.xcassets */; };
 		3DB384221953CDAA00C14E20 /* HomepwnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB384211953CDAA00C14E20 /* HomepwnerTests.swift */; };
 		3DB3842C1953CE6C00C14E20 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */; };
+		3DD1CE2E1957995C00DC5C94 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */; };
+		3DD1CE2F1957995C00DC5C94 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		3DB384201953CDAA00C14E20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB384211953CDAA00C14E20 /* HomepwnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepwnerTests.swift; sourceTree = "<group>"; };
 		3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */,
+				3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */,
+				3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */,
 				3D2589EE195580F7004C81AA /* HeaderView.xib */,
 				3D25E7BE19542F31005CC519 /* Item.swift */,
 				3D25E7C019543935005CC519 /* ItemStore.swift */,
@@ -195,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB384161953CDA900C14E20 /* Images.xcassets in Resources */,
+				3DD1CE2F1957995C00DC5C94 /* DetailViewController.xib in Resources */,
 				3D2589EF195580F7004C81AA /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,6 +222,7 @@
 			files = (
 				3DB384141953CDA900C14E20 /* AppDelegate.swift in Sources */,
 				3D25E7BF19542F31005CC519 /* Item.swift in Sources */,
+				3DD1CE2E1957995C00DC5C94 /* DetailViewController.swift in Sources */,
 				3D25E7C119543935005CC519 /* ItemStore.swift in Sources */,
 				3DB3842C1953CE6C00C14E20 /* ItemsViewController.swift in Sources */,
 			);
