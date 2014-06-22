@@ -1,6 +1,6 @@
 import Foundation
 
-class Item {
+class Item: Equatable {
     let itemName: String
     let serialNumber: String
     let valueInDollars: Int
@@ -42,4 +42,12 @@ class Item {
     func description() -> String {
         return "\(itemName) (\(serialNumber)): Worth $\(valueInDollars), recorded on \(dateCreated)"
     }
+}
+
+// Conform to the Equatable Protocol (I have to put this outside the class' scope)
+func == (lhs: Item, rhs: Item) -> Bool {
+    return lhs.itemName == rhs.itemName &&
+           lhs.serialNumber == rhs.serialNumber &&
+           lhs.dateCreated == rhs.dateCreated &&
+           lhs.valueInDollars == rhs.valueInDollars
 }
