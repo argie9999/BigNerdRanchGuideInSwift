@@ -30,9 +30,6 @@ class ItemsViewController: UITableViewController {
 
     convenience init() {
         self.init(style: .Plain)
-        for _ in 0..5 {
-            ItemStore.sharedStore.createItem()
-        }
     }
 
     override func viewDidLoad() {
@@ -57,6 +54,19 @@ class ItemsViewController: UITableViewController {
         return true
     }
 
+    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle,
+        forRowAtIndexPath indexPath: NSIndexPath!)
+    {
+        if editingStyle == .Delete {
+            let items = ItemStore.sharedStore.allItems
+
+            // Remove item
+            println("Removing item. Table currently has \(items.count) items")
+            ItemStore.sharedStore.removeItem(items[indexPath.row])
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
+
     @IBAction func addNewItem(sender: AnyObject) {
         if let button = sender as? UIButton {
             // Add a new item to the store.
@@ -66,6 +76,7 @@ class ItemsViewController: UITableViewController {
 
             if let lastRow = rowNumber {
                 let indexPaths: NSIndexPath[] = [NSIndexPath(forRow: lastRow, inSection: 0)]
+                println("Adding new item. Table currently has \(lastRow + 1) item(s) in total.")
                 tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Top)
             }
         }
