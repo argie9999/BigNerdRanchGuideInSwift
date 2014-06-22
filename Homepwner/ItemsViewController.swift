@@ -70,7 +70,7 @@ class ItemsViewController: UITableViewController {
             let items = ItemStore.sharedStore.allItems
 
             // Remove item
-            println("Removing item. Table currently has \(items.count) items")
+            println("Removing item. Table currently has \(items.count - 1) item(s)")
             ItemStore.sharedStore.removeItem(items[indexPath.row])
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
