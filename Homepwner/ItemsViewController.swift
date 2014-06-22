@@ -76,6 +76,12 @@ class ItemsViewController: UITableViewController {
         }
     }
 
+    override func tableView(tableView: UITableView!, moveRowAtIndexPath sourceIndexPath: NSIndexPath!,
+        toIndexPath destinationIndexPath: NSIndexPath!)
+    {
+        ItemStore.sharedStore.moveItem(from: sourceIndexPath.row, to: destinationIndexPath.row)
+    }
+
     @IBAction func addNewItem(sender: AnyObject) {
         if let button = sender as? UIButton {
             // Add a new item to the store.
