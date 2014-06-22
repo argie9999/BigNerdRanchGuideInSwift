@@ -1,11 +1,20 @@
 import UIKit
 
-// Find the index of an object
+// A couple of useful additions to Array
 extension Array {
     func indexOf(fn: T -> Bool) -> Int? {
         for (i, element) in enumerate(self) {
             if fn(element) {
                 return i
+            }
+        }
+        return nil
+    }
+
+    func objectAtIndex(index: Int) -> T? {
+        for (i, element) in enumerate(self) {
+            if i == index {
+                return element
             }
         }
         return nil
