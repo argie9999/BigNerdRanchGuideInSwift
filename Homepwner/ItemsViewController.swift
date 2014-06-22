@@ -1,5 +1,17 @@
 import UIKit
 
+// For old objectAtIndex behavior
+extension Array {
+    func objectAtIndex(fn: T -> Bool) -> Int? {
+        for (i, element) in enumerate(self) {
+            if fn(element) {
+                return i
+            }
+        }
+        return nil
+    }
+}
+
 class ItemsViewController: UITableViewController {
     // Since we can't have a strong optional type, this is a workaround.
     // Could be better?
