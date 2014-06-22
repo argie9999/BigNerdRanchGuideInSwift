@@ -52,11 +52,11 @@ class ItemsViewController: UITableViewController {
         if let button = sender as? UIButton {
             // In objective-c this is self.isEditing
             if editing {
-                sender.setTitle("Edit", forState: .Normal)
+                button.setTitle("Edit", forState: .Normal)
                 setEditing(false, animated: true)
             }
             else {
-                sender.setTitle("Done", forState: .Normal)
+                button.setTitle("Done", forState: .Normal)
                 setEditing(true, animated: true)
             }
         }
