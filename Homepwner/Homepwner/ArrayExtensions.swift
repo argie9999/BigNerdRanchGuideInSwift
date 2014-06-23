@@ -4,20 +4,20 @@ extension Array {
     * Gets the index of an object. Takes a closure and returns an optional int.
     */
     func indexOf(fn: T -> Bool) -> Int? {
-        for (i, element) in enumerate(self) {
+        for (idx, element) in enumerate(self) {
             if fn(element) {
-                return i
+                return idx
             }
         }
         return nil
     }
 
     /**
-    * Retusn an optional value at the specified index.
+    * Returns the object (wrapped in an optional) at the specified index.
     */
     func objectAtIndex(index: Int) -> T? {
-        for (i, element) in enumerate(self) {
-            if i == index {
+        for (idx, element) in enumerate(self) {
+            if idx == index {
                 return element
             }
         }
