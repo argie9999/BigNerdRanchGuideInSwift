@@ -85,14 +85,14 @@
 		3DB384101953CDA900C14E20 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
-				3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */,
-				3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */,
+				3DB384131953CDA900C14E20 /* AppDelegate.swift */,
 				3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */,
-				3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */,
-				3D2589EE195580F7004C81AA /* HeaderView.xib */,
 				3D25E7BE19542F31005CC519 /* Item.swift */,
 				3D25E7C019543935005CC519 /* ItemStore.swift */,
-				3DB384131953CDA900C14E20 /* AppDelegate.swift */,
+				3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */,
+				3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */,
+				3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */,
+				3D2589EE195580F7004C81AA /* HeaderView.xib */,
 				3DB384151953CDA900C14E20 /* Images.xcassets */,
 				3DB384111953CDA900C14E20 /* Supporting Files */,
 			);
@@ -333,11 +333,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = Homepwner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -346,11 +348,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = Homepwner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
