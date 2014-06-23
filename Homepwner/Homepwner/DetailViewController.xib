@@ -48,7 +48,7 @@
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RWb-KZ-29N">
                     <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="76" y="175" width="224" height="30"/>
                     </variation>
@@ -106,7 +106,7 @@
                     <include reference="1hG-sz-IRf"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="148" y="366"/>
+            <point key="canvasLocation" x="-70" y="368"/>
         </view>
     </objects>
 </document>
