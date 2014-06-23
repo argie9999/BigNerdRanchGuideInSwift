@@ -1,40 +1,12 @@
-//
-//  DetailViewController.swift
-//  Homepwner
-//
-//  Created by Akshay Hegde on 6/22/14.
-//  Copyright (c) 2014 Tardis. All rights reserved.
-//
-
 import UIKit
 
 class DetailViewController: UIViewController {
+    @IBOutlet weak var nameField: UITextField
+    @IBOutlet weak var serialNumberField: UITextField
+    @IBOutlet weak var valueField: UITextField
+    @IBOutlet weak var dateLabel: UILabel
 
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        // Custom initialization
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // #pragma mark - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
