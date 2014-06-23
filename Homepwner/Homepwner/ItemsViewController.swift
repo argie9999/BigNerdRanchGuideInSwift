@@ -1,26 +1,5 @@
 import UIKit
 
-// A couple of useful additions to Array
-extension Array {
-    func indexOf(fn: T -> Bool) -> Int? {
-        for (i, element) in enumerate(self) {
-            if fn(element) {
-                return i
-            }
-        }
-        return nil
-    }
-
-    func objectAtIndex(index: Int) -> T? {
-        for (i, element) in enumerate(self) {
-            if i == index {
-                return element
-            }
-        }
-        return nil
-    }
-}
-
 class ItemsViewController: UITableViewController {
     // Since we can't have a strong optional type, this is a workaround.
     // Could be better?

@@ -16,6 +16,7 @@
 		3DB3842C1953CE6C00C14E20 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */; };
 		3DD1CE2E1957995C00DC5C94 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */; };
 		3DD1CE2F1957995C00DC5C94 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */; };
+		3DD1CE311957ACAD00DC5C94 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */,
 				3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */,
+				3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */,
 				3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */,
 				3D2589EE195580F7004C81AA /* HeaderView.xib */,
 				3D25E7BE19542F31005CC519 /* Item.swift */,
@@ -221,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3DB384141953CDA900C14E20 /* AppDelegate.swift in Sources */,
+				3DD1CE311957ACAD00DC5C94 /* ArrayExtensions.swift in Sources */,
 				3D25E7BF19542F31005CC519 /* Item.swift in Sources */,
 				3DD1CE2E1957995C00DC5C94 /* DetailViewController.swift in Sources */,
 				3D25E7C119543935005CC519 /* ItemStore.swift in Sources */,
