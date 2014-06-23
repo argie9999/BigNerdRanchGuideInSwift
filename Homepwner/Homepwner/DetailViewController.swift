@@ -42,4 +42,10 @@ class DetailViewController: UIViewController {
             item.valueInDollars = value
         }
     }
+
+    // Silver challenge: When the background is touched when editing 
+    // the value field, dismiss the keyboard.
+    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+        valueField.resignFirstResponder()
+    }
 }
