@@ -1,10 +1,10 @@
 import Foundation
 
 class Item: Equatable {
-    let itemName: String
-    let serialNumber: String
-    let valueInDollars: Int
-    let dateCreated: NSDate
+    var itemName: String
+    var serialNumber: String
+    var valueInDollars: Int
+    var dateCreated: NSDate
 
     // Designated Initializer
     init(itemName name: String, valueInDollars: Int, serialNumber: String) {
