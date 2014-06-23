@@ -1,12 +1,14 @@
 import UIKit
 
 let _dateFormatter: NSDateFormatter? = nil
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // MARK: Outlets
     @IBOutlet weak var nameField: UITextField
     @IBOutlet weak var serialNumberField: UITextField
     @IBOutlet weak var valueField: UITextField
     @IBOutlet weak var dateLabel: UILabel
+    @IBOutlet weak var imageView: UIImageView
+    @IBOutlet weak var toolbar: UIToolbar
 
     // MARK: Stored properties
     strong let item: Item
@@ -52,5 +54,17 @@ class DetailViewController: UIViewController {
     @IBAction func changeDate(sender: UIButton) {
         let dateViewController = DateViewController(item: item)
         navigationController.pushViewController(dateViewController, animated: true)
+    }
+
+    @IBAction func takePicture(sender: UIBarButtonItem) {
+        let imagePicker = UIImagePickerController()
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            imagePicker.sourceType = .Camera
+        }
+        else {
+            imagePicker.sourceType = .PhotoLibrary
+        }
+        imagePicker.delegate = self
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
 }

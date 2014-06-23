@@ -7,8 +7,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Homepwner" customModuleProvider="target">
             <connections>
                 <outlet property="dateLabel" destination="1hG-sz-IRf" id="DoI-TJ-6sK"/>
+                <outlet property="imageView" destination="jQc-g1-ta2" id="BqO-8i-pDg"/>
                 <outlet property="nameField" destination="Iau-Lh-e7S" id="BdH-Kp-bhn"/>
                 <outlet property="serialNumberField" destination="cGH-xH-YKR" id="vqg-NL-MGc"/>
+                <outlet property="takePicture" destination="OOb-qH-LKN" id="2CO-TF-bOq"/>
+                <outlet property="toolbar" destination="dIS-OH-EZN" id="kVz-Aw-7C2"/>
                 <outlet property="valueField" destination="RWb-KZ-29N" id="rvN-RN-Xvt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -90,6 +93,25 @@
                         <action selector="changeDate:" destination="-1" eventType="touchUpInside" id="z6m-pY-mDh"/>
                     </connections>
                 </button>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIS-OH-EZN" customClass="Detail">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <items>
+                        <barButtonItem systemItem="camera" id="OOb-qH-LKN">
+                            <connections>
+                                <action selector="takePicture:" destination="-1" id="skF-nS-fUn"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="0.0" y="596" width="320" height="44"/>
+                    </variation>
+                </toolbar>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jQc-g1-ta2">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="20" y="296" width="280" height="277"/>
+                    </variation>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -106,6 +128,8 @@
                     <exclude reference="Iau-Lh-e7S"/>
                     <exclude reference="1hG-sz-IRf"/>
                     <exclude reference="X37-N1-T8R"/>
+                    <exclude reference="dIS-OH-EZN"/>
+                    <exclude reference="jQc-g1-ta2"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -118,9 +142,11 @@
                     <include reference="Iau-Lh-e7S"/>
                     <include reference="1hG-sz-IRf"/>
                     <include reference="X37-N1-T8R"/>
+                    <include reference="dIS-OH-EZN"/>
+                    <include reference="jQc-g1-ta2"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="-70" y="368"/>
+            <point key="canvasLocation" x="-439" y="383"/>
         </view>
     </objects>
 </document>
