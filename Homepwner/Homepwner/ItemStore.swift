@@ -13,7 +13,7 @@ class ItemStore {
 
     func createItem() -> Item {
         let item = Item.randomItem()
-        privateItems += item
+        privateItems.append(item)
 
         return item
     }
@@ -22,6 +22,7 @@ class ItemStore {
         let indexOfItem = privateItems.indexOf() { $0 == item }
         if let index = indexOfItem {
             privateItems.removeAtIndex(index)
+            println("Removed item at index \(index)")
         }
     }
 
