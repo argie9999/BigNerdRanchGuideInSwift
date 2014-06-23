@@ -11,11 +11,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="XmV-on-yaD">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="27"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vvY-PE-fqn">
-                    <rect key="frame" x="53" y="0.0" width="30" height="30"/>
+                    <rect key="frame" x="44" y="5" width="30" height="30"/>
                     <state key="normal" title="Edit">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -24,7 +24,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmd-b9-YRx">
-                    <rect key="frame" x="237" y="0.0" width="31" height="30"/>
+                    <rect key="frame" x="253" y="5" width="31" height="30"/>
                     <state key="normal" title="New">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -35,7 +35,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="574" y="277.5"/>
+            <point key="canvasLocation" x="345" y="268.5"/>
         </view>
     </objects>
 </document>

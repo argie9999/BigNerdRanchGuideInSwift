@@ -65,7 +65,10 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     }
 
     override func tableView(tableView: UITableView!, didDeselectRowAtIndexPath indexPath: NSIndexPath!) {
-        let detailViewController = DetailViewController()
+        println("Selected row:\(indexPath.row)")
+        let items = ItemStore.sharedStore.allItems
+        let selectedItem = items[indexPath.row]
+        let detailViewController = DetailViewController(item: selectedItem)
         navigationController.pushViewController(detailViewController, animated: true)
     }
 
@@ -73,6 +76,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         return true
     }
 
+    // MARK: IBActions
     @IBAction func addNewItem(sender: AnyObject) {
         if let button = sender as? UIButton {
             // Add a new item to the store.
