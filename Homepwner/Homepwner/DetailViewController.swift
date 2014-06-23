@@ -6,7 +6,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var valueField: UITextField
     @IBOutlet weak var dateLabel: UILabel
 
-    init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    init() {
+        super.init(nibName: nil, bundle: nil)
     }
 }
