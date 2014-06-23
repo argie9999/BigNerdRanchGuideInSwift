@@ -1,6 +1,6 @@
 import UIKit
 
-class ItemsViewController: UITableViewController {
+class ItemsViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource {
     // Since we can't have a strong optional type, this is a workaround.
     // Could be better?
     var _headerView: UIView? = nil
@@ -22,7 +22,7 @@ class ItemsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
         tableView.tableHeaderView = headerView
     }
 
@@ -36,10 +36,6 @@ class ItemsViewController: UITableViewController {
         cell.textLabel.text = items[indexPath.row].description()
 
         return cell
-    }
-
-    override func prefersStatusBarHidden() -> Bool {
-        return true
     }
 
     override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle,
@@ -68,12 +64,22 @@ class ItemsViewController: UITableViewController {
         return "Remove"
     }
 
+    override func tableView(tableView: UITableView!, didDeselectRowAtIndexPath indexPath: NSIndexPath!) {
+        let detailViewController = DetailViewController()
+        navigationController.pushViewController(detailViewController, animated: true)
+    }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
     @IBAction func addNewItem(sender: AnyObject) {
         if let button = sender as? UIButton {
             // Add a new item to the store.
             let newItem = ItemStore.sharedStore.createItem()
             let allItems = ItemStore.sharedStore.allItems
             let rowNumber = allItems.indexOf() { $0 == newItem }
+            println("Index of \(newItem.itemName) is: \(rowNumber)")
 
             if let lastRow = rowNumber {
                 let indexPaths: NSIndexPath[] = [NSIndexPath(forRow: lastRow, inSection: 0)]
