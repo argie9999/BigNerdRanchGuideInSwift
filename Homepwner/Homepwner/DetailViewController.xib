@@ -78,6 +78,18 @@
                         <rect key="frame" x="20" y="213" width="280" height="20.5"/>
                     </variation>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X37-N1-T8R">
+                    <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <state key="normal" title="Change Date">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="20" y="258" width="280" height="30"/>
+                    </variation>
+                    <connections>
+                        <action selector="changeDate:" destination="-1" eventType="touchUpInside" id="z6m-pY-mDh"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -93,6 +105,7 @@
                     <exclude reference="cGH-xH-YKR"/>
                     <exclude reference="Iau-Lh-e7S"/>
                     <exclude reference="1hG-sz-IRf"/>
+                    <exclude reference="X37-N1-T8R"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -104,6 +117,7 @@
                     <include reference="cGH-xH-YKR"/>
                     <include reference="Iau-Lh-e7S"/>
                     <include reference="1hG-sz-IRf"/>
+                    <include reference="X37-N1-T8R"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="-70" y="368"/>

@@ -48,4 +48,9 @@ class DetailViewController: UIViewController {
     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
         valueField.resignFirstResponder()
     }
+
+    @IBAction func changeDate(sender: UIButton) {
+        let dateViewController = DateViewController(item: item)
+        navigationController.pushViewController(dateViewController, animated: true)
+    }
 }
