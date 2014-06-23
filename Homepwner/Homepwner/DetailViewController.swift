@@ -15,7 +15,9 @@ class DetailViewController: UIViewController {
     init(item: Item) {
         self.item = item
         super.init(nibName: nil, bundle: nil)
+        navigationItem.title = item.itemName
     }
+
     override func viewWillAppear(animated: Bool) {
         nameField.text = item.itemName
         serialNumberField.text = item.serialNumber
@@ -27,5 +29,17 @@ class DetailViewController: UIViewController {
             dateFormatter!.timeStyle = .NoStyle
         }
         self.dateLabel.text = dateFormatter?.stringFromDate(item.dateCreated)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        // Clear first responder
+        view.endEditing(true)
+
+        // Save changes to Item
+        item.itemName = nameField.text
+        item.serialNumber = serialNumberField.text
+        if let value = valueField.text.toInt() {
+            item.valueInDollars = value
+        }
     }
 }
