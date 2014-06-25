@@ -13,7 +13,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet weak var toolbar: UIToolbar
 
     // MARK: Stored properties
-    strong let item: Item
+    let item: Item
     var dateFormatter = _dateFormatter
 
     init(item: Item) {
