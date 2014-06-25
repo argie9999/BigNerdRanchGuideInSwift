@@ -1,7 +1,9 @@
 import UIKit
 
 let _dateFormatter: NSDateFormatter? = nil
-class DetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class DetailViewController: UIViewController, UINavigationControllerDelegate,
+     UIImagePickerControllerDelegate
+{
     // MARK: Outlets
     @IBOutlet weak var nameField: UITextField
     @IBOutlet weak var serialNumberField: UITextField
@@ -45,12 +47,25 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
 
-    // Silver challenge: When the background is touched when editing 
+    // Silver challenge: When the background is touched when editing
     // the value field, dismiss the keyboard.
     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
         valueField.resignFirstResponder()
     }
 
+    // MARK: Delegate methods
+    func imagePickerController(picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: NSDictionary!)
+    {
+        let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        if let image = originalImage {
+            imageView.image = image
+            dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+
+
+    // MARK: IBActions
     @IBAction func changeDate(sender: UIButton) {
         let dateViewController = DateViewController(item: item)
         navigationController.pushViewController(dateViewController, animated: true)
