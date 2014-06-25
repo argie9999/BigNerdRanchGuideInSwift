@@ -35,17 +35,19 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         }
         self.dateLabel.text = dateFormatter?.stringFromDate(item.dateCreated)
 
-        let image = ImageStore.sharedStore.dictionary[item.itemKey]
-        if let imageToDisplay  = image {
-            imageView.image = imageToDisplay
+        if let imageKey = item.itemKey {
+            let image = ImageStore.sharedStore.dictionary[imageKey]
+            if let imageToDisplay = image {
+                imageView.image = imageToDisplay
+            }
         }
     }
-
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         // Clear first responder
         view.endEditing(true)
-
+        
         // Save changes to Item
         item.itemName = nameField.text
         item.serialNumber = serialNumberField.text
@@ -53,31 +55,33 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             item.valueInDollars = value
         }
     }
-
+    
     // MARK: UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: NSDictionary!)
     {
         let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
         if let image = editedImage {
-            ImageStore.sharedStore.dictionary[item.itemKey] = image
-            imageView.image = image
-            dismissViewControllerAnimated(true, completion: nil)
+            if let imageKey = item.itemKey {
+                ImageStore.sharedStore.dictionary[imageKey] = image
+                imageView.image = image
+                dismissViewControllerAnimated(true, completion: nil)
+            }
         }
     }
-
+    
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-
+    
     // MARK: IBActions
     @IBAction func changeDate(sender: UIButton) {
         let dateViewController = DateViewController(item: item)
         navigationController.pushViewController(dateViewController, animated: true)
     }
-
+    
     @IBAction func takePicture(sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
@@ -90,7 +94,16 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         imagePicker.delegate = self
         presentViewController(imagePicker, animated: true, completion: nil)
     }
-
+    
+    // Silver challenge: Allow a user to remove an item's image.
+    @IBAction func removePicture(sender: UIBarButtonItem) {
+        if imageView.image {
+            println("Removing picture")
+            item.itemKey = nil
+            imageView.image = nil
+        }
+    }
+    
     // Silver challenge
     @IBAction func backgroundTapped(sender: UIControl) {
         view.endEditing(true)

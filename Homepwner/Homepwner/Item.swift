@@ -5,7 +5,7 @@ class Item: Equatable {
     var serialNumber: String
     var valueInDollars: Int
     var dateCreated: NSDate
-    @NSCopying var itemKey: NSString
+    @NSCopying var itemKey: NSString?
 
     // Designated Initializer
     init(name: String, valueInDollars: Int, serialNumber: String) {

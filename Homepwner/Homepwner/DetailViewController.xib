@@ -100,6 +100,12 @@
                                 <action selector="takePicture:" destination="-1" id="Se0-n0-NBX"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="yoc-lR-sc2"/>
+                        <barButtonItem systemItem="trash" id="bvG-J7-M3h">
+                            <connections>
+                                <action selector="removePicture:" destination="-1" id="xxh-x3-5Vh"/>
+                            </connections>
+                        </barButtonItem>
                     </items>
                     <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                         <rect key="frame" x="0.0" y="524" width="320" height="44"/>
