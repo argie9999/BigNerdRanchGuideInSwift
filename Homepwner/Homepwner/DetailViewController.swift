@@ -90,6 +90,9 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             imagePicker.sourceType = .Camera
+
+            // Gold challenge: Add a cross hair view in the middle of the image capture area.
+            imagePicker.cameraOverlayView = CrosshairView(frame: view.bounds)
         }
         else {
             imagePicker.sourceType = .PhotoLibrary
