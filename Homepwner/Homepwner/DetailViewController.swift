@@ -42,12 +42,12 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             }
         }
     }
-    
+
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         // Clear first responder
         view.endEditing(true)
-        
+
         // Save changes to Item
         item.itemName = nameField.text
         item.serialNumber = serialNumberField.text
@@ -55,7 +55,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             item.valueInDollars = value
         }
     }
-    
+
     // MARK: UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: NSDictionary!)
@@ -69,19 +69,19 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             }
         }
     }
-    
+
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
+
     // MARK: IBActions
     @IBAction func changeDate(sender: UIButton) {
         let dateViewController = DateViewController(item: item)
         navigationController.pushViewController(dateViewController, animated: true)
     }
-    
+
     @IBAction func takePicture(sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
@@ -94,7 +94,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         imagePicker.delegate = self
         presentViewController(imagePicker, animated: true, completion: nil)
     }
-    
+
     // Silver challenge: Allow a user to remove an item's image.
     @IBAction func removePicture(sender: UIBarButtonItem) {
         if imageView.image {
@@ -103,7 +103,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             imageView.image = nil
         }
     }
-    
+
     // Silver challenge
     @IBAction func backgroundTapped(sender: UIControl) {
         view.endEditing(true)
