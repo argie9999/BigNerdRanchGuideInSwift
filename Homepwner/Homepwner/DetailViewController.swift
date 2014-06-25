@@ -23,6 +23,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     }
 
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         nameField.text = item.itemName
         serialNumberField.text = item.serialNumber
         valueField.text = String(item.valueInDollars)
@@ -84,6 +85,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         else {
             imagePicker.sourceType = .PhotoLibrary
         }
+//        imagePicker.allowsEditing = true
         imagePicker.delegate = self
         presentViewController(imagePicker, animated: true, completion: nil)
     }
