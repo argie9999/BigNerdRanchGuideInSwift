@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3D25E7BF19542F31005CC519 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25E7BE19542F31005CC519 /* Item.swift */; };
 		3D25E7C119543935005CC519 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25E7C019543935005CC519 /* ItemStore.swift */; };
+		3D917A65195A50F100753029 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D917A64195A50F100753029 /* ImageStore.swift */; };
 		3DB34A8119582327005768CE /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB34A7F19582327005768CE /* DateViewController.swift */; };
 		3DB34A8219582327005768CE /* DateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB34A8019582327005768CE /* DateViewController.xib */; };
 		3DB384141953CDA900C14E20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB384131953CDA900C14E20 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		3D25E7BE19542F31005CC519 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3D25E7C019543935005CC519 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		3D917A64195A50F100753029 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		3DB34A7F19582327005768CE /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		3DB34A8019582327005768CE /* DateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateViewController.xib; sourceTree = "<group>"; };
 		3DB3840E1953CDA900C14E20 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,7 @@
 				3D25E7C019543935005CC519 /* ItemStore.swift */,
 				3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */,
 				3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */,
+				3D917A64195A50F100753029 /* ImageStore.swift */,
 				3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */,
 				3DB34A7F19582327005768CE /* DateViewController.swift */,
 				3DB34A8019582327005768CE /* DateViewController.xib */,
@@ -229,6 +232,7 @@
 				3DB384141953CDA900C14E20 /* AppDelegate.swift in Sources */,
 				3DD1CE311957ACAD00DC5C94 /* ArrayExtensions.swift in Sources */,
 				3DB34A8119582327005768CE /* DateViewController.swift in Sources */,
+				3D917A65195A50F100753029 /* ImageStore.swift in Sources */,
 				3D25E7BF19542F31005CC519 /* Item.swift in Sources */,
 				3DD1CE2E1957995C00DC5C94 /* DetailViewController.swift in Sources */,
 				3D25E7C119543935005CC519 /* ItemStore.swift in Sources */,
