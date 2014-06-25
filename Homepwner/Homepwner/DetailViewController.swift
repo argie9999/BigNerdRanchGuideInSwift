@@ -42,6 +42,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     }
 
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         // Clear first responder
         view.endEditing(true)
 
@@ -57,8 +58,8 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: NSDictionary!)
     {
-        let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        if let image = originalImage {
+        let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
+        if let image = editedImage {
             ImageStore.sharedStore.dictionary[item.itemKey] = image
             imageView.image = image
             dismissViewControllerAnimated(true, completion: nil)
@@ -85,7 +86,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         else {
             imagePicker.sourceType = .PhotoLibrary
         }
-//        imagePicker.allowsEditing = true
+        imagePicker.allowsEditing = true
         imagePicker.delegate = self
         presentViewController(imagePicker, animated: true, completion: nil)
     }

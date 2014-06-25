@@ -19,12 +19,12 @@ class Item: Equatable {
         itemKey = uuid.UUIDString
     }
 
-    convenience init(name: String) {
+    convenience init(itemName name: String) {
         self.init(name: name, valueInDollars: 0, serialNumber: "")
     }
 
     convenience init() {
-        self.init(name: "Item")
+        self.init(itemName: "Item")
     }
 
     class func randomItem() -> Item {
