@@ -10,6 +10,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet weak var valueField: UITextField
     @IBOutlet weak var dateLabel: UILabel
     @IBOutlet weak var imageView: UIImageView
+    @IBOutlet weak var trashItem: UIBarButtonItem
     @IBOutlet weak var toolbar: UIToolbar
 
     // MARK: Stored properties
@@ -39,6 +40,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             let image = ImageStore.sharedStore.dictionary[imageKey]
             if let imageToDisplay = image {
                 imageView.image = imageToDisplay
+                trashItem.enabled = true
             }
         }
     }
@@ -68,6 +70,8 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 dismissViewControllerAnimated(true, completion: nil)
             }
         }
+        // Enable the trash toolbar item
+        trashItem.enabled = true
     }
 
     // MARK: UITextFieldDelegate
@@ -98,9 +102,26 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     // Silver challenge: Allow a user to remove an item's image.
     @IBAction func removePicture(sender: UIBarButtonItem) {
         if imageView.image {
-            println("Removing picture")
-            item.itemKey = nil
-            imageView.image = nil
+            println("Alert dialog shown")
+            // Show an alert dialog before deleting an image.
+            var alert = UIAlertController(title: "Remove Image?", message: "",
+                preferredStyle: .Alert)
+            // Add a destructive delete button.
+            // When the user clicks on Delete, the closure is invoked and removes the image.
+            alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: {
+                (_: UIAlertAction!) in
+                println("Removing picture")
+                self.item.itemKey = nil
+                self.imageView.image = nil
+                self.trashItem.enabled = false
+                }))
+
+            // When user presses cancel, don't do anything.
+            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel,
+                handler: {(_: UIAlertAction!) in
+                    println("User selected not to remove image.")
+                }))
+            presentViewController(alert, animated: true, completion: nil)
         }
     }
 

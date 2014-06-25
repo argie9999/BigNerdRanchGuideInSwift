@@ -11,6 +11,7 @@
                 <outlet property="nameField" destination="Iau-Lh-e7S" id="BdH-Kp-bhn"/>
                 <outlet property="serialNumberField" destination="cGH-xH-YKR" id="vqg-NL-MGc"/>
                 <outlet property="toolbar" destination="dIS-OH-EZN" id="kVz-Aw-7C2"/>
+                <outlet property="trashItem" destination="bvG-J7-M3h" id="oX8-gr-Yna"/>
                 <outlet property="valueField" destination="RWb-KZ-29N" id="rvN-RN-Xvt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -101,7 +102,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="yoc-lR-sc2"/>
-                        <barButtonItem systemItem="trash" id="bvG-J7-M3h">
+                        <barButtonItem enabled="NO" systemItem="trash" id="bvG-J7-M3h">
                             <connections>
                                 <action selector="removePicture:" destination="-1" id="xxh-x3-5Vh"/>
                             </connections>
