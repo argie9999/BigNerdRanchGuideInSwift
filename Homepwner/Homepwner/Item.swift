@@ -5,21 +5,26 @@ class Item: Equatable {
     var serialNumber: String
     var valueInDollars: Int
     var dateCreated: NSDate
+    @NSCopying var itemKey: NSString
 
     // Designated Initializer
-    init(itemName name: String, valueInDollars: Int, serialNumber: String) {
+    init(name: String, valueInDollars: Int, serialNumber: String) {
         self.itemName = name
         self.serialNumber = serialNumber
         self.valueInDollars = valueInDollars
         dateCreated = NSDate()
+
+        // Create a NSUUID object and get its string representation
+        let uuid = NSUUID()
+        itemKey = uuid.UUIDString
     }
 
-    convenience init(itemName name: String) {
-        self.init(itemName: name, valueInDollars: 0, serialNumber: "")
+    convenience init(name: String) {
+        self.init(name: name, valueInDollars: 0, serialNumber: "")
     }
 
     convenience init() {
-        self.init(itemName: "Item")
+        self.init(name: "Item")
     }
 
     class func randomItem() -> Item {
@@ -36,7 +41,7 @@ class Item: Equatable {
             "\(arc4random() % 10)\(aStr + Int(arc4random() % 26))" +
             "\(arc4random() % 10)\(aStr + Int(arc4random() % 26))\(arc4random() % 10)"
 
-        return Item(itemName: randomName, valueInDollars: randomVal, serialNumber: randomSerial)
+        return Item(name: randomName, valueInDollars: randomVal, serialNumber: randomSerial)
     }
 
     func description() -> String {
