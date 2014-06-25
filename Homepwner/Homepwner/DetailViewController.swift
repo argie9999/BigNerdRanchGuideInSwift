@@ -108,24 +108,22 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 preferredStyle: .Alert)
             // Add a destructive delete button.
             // When the user clicks on Delete, the closure is invoked and removes the image.
-            alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: {
-                (_: UIAlertAction!) in
+            alert.addAction(UIAlertAction(title: "Delete", style: .Destructive) { (_: UIAlertAction!) in
                 println("Removing picture")
                 self.item.itemKey = nil
                 self.imageView.image = nil
                 self.trashItem.enabled = false
-                }))
+            })
 
             // When user presses cancel, don't do anything.
-            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel,
-                handler: {(_: UIAlertAction!) in
-                    println("User selected not to remove image.")
-                }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel) { (_: UIAlertAction!) in
+                println("User selected not to remove image.")
+            })
             presentViewController(alert, animated: true, completion: nil)
         }
     }
 
-    // Silver challenge
+    // Silver challenge: dismiss the keyboard when user touches the background
     @IBAction func backgroundTapped(sender: UIControl) {
         view.endEditing(true)
     }
