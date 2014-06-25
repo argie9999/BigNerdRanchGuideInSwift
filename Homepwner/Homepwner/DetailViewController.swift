@@ -2,7 +2,7 @@ import UIKit
 
 let _dateFormatter: NSDateFormatter? = nil
 class DetailViewController: UIViewController, UINavigationControllerDelegate,
-     UIImagePickerControllerDelegate
+     UIImagePickerControllerDelegate, UITextFieldDelegate
 {
     // MARK: Outlets
     @IBOutlet weak var nameField: UITextField
@@ -33,6 +33,11 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             dateFormatter!.timeStyle = .NoStyle
         }
         self.dateLabel.text = dateFormatter?.stringFromDate(item.dateCreated)
+
+        let image = ImageStore.sharedStore.dictionary[item.itemKey]
+        if let imageToDisplay  = image {
+            imageView.image = imageToDisplay
+        }
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -47,23 +52,23 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         }
     }
 
-    // Silver challenge: When the background is touched when editing
-    // the value field, dismiss the keyboard.
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-        valueField.resignFirstResponder()
-    }
-
-    // MARK: Delegate methods
+    // MARK: UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: NSDictionary!)
     {
         let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         if let image = originalImage {
+            ImageStore.sharedStore.dictionary[item.itemKey] = image
             imageView.image = image
             dismissViewControllerAnimated(true, completion: nil)
         }
     }
 
+    // MARK: UITextFieldDelegate
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 
     // MARK: IBActions
     @IBAction func changeDate(sender: UIButton) {
@@ -81,5 +86,10 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         }
         imagePicker.delegate = self
         presentViewController(imagePicker, animated: true, completion: nil)
+    }
+
+    // Silver challenge
+    @IBAction func backgroundTapped(sender: UIControl) {
+        view.endEditing(true)
     }
 }

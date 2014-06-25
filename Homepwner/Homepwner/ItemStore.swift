@@ -19,6 +19,8 @@ class ItemStore {
     }
 
     func removeItem(item: Item) {
+        ImageStore.sharedStore.dictionary.removeValueForKey(item.itemKey)
+
         let indexOfItem = privateItems.indexOf() { $0 == item }
         if let index = indexOfItem {
             privateItems.removeAtIndex(index)
