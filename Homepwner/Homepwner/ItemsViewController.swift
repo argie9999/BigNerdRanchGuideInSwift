@@ -6,9 +6,9 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         navigationItem.title = "Homepwner"
 
         // A button for adding new items
-        let bbi = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "addNewItem")
-        navigationItem.rightBarButtonItem = bbi
         navigationItem.leftBarButtonItem = editButtonItem()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add,
+            target: self, action: "addNewItem")
     }
 
     func addNewItem() {
@@ -20,7 +20,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
 
         if let lastRow = rowNumber {
             let indexPaths: NSIndexPath[] = [NSIndexPath(forRow: lastRow, inSection: 0)]
-            println("Adding new item. Table currently has \(lastRow + 1) item(s) in total.")
+            println("Adding new item. Table currently has \(allItems.count) item(s) in total.")
             tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Top)
         }
     }
@@ -50,9 +50,9 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
             let items = ItemStore.sharedStore.allItems
 
             // Remove item
-            println("Removing item. Table currently has \(items.count - 1) item(s)")
             ItemStore.sharedStore.removeItem(items[indexPath.row])
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            println("Removing item. Table currently has \(items.count - 1) item(s)")
         }
     }
 
