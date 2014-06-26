@@ -69,7 +69,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         return "Remove"
     }
 
-    override func tableView(tableView: UITableView!, didDeselectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         println("Selected row:\(indexPath.row)")
         let items = ItemStore.sharedStore.allItems
         let selectedItem = items[indexPath.row]
