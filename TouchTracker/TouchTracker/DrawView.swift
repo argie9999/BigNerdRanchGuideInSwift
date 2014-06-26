@@ -31,9 +31,34 @@ class DrawView: UIView {
     }
 
     override func drawRect(rect: CGRect) {
-        // Draw finished lines in black
-        UIColor.blackColor().set()
+        // Silver challenge: Make it so the angle at which a line is drawn 
+        // dictates is color once it has been added to finishedLines
+
         for line in finishedLines {
+            let dx = CFloat(line.end.x) - CFloat(line.begin.x)
+            let dy = CFloat(line.end.y) - CFloat(line.begin.y)
+
+            // Get the angle
+            var angleInDegrees = Double(atan2f(dy, dx)) * 180 / M_PI
+            if angleInDegrees < 0.0 {
+                angleInDegrees += 360.0
+            }
+            println("Angle of line: \(angleInDegrees)")
+
+            // Let each quadrant have its own color
+            switch angleInDegrees {
+            case 0..90:
+                UIColor.cyanColor().set()
+            case 90..180:
+                UIColor.purpleColor().set()
+            case 180..270:
+                UIColor.yellowColor().set()
+            case 270...360:
+                UIColor.brownColor().set()
+            default:
+                UIColor.blackColor().set()
+            }
+
             strokeLine(line)
         }
 
@@ -62,7 +87,7 @@ class DrawView: UIView {
     }
 
     override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
-        println("-- Touch moved -- Class: DrawView. Method: touchesMoved")
+        // println("-- Touch moved -- Class: DrawView. Method: touchesMoved")
         let allTouches = touches.allObjects as UITouch[]
 
         for touch in allTouches {
@@ -87,6 +112,17 @@ class DrawView: UIView {
                 finishedLines += line!
                 linesInProgress.removeValueForKey(key)
             }
+        }
+        setNeedsDisplay()
+    }
+
+    override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
+        println("-- Touch cancelled -- Class: DrawView. Method: touchesCancelled")
+        let allTouches = touches.allObjects as UITouch[]
+
+        for touch in allTouches {
+            let key = NSValue(nonretainedObject: touch)
+            linesInProgress.removeValueForKey(key)
         }
         setNeedsDisplay()
     }
