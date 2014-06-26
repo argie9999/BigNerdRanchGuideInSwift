@@ -39,7 +39,7 @@ class DrawView: UIView {
             let dy = CFloat(line.end.y) - CFloat(line.begin.y)
 
             // Get the angle
-            var angleInDegrees = Double(atan2f(dy, dx)) * 180 / M_PI
+            var angleInDegrees = Double(atan2f(dx, dy)) * 180 / M_PI
             if angleInDegrees < 0.0 {
                 angleInDegrees += 360.0
             }
