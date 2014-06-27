@@ -19,18 +19,17 @@ extension Array {
     }
 }
 
-class DrawView: UIView {
+class DrawView: UIView, UIGestureRecognizerDelegate {
     var linesInProgress: Dictionary<NSValue, Line>
     var finishedLines: Array<Line>
     weak var selectedLine: Line?
+    let moveRecognizer: UIPanGestureRecognizer?
 
     init(frame: CGRect) {
         finishedLines = Array<Line>()
         linesInProgress = Dictionary<NSValue, Line>()
 
         super.init(frame: frame)
-        multipleTouchEnabled = true
-        backgroundColor = UIColor.grayColor()
 
         // Double taps
         let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTap:")
@@ -42,10 +41,19 @@ class DrawView: UIView {
         // Long press gesture
         let pressRecognizer = UILongPressGestureRecognizer(target: self, action: "pressRecognizer:")
 
+        // Pan gesture
+        moveRecognizer = UIPanGestureRecognizer(target: self, action: "moveLine:")
+        moveRecognizer!.delegate = self
+        moveRecognizer!.cancelsTouchesInView = false
+
         // Add all gesture recognizers
         addGestureRecognizer(doubleTapRecognizer)
         addGestureRecognizer(singleTapRecognizer)
         addGestureRecognizer(pressRecognizer)
+        addGestureRecognizer(moveRecognizer)
+
+        multipleTouchEnabled = true
+        backgroundColor = UIColor.grayColor()
     }
 
     // Stroke the line with a Bezier Path
@@ -73,7 +81,6 @@ class DrawView: UIView {
             if angleInDegrees < 0.0 {
                 angleInDegrees += 360.0
             }
-            println("Angle of line: \(angleInDegrees)")
 
             // Let each quadrant have its own color
             switch angleInDegrees {
@@ -221,6 +228,7 @@ class DrawView: UIView {
     }
 
     func pressRecognizer(gesture: UILongPressGestureRecognizer) {
+        println("Detected long press gesture")
         if gesture.state == .Began {
             let point = gesture.locationInView(self)
             selectedLine = lineAtPoint(point)
@@ -240,5 +248,37 @@ class DrawView: UIView {
         finishedLines.removeObject() {$0 == self.selectedLine}
         selectedLine = nil
         setNeedsDisplay()
+    }
+
+    func moveLine(gesture: UIPanGestureRecognizer) {
+        // If a line is not selected, don't do anything
+        if !selectedLine { return }
+
+        if gesture.state == .Changed {
+            // How far has the pan moved?
+            let translation = gesture.translationInView(self)
+            var begin = selectedLine!.begin
+            var end = selectedLine!.end
+
+            begin.x += translation.x
+            begin.y += translation.y
+            end.x += translation.x
+            end.y += translation.y
+
+            selectedLine!.begin = begin
+            selectedLine!.end = end
+            setNeedsDisplay()
+            gesture.setTranslation(CGPointZero, inView: self)
+        }
+    }
+
+    // MARK: UIGestureRecognizerDelegate
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!,
+        shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool
+    {
+        if gestureRecognizer == moveRecognizer {
+            return true
+        }
+        return false
     }
 }
