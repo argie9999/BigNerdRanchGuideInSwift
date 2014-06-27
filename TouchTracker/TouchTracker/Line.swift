@@ -11,10 +11,12 @@ import UIKit
 class Line: Equatable {
     var begin: CGPoint
     var end: CGPoint
+    var thickness: Double
 
     init(begin: CGPoint, end: CGPoint) {
         self.begin = begin
         self.end = end
+        thickness = 1.0
     }
 }
 

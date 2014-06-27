@@ -8,7 +8,9 @@
 import UIKit
 
 extension Array {
-    /** Removes the object from the array. */
+    /**
+    Removes the object from the array.
+    */
     mutating func removeObject(fn: (T -> Bool)) {
         for (idx,elem) in enumerate(self) {
             if fn(elem) {
@@ -58,7 +60,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     // Stroke the line with a Bezier Path
     func strokeLine(line: Line) {
         let path = UIBezierPath()
-        path.lineWidth = 10
+        path.lineWidth = line.thickness
         path.lineCapStyle = kCGLineCapRound
 
         path.moveToPoint(line.begin)
@@ -68,7 +70,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
 
     // Color lines
     override func drawRect(rect: CGRect) {
-        // Silver challenge: Make it so the angle at which a line is drawn 
+        // Silver challenge: Make it so the angle at which a line is drawn
         // dictates is color once it has been added to finishedLines
 
         for line in finishedLines {
@@ -135,7 +137,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     // MARK: Touch events
     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
         println("-- Touch started -- Class: DrawView. Method: touchesBegan")
-        // If the delete menu is active, don't do anything 
+        // If the delete menu is active, don't do anything
         // Silver challenge: Mysterious lines bug
         if UIMenuController.sharedMenuController().menuVisible {
             return
@@ -161,6 +163,26 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             let line = linesInProgress[key]
             if line {
                 line!.end = touch.locationInView(self)
+
+                // Gold challenge: Speed and Size: Adjust line thickness to match velocity
+                let velocityInVew = moveRecognizer!.velocityInView(self)
+                let rawVelocity = hypot(velocityInVew.x, velocityInVew.y)
+                switch rawVelocity {
+                case let vel where vel > 5000.0:
+                    line!.thickness = 20.0
+                case let vel where vel > 3000.0:
+                    line!.thickness = 10.0
+                case let vel where vel > 2000.0:
+                    line!.thickness = 8.0
+                case let vel where vel > 1000.0:
+                    line!.thickness = 5.0
+                case let vel where vel > 500.0:
+                    line!.thickness = 3.0
+                case let vel where vel > 200.0:
+                    line!.thickness = 2.0
+                default:
+                    line!.thickness = 1.0
+                }
             }
         }
         setNeedsDisplay()

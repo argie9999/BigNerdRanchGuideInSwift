@@ -399,6 +399,7 @@
 				3D61D3FF195ACAEA00A4A023 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D61D400195ACAEA00A4A023 /* Build configuration list for PBXNativeTarget "TouchTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +408,7 @@
 				3D61D402195ACAEA00A4A023 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
