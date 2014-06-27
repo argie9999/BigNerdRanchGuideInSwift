@@ -8,12 +8,22 @@
 
 import UIKit
 
-class Line {
+class Line: Equatable {
     var begin: CGPoint
     var end: CGPoint
 
     init(begin: CGPoint, end: CGPoint) {
         self.begin = begin
         self.end = end
+    }
+}
+
+// MARK: Equatable protocol
+func == (lhs: Line, rhs: Line) -> Bool {
+    if lhs.begin == rhs.begin && lhs.end == rhs.end {
+        return true
+    }
+    else {
+        return false
     }
 }

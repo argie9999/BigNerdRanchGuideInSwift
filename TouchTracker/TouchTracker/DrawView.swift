@@ -7,9 +7,22 @@
 
 import UIKit
 
+extension Array {
+    /** Removes the object from the array. */
+    mutating func removeObject(fn: (T -> Bool)) {
+        for (idx,elem) in enumerate(self) {
+            if fn(elem) {
+                println(elem)
+                removeAtIndex(idx)
+            }
+        }
+    }
+}
+
 class DrawView: UIView {
     var linesInProgress: Dictionary<NSValue, Line>
     var finishedLines: Array<Line>
+    weak var selectedLine: Line?
 
     init(frame: CGRect) {
         finishedLines = Array<Line>()
@@ -18,8 +31,20 @@ class DrawView: UIView {
         super.init(frame: frame)
         multipleTouchEnabled = true
         backgroundColor = UIColor.grayColor()
+
+        // Double taps
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTap:")
+        doubleTapRecognizer.numberOfTapsRequired = 2
+
+        // Single tap
+        let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTap:")
+
+        // Add all gesture recognizers
+        addGestureRecognizer(doubleTapRecognizer)
+        addGestureRecognizer(singleTapRecognizer)
     }
 
+    // Stroke the line with a Bezier Path
     func strokeLine(line: Line) {
         let path = UIBezierPath()
         path.lineWidth = 10
@@ -30,6 +55,7 @@ class DrawView: UIView {
         path.stroke()
     }
 
+    // Color lines
     override func drawRect(rect: CGRect) {
         // Silver challenge: Make it so the angle at which a line is drawn 
         // dictates is color once it has been added to finishedLines
@@ -60,6 +86,10 @@ class DrawView: UIView {
             }
 
             strokeLine(line)
+            if selectedLine {
+                UIColor.greenColor().set()
+                strokeLine(selectedLine!)
+            }
         }
 
         UIColor.redColor().set()
@@ -69,6 +99,27 @@ class DrawView: UIView {
                 strokeLine(line!)
             }
         }
+    }
+
+    // Get a Line that is close to the given point
+    func lineAtPoint(point: CGPoint) -> Line? {
+        for line in finishedLines {
+            let start = line.begin
+            let end = line.end
+
+            // Check a few points on the line
+            for var t = 0.0; t <= 1.0; t += 0.05 {
+                let x = start.x + t * (end.x - start.x)
+                let y = start.y + t * (end.y - start.y)
+                let hypotenuse = hypot(x - point.x, y - point.y)
+
+                // If the tapped point is within 20 points, return that line
+                if hypotenuse < 20.0 {
+                    return line
+                }
+            }
+        }
+        return nil
     }
 
     // MARK: Touch events
@@ -124,6 +175,51 @@ class DrawView: UIView {
             let key = NSValue(nonretainedObject: touch)
             linesInProgress.removeValueForKey(key)
         }
+        setNeedsDisplay()
+    }
+
+    // MARK: Gesture recognizers
+    func doubleTap(gesture: UITapGestureRecognizer) {
+        println("Recognized a double tap")
+        linesInProgress.removeAll(keepCapacity: false)
+        finishedLines.removeAll(keepCapacity: false)
+        setNeedsDisplay()
+    }
+
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+
+    func singleTap(gesture: UITapGestureRecognizer) {
+        println("Recognized a single tap")
+        let point = gesture.locationInView(self)
+
+        // See if the user touched a line
+        selectedLine = lineAtPoint(point)
+
+        // Show a action menu bar when user selects a line
+        if selectedLine {
+            // Make ourselves the target of menu item action messages
+            becomeFirstResponder()
+            let menu = UIMenuController.sharedMenuController()
+            let deleteItem = [UIMenuItem(title: "Delete", action: "deleteLine:")]
+            menu.menuItems = deleteItem
+
+            // Tell the menu where it should show itself
+            menu.setTargetRect(CGRectMake(point.x, point.y, 2, 2), inView: self)
+            menu.setMenuVisible(true, animated: true)
+        }
+        else {
+            UIMenuController.sharedMenuController().setMenuVisible(false, animated: true)
+        }
+
+        setNeedsDisplay()
+    }
+
+    // MARK: Selectors
+    func deleteLine(sender: AnyObject) {
+        finishedLines.removeObject() {$0 == self.selectedLine}
+        selectedLine = nil
         setNeedsDisplay()
     }
 }
