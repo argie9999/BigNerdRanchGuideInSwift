@@ -12,7 +12,6 @@ extension Array {
     mutating func removeObject(fn: (T -> Bool)) {
         for (idx,elem) in enumerate(self) {
             if fn(elem) {
-                println(elem)
                 removeAtIndex(idx)
             }
         }
