@@ -39,9 +39,13 @@ class DrawView: UIView {
         // Single tap
         let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTap:")
 
+        // Long press gesture
+        let pressRecognizer = UILongPressGestureRecognizer(target: self, action: "pressRecognizer:")
+
         // Add all gesture recognizers
         addGestureRecognizer(doubleTapRecognizer)
         addGestureRecognizer(singleTapRecognizer)
+        addGestureRecognizer(pressRecognizer)
     }
 
     // Stroke the line with a Bezier Path
@@ -178,16 +182,16 @@ class DrawView: UIView {
         setNeedsDisplay()
     }
 
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+
     // MARK: Gesture recognizers
     func doubleTap(gesture: UITapGestureRecognizer) {
         println("Recognized a double tap")
         linesInProgress.removeAll(keepCapacity: false)
         finishedLines.removeAll(keepCapacity: false)
         setNeedsDisplay()
-    }
-
-    override func canBecomeFirstResponder() -> Bool {
-        return true
     }
 
     func singleTap(gesture: UITapGestureRecognizer) {
@@ -213,6 +217,21 @@ class DrawView: UIView {
             UIMenuController.sharedMenuController().setMenuVisible(false, animated: true)
         }
 
+        setNeedsDisplay()
+    }
+
+    func pressRecognizer(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .Began {
+            let point = gesture.locationInView(self)
+            selectedLine = lineAtPoint(point)
+
+            if selectedLine {
+                linesInProgress.removeAll(keepCapacity: false)
+            }
+        }
+        else if gesture.state == .Ended {
+            selectedLine = nil
+        }
         setNeedsDisplay()
     }
 
