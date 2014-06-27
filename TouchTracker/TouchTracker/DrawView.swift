@@ -136,6 +136,11 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     // MARK: Touch events
     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
         println("-- Touch started -- Class: DrawView. Method: touchesBegan")
+        // If the delete menu is active, don't do anything 
+        // Silver challenge: Mysterious lines bug
+        if UIMenuController.sharedMenuController().menuVisible {
+            return
+        }
         let allTouches = touches.allObjects as UITouch[]
 
         for touch in allTouches {
@@ -251,8 +256,11 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     }
 
     func moveLine(gesture: UIPanGestureRecognizer) {
-        // If a line is not selected, don't do anything
-        if !selectedLine { return }
+        // If a line is not selected, or if the delete menu is active, don't do anything
+        // Silver challenge: mysterious lines bug.
+        if selectedLine == nil || UIMenuController.sharedMenuController().menuVisible {
+            return
+        }
 
         if gesture.state == .Changed {
             // How far has the pan moved?
