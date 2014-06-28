@@ -4,10 +4,14 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawView" customModule="TouchTracker" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawView" customModule="TouchTracker" customModuleProvider="target">
+            <connections>
+                <outlet property="colorPaletteView" destination="36X-v4-dgi" id="Qwg-wC-lWa"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="36X-v4-dgi" customClass="DrawView" customModule="TouchTracker" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="51"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uh-4R-voX">
@@ -85,18 +89,7 @@
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="colorPaletteView" destination="-1" id="lIk-8a-s2A"/>
-            </connections>
-            <point key="canvasLocation" x="705" y="297.5"/>
+            <point key="canvasLocation" x="226" y="132"/>
         </view>
-        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gm8-eq-TvL">
-            <rect key="frame" x="12" y="11" width="30" height="30"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" red="0.25091500230000002" green="0.11953181929999999" blue="0.78391299999999997" alpha="1" colorSpace="calibratedRGB"/>
-            <state key="normal">
-                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-            </state>
-        </button>
     </objects>
 </document>
