@@ -14,6 +14,7 @@
 		3D61D404195ACCE000A4A023 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61D403195ACCE000A4A023 /* Line.swift */; };
 		3D61D406195ACD5800A4A023 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61D405195ACD5800A4A023 /* DrawView.swift */; };
 		3D61D408195ACD8A00A4A023 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61D407195ACD8A00A4A023 /* DrawViewController.swift */; };
+		3D727850195F841C009557CD /* ColorPaletteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D72784F195F841C009557CD /* ColorPaletteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		3D61D403195ACCE000A4A023 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		3D61D405195ACD5800A4A023 /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		3D61D407195ACD8A00A4A023 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		3D72784F195F841C009557CD /* ColorPaletteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPaletteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				3D61D3EB195ACAEA00A4A023 /* AppDelegate.swift */,
 				3D61D403195ACCE000A4A023 /* Line.swift */,
 				3D61D405195ACD5800A4A023 /* DrawView.swift */,
+				3D72784F195F841C009557CD /* ColorPaletteView.swift */,
 				3D531CC6195E4B9B00F4FE35 /* ColorPaletteView.xib */,
 				3D61D407195ACD8A00A4A023 /* DrawViewController.swift */,
 				3D61D3ED195ACAEA00A4A023 /* Images.xcassets */,
@@ -160,7 +163,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = Tardis;
+				ORGANIZATIONNAME = "Akshay Hegde";
 				TargetAttributes = {
 					3D61D3E5195ACAEA00A4A023 = {
 						CreatedOnToolsVersion = 6.0;
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D61D408195ACD8A00A4A023 /* DrawViewController.swift in Sources */,
+				3D727850195F841C009557CD /* ColorPaletteView.swift in Sources */,
 				3D61D3EC195ACAEA00A4A023 /* AppDelegate.swift in Sources */,
 				3D61D404195ACCE000A4A023 /* Line.swift in Sources */,
 				3D61D406195ACD5800A4A023 /* DrawView.swift in Sources */,

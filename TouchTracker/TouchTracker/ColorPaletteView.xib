@@ -4,13 +4,19 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawView" customModule="TouchTracker" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ColorPaletteView" customModule="TouchTracker" customModuleProvider="target">
             <connections>
-                <outlet property="colorPaletteView" destination="36X-v4-dgi" id="Qwg-wC-lWa"/>
+                <outlet property="colorPaletteView" destination="36X-v4-dgi" id="1hh-Ca-RVD"/>
+                <outlet property="darkBlueColor" destination="5uh-4R-voX" id="WpP-gc-nKh"/>
+                <outlet property="greenColor" destination="9wT-DH-UVT" id="OL7-HS-geX"/>
+                <outlet property="lightBlueColor" destination="Mkm-OZ-Iph" id="Rp6-Ht-aOc"/>
+                <outlet property="lightPurpleColor" destination="8To-Cc-pwK" id="ZGb-XH-NXk"/>
+                <outlet property="magentaColor" destination="zKn-go-E4H" id="0hz-uk-Bdd"/>
+                <outlet property="yellowColor" destination="MRB-qL-5zF" id="xM7-2x-1Nm"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="36X-v4-dgi" customClass="DrawView" customModule="TouchTracker" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="36X-v4-dgi" customClass="ColorPaletteView" customModule="TouchTracker" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -20,6 +26,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="darkBlueSelected:" destination="-1" eventType="touchUpInside" id="4LC-XM-nag"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mkm-OZ-Iph">
                     <rect key="frame" x="64" y="11" width="30" height="30"/>
@@ -27,6 +36,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="cyanColorSelected:" destination="-1" eventType="touchUpInside" id="leg-Ls-ESr"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8To-Cc-pwK">
                     <rect key="frame" x="166" y="11" width="30" height="30"/>
@@ -34,6 +46,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="greenColorSelected:" destination="-1" eventType="touchUpInside" id="kSY-NP-adO"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wT-DH-UVT">
                     <rect key="frame" x="216" y="11" width="30" height="30"/>
@@ -48,6 +63,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="yellowColorSelected:" destination="-1" eventType="touchUpInside" id="hyU-bf-H0R"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKn-go-E4H">
                     <rect key="frame" x="116" y="11" width="30" height="30"/>
@@ -55,9 +73,12 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="magentaColorSelected:" destination="-1" eventType="touchUpInside" id="6H4-g2-Pp1"/>
+                    </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.12586347411982124" green="0.15404078016832495" blue="0.26774796195652173" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="0.12586347410000001" green="0.1540407802" blue="0.26774796200000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="zKn-go-E4H" firstAttribute="baseline" secondItem="9wT-DH-UVT" secondAttribute="baseline" id="0RK-BQ-viA"/>
                 <constraint firstItem="Mkm-OZ-Iph" firstAttribute="top" secondItem="zKn-go-E4H" secondAttribute="top" id="6iI-GB-ls1"/>
@@ -89,7 +110,7 @@
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="226" y="132"/>
+            <point key="canvasLocation" x="187" y="316"/>
         </view>
     </objects>
 </document>
