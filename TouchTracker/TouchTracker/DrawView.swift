@@ -25,6 +25,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     var finishedLines: Array<Line>
     weak var selectedLine: Line?
     let moveRecognizer: UIPanGestureRecognizer?
+    let threeFingerRecognizer: UISwipeGestureRecognizer?
 
     init(frame: CGRect) {
         finishedLines = Array<Line>()
@@ -46,6 +47,13 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         moveRecognizer = UIPanGestureRecognizer(target: self, action: "moveLine:")
         moveRecognizer!.delegate = self
         moveRecognizer!.cancelsTouchesInView = false
+
+        // Three finger swipe gesture
+        threeFingerRecognizer = UISwipeGestureRecognizer(target: self, action: "showColorPalette")
+        threeFingerRecognizer!.delegate = self
+        threeFingerRecognizer!.cancelsTouchesInView = true
+        threeFingerRecognizer!.numberOfTouchesRequired = 3
+        threeFingerRecognizer!.direction = .Up
 
         // Add all gesture recognizers
         addGestureRecognizer(doubleTapRecognizer)
