@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D531CC7195E4B9B00F4FE35 /* ColorPalette.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D531CC6195E4B9B00F4FE35 /* ColorPalette.xib */; };
 		3D61D3EC195ACAEA00A4A023 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61D3EB195ACAEA00A4A023 /* AppDelegate.swift */; };
 		3D61D3EE195ACAEA00A4A023 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D61D3ED195ACAEA00A4A023 /* Images.xcassets */; };
 		3D61D3FA195ACAEA00A4A023 /* TouchTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61D3F9195ACAEA00A4A023 /* TouchTrackerTests.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D531CC6195E4B9B00F4FE35 /* ColorPalette.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorPalette.xib; sourceTree = "<group>"; };
 		3D61D3E6195ACAEA00A4A023 /* TouchTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D61D3EA195ACAEA00A4A023 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D61D3EB195ACAEA00A4A023 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				3D61D3EB195ACAEA00A4A023 /* AppDelegate.swift */,
 				3D61D403195ACCE000A4A023 /* Line.swift */,
 				3D61D405195ACD5800A4A023 /* DrawView.swift */,
+				3D531CC6195E4B9B00F4FE35 /* ColorPalette.xib */,
 				3D61D407195ACD8A00A4A023 /* DrawViewController.swift */,
 				3D61D3ED195ACAEA00A4A023 /* Images.xcassets */,
 				3D61D3E9195ACAEA00A4A023 /* Supporting Files */,
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D61D3EE195ACAEA00A4A023 /* Images.xcassets in Resources */,
+				3D531CC7195E4B9B00F4FE35 /* ColorPalette.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
