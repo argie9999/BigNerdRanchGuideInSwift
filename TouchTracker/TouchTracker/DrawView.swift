@@ -313,10 +313,11 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     func showColorPalette(gesture: UIGestureRecognizer) {
         if gesture.state == .Began {
             println("Color Palette shown.")
-            colorPaletteView = ColorPaletteView(frame: CGRectMake(0, bounds.height - 50, bounds.width, 50))
-            colorPaletteView!.alpha = 0.0
+            colorPaletteView = ColorPaletteView(frame: CGRectMake(0, bounds.height, bounds.width, 50))
             addSubview(colorPaletteView!)
-            UIView.animateWithDuration(0.2, delay: 0.2, options: .CurveEaseIn, animations: {self.colorPaletteView!.alpha = 1.0}, completion: nil)
+            UIView.animateWithDuration(0.1, delay: 0.1, options: .CurveEaseIn, animations: {
+                self.colorPaletteView!.frame = CGRectMake(0, self.bounds.height - 50, self.bounds.width, 50)
+                }, completion: nil)
         }
     }
 
