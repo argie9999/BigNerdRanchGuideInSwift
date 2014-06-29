@@ -28,8 +28,6 @@ class ItemStore {
             privateItems.removeAtIndex(index)
             println("Removed item at index \(index)")
         }
-        println(privateItems)
-        println(allItems)
     }
 
     func moveItem(from fromIndex: Int, to toIndex: Int) {
