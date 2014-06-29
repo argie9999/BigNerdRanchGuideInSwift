@@ -34,17 +34,26 @@ class ColorPaletteView: UIView {
     // MARK: IBActions
     @IBAction func darkBlueSelected(sender: UIButton) {
         selectedColor = sender.backgroundColor
+        println("Selected dark blue color: \(selectedColor)")
     }
     @IBAction func cyanColorSelected(sender: UIButton) {
         selectedColor = sender.backgroundColor
+        println("Selected cyan color: \(selectedColor)")
     }
     @IBAction func magentaColorSelected(sender: UIButton) {
         selectedColor = sender.backgroundColor
+        println("Selected magenta color: \(selectedColor)")
+    }
+    @IBAction func lightPurpleColorSelected(sender: UIButton) {
+        selectedColor = sender.backgroundColor
+        println("Selected light purple color: \(selectedColor)")
     }
     @IBAction func greenColorSelected(sender: UIButton) {
         selectedColor = sender.backgroundColor
+        println("Selected green color: \(selectedColor)")
     }
     @IBAction func yellowColorSelected(sender: UIButton) {
         selectedColor = sender.backgroundColor
+        println("Selected yellow color: \(selectedColor)")
     }
 }

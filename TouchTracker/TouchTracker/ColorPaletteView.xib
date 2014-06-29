@@ -47,7 +47,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="greenColorSelected:" destination="-1" eventType="touchUpInside" id="kSY-NP-adO"/>
+                        <action selector="lightPurpleColorSelected:" destination="-1" eventType="touchUpInside" id="fWk-MX-BA8"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wT-DH-UVT">
@@ -56,6 +56,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="greenColorSelected:" destination="-1" eventType="touchUpInside" id="LoW-fd-JkB"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRB-qL-5zF">
                     <rect key="frame" x="270" y="11" width="30" height="30"/>
