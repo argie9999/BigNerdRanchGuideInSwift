@@ -25,6 +25,8 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     var finishedLines: Array<Line>
     weak var selectedLine: Line?
     let moveRecognizer: UIPanGestureRecognizer?
+    let threeFingerRecognizer: UISwipeGestureRecognizer?
+    var colorPaletteView: UIView?
 
     init(frame: CGRect) {
         finishedLines = Array<Line>()
@@ -46,6 +48,13 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         moveRecognizer = UIPanGestureRecognizer(target: self, action: "moveLine:")
         moveRecognizer!.delegate = self
         moveRecognizer!.cancelsTouchesInView = false
+
+        // Three finger swipe gesture
+        threeFingerRecognizer = UISwipeGestureRecognizer(target: self, action: "showColorPalette")
+        threeFingerRecognizer!.delegate = self
+        threeFingerRecognizer!.cancelsTouchesInView = true
+        threeFingerRecognizer!.numberOfTouchesRequired = 3
+        threeFingerRecognizer!.direction = .Up
 
         // Add all gesture recognizers
         addGestureRecognizer(doubleTapRecognizer)
@@ -269,7 +278,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         setNeedsDisplay()
     }
 
-    // MARK: Selectors
+    // MARK: Gesture recognizers.
     func deleteLine(sender: AnyObject) {
         finishedLines.removeObject() {$0 == self.selectedLine}
         selectedLine = nil
@@ -298,6 +307,17 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             selectedLine!.end = end
             setNeedsDisplay()
             gesture.setTranslation(CGPointZero, inView: self)
+        }
+    }
+
+    func showColorPalette(gesture: UIGestureRecognizer) {
+        if gesture.state == .Began {
+            println("Color Palette shown.")
+            colorPaletteView = ColorPaletteView(frame: CGRectMake(0, bounds.height, bounds.width, 50))
+            addSubview(colorPaletteView!)
+            UIView.animateWithDuration(0.1, delay: 0.1, options: .CurveEaseIn, animations: {
+                self.colorPaletteView!.frame = CGRectMake(0, self.bounds.height - 50, self.bounds.width, 50)
+                }, completion: nil)
         }
     }
 

@@ -13,6 +13,7 @@
 		3D61D404195ACCE000A4A023 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61D403195ACCE000A4A023 /* Line.swift */; };
 		3D61D406195ACD5800A4A023 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61D405195ACD5800A4A023 /* DrawView.swift */; };
 		3D61D408195ACD8A00A4A023 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D61D407195ACD8A00A4A023 /* DrawViewController.swift */; };
+		3D727851195FC1CB009557CD /* ColorPaletteView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D727853195FC1CB009557CD /* ColorPaletteView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		3D61D403195ACCE000A4A023 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		3D61D405195ACD5800A4A023 /* DrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 		3D61D407195ACD8A00A4A023 /* DrawViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
+		3D727852195FC1CB009557CD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ColorPaletteView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				3D61D3EB195ACAEA00A4A023 /* AppDelegate.swift */,
 				3D61D403195ACCE000A4A023 /* Line.swift */,
 				3D61D405195ACD5800A4A023 /* DrawView.swift */,
+				3D727853195FC1CB009557CD /* ColorPaletteView.xib */,
 				3D61D407195ACD8A00A4A023 /* DrawViewController.swift */,
 				3D61D3ED195ACAEA00A4A023 /* Images.xcassets */,
 				3D61D3E9195ACAEA00A4A023 /* Supporting Files */,
@@ -157,7 +160,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0600;
-				ORGANIZATIONNAME = Tardis;
+				ORGANIZATIONNAME = "Akshay Hegde";
 				TargetAttributes = {
 					3D61D3E5195ACAEA00A4A023 = {
 						CreatedOnToolsVersion = 6.0;
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D61D3EE195ACAEA00A4A023 /* Images.xcassets in Resources */,
+				3D727851195FC1CB009557CD /* ColorPaletteView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +237,17 @@
 			targetProxy = 3D61D3F4195ACAEA00A4A023 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D727853195FC1CB009557CD /* ColorPaletteView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D727852195FC1CB009557CD /* en */,
+			);
+			name = ColorPaletteView.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3D61D3FB195ACAEA00A4A023 /* Debug */ = {
