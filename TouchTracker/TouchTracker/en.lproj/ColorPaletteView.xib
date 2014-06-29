@@ -26,6 +26,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didSelectColorInColorPalette:" destination="-1" eventType="touchUpInside" id="b0f-qK-v19"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mkm-OZ-Iph">
                     <rect key="frame" x="64" y="11" width="30" height="30"/>
@@ -33,6 +36,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didSelectColorInColorPalette:" destination="-1" eventType="touchUpInside" id="7VM-qy-0mS"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8To-Cc-pwK">
                     <rect key="frame" x="166" y="11" width="30" height="30"/>
@@ -40,6 +46,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didSelectColorInColorPalette:" destination="-1" eventType="touchUpInside" id="KRt-fA-9b5"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wT-DH-UVT">
                     <rect key="frame" x="216" y="11" width="30" height="30"/>
@@ -47,6 +56,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didSelectColorInColorPalette:" destination="-1" eventType="touchUpInside" id="3pz-yx-U5l"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRB-qL-5zF">
                     <rect key="frame" x="270" y="11" width="30" height="30"/>
@@ -54,6 +66,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didSelectColorInColorPalette:" destination="-1" eventType="touchUpInside" id="zLL-Pf-mBZ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKn-go-E4H">
                     <rect key="frame" x="116" y="11" width="30" height="30"/>
@@ -61,6 +76,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="didSelectColorInColorPalette:" destination="-1" eventType="touchUpInside" id="a5W-c2-y2O"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.12586347410000001" green="0.1540407802" blue="0.26774796200000001" alpha="1" colorSpace="calibratedRGB"/>
