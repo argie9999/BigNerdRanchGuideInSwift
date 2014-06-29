@@ -19,6 +19,7 @@ class ColorPaletteView: UIView {
 
     var selectedColor: UIColor?  // The current selected Color.
 
+    // Needed for loading a nib
     init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
     }

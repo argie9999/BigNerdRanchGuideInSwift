@@ -26,6 +26,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     weak var selectedLine: Line?
     let moveRecognizer: UIPanGestureRecognizer?
     let threeFingerRecognizer: UISwipeGestureRecognizer?
+    var colorPaletteView: UIView?
 
     init(frame: CGRect) {
         finishedLines = Array<Line>()
@@ -277,7 +278,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         setNeedsDisplay()
     }
 
-    // MARK: Selectors
+    // MARK: Gesture recognizers.
     func deleteLine(sender: AnyObject) {
         finishedLines.removeObject() {$0 == self.selectedLine}
         selectedLine = nil
@@ -306,6 +307,16 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             selectedLine!.end = end
             setNeedsDisplay()
             gesture.setTranslation(CGPointZero, inView: self)
+        }
+    }
+
+    func showColorPalette(gesture: UIGestureRecognizer) {
+        if gesture.state == .Began {
+            println("Color Palette shown.")
+            colorPaletteView = ColorPaletteView(frame: CGRectMake(0, bounds.height - 50, bounds.width, 50))
+            colorPaletteView!.alpha = 0.0
+            addSubview(colorPaletteView!)
+            UIView.animateWithDuration(0.2, delay: 0.2, options: .CurveEaseIn, animations: {self.colorPaletteView!.alpha = 1.0}, completion: nil)
         }
     }
 
