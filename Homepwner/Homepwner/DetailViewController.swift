@@ -2,7 +2,7 @@ import UIKit
 
 let _dateFormatter: NSDateFormatter? = nil
 class DetailViewController: UIViewController, UINavigationControllerDelegate,
-     UIImagePickerControllerDelegate, UITextFieldDelegate
+     UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverControllerDelegate
 {
     // MARK: Outlets
     @IBOutlet weak var nameField: UITextField
@@ -18,6 +18,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     // MARK: Stored properties
     let item: Item
     var dateFormatter = _dateFormatter
+    var imagePickerPopover: UIPopoverController?
 
     init(item: Item) {
         self.item = item
@@ -112,7 +113,13 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             if let imageKey = item.itemKey {
                 ImageStore.sharedStore.dictionary[imageKey] = image
                 imageView.image = image
-                dismissViewControllerAnimated(true, completion: nil)
+                if imagePickerPopover {
+                    imagePickerPopover!.dismissPopoverAnimated(true)
+                    imagePickerPopover = nil
+                }
+                else {
+                    dismissViewControllerAnimated(true) { println("Closing image picker") }
+                }
             }
         }
         // Enable the trash toolbar item
@@ -125,8 +132,13 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         return true
     }
 
-    // MARK: Orientation related methods
+    // Mark: UIPopoverControllerDelegate
+    func popoverControllerDidDismissPopover(popoverController: UIPopoverController) {
+        println("User dismissed popover")
+        imagePickerPopover = nil
+    }
 
+    // MARK: Orientation related methods
     /**
     Disables the camera button for the iPhone in Landscape.
     */
@@ -160,6 +172,16 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     }
 
     @IBAction func takePicture(sender: UIBarButtonItem) {
+
+        // If the popover is already up, get rid of it
+        if imagePickerPopover {
+            if imagePickerPopover!.popoverVisible {
+                imagePickerPopover!.dismissPopoverAnimated(true)
+                imagePickerPopover = nil
+                return
+            }
+        }
+
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             imagePicker.sourceType = .Camera
@@ -172,7 +194,21 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         }
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
-        presentViewController(imagePicker, animated: true, completion: nil)
+
+        // Place image picker on the screen
+
+        // Check for iPad device before instantiating the popover controller
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            println("Detected iPad, showing image picker in popover controller.")
+            imagePickerPopover = UIPopoverController(contentViewController: imagePicker)
+            imagePickerPopover!.delegate = self
+            imagePickerPopover!.presentPopoverFromBarButtonItem(sender,
+                permittedArrowDirections: .Any,
+                animated: true)
+        }
+        else {
+            presentViewController(imagePicker, animated: true) { println("Not an iPad, showing Image Picker") }
+        }
     }
 
     // Silver challenge: Allow a user to remove an item's image.
