@@ -1,11 +1,14 @@
 import Foundation
 
-let sharedStorage = ItemStore()
+let SharedStorage = ItemStore()
 
 class ItemStore {
-    class var sharedStore: ItemStore { return sharedStorage }
     var privateItems = Item[]()
     var allItems: Item[] { return privateItems }
+
+    class var sharedStore: ItemStore {
+        return SharedStorage
+    }
 
     init () {
         NSException(name: "Singleton", reason: "Use ItemStore.sharedStore", userInfo: nil)
