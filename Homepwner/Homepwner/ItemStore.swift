@@ -1,7 +1,5 @@
 import Foundation
 
-let SharedStorage = ItemStore()
-
 class ItemStore {
     var privateItems = Item[]()
     var allItems: Item[] { return privateItems }
@@ -43,3 +41,5 @@ class ItemStore {
         privateItems.insert(item, atIndex: toIndex)
     }
 }
+
+let SharedStorage = ItemStore()
