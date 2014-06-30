@@ -17,6 +17,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
 
     // MARK: Stored properties
     var item: Item?
+    var dismissBlock: (() -> ())?
     var dateFormatter = DateFormatter
     var imagePickerPopover: UIPopoverController?
 
@@ -259,9 +260,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     // MARK: selectors
 
     func save(sender: AnyObject) {
-        presentingViewController.dismissViewControllerAnimated(true) {
-            println("Saving Item and asking to dismiss DetailViewController.")
-        }
+        presentingViewController.dismissViewControllerAnimated(true, completion: dismissBlock)
     }
 
     func cancel(sender: AnyObject) {

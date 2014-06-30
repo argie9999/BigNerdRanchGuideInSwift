@@ -15,8 +15,13 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         let newItem = ItemStore.sharedStore.createItem()
         let dvc = DetailViewController(isNew: true)
         dvc.item = newItem
+        dvc.dismissBlock = {
+            self.tableView.reloadData()
+            println("Saving Item and asking to dismiss DetailViewController")
+        }
 
         let navController = UINavigationController(rootViewController: dvc)
+        navController.modalPresentationStyle = .FormSheet
         presentViewController(navController, animated: true) { println("Showing DetailViewController via UINavigationController") }
     }
 
