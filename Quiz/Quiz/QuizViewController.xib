@@ -18,11 +18,22 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3y-bZ-NZt">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="oAo-JL-uPu"/>
+                    </constraints>
                     <state key="normal" title="Show Question">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <variation key="widthClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="20" y="83" width="600" height="30"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="oAo-JL-uPu"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=regular"/>
+                    <variation key="widthClass=regular">
+                        <mask key="constraints">
+                            <include reference="oAo-JL-uPu"/>
+                        </mask>
                     </variation>
                     <connections>
                         <action selector="showQuestion:" destination="-1" eventType="touchUpInside" id="Obg-ye-kSo"/>
@@ -73,8 +84,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="LGv-M9-SS7" firstAttribute="top" secondItem="GVp-RR-ihL" secondAttribute="top" constant="49" id="2ME-7Y-CgB"/>
+                <constraint firstItem="w3y-bZ-NZt" firstAttribute="top" secondItem="LGv-M9-SS7" secondAttribute="bottom" constant="13" id="5OS-Gh-NH7"/>
                 <constraint firstItem="LGv-M9-SS7" firstAttribute="leading" secondItem="GVp-RR-ihL" secondAttribute="leading" constant="20" id="Btp-u2-vIJ"/>
+                <constraint firstItem="w3y-bZ-NZt" firstAttribute="leading" secondItem="GVp-RR-ihL" secondAttribute="leading" constant="20" id="MXC-gt-pby"/>
                 <constraint firstAttribute="trailing" secondItem="LGv-M9-SS7" secondAttribute="trailing" constant="20" id="fp7-MQ-InP"/>
+                <constraint firstAttribute="trailing" secondItem="w3y-bZ-NZt" secondAttribute="trailing" constant="20" id="hUl-1q-q9j"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -90,6 +104,9 @@
                     <exclude reference="2ME-7Y-CgB"/>
                     <exclude reference="Btp-u2-vIJ"/>
                     <exclude reference="fp7-MQ-InP"/>
+                    <exclude reference="5OS-Gh-NH7"/>
+                    <exclude reference="MXC-gt-pby"/>
+                    <exclude reference="hUl-1q-q9j"/>
                 </mask>
             </variation>
             <variation key="widthClass=regular">
@@ -97,6 +114,9 @@
                     <include reference="2ME-7Y-CgB"/>
                     <include reference="Btp-u2-vIJ"/>
                     <include reference="fp7-MQ-InP"/>
+                    <include reference="5OS-Gh-NH7"/>
+                    <include reference="MXC-gt-pby"/>
+                    <include reference="hUl-1q-q9j"/>
                 </mask>
             </variation>
             <variation key="widthClass=regular">
