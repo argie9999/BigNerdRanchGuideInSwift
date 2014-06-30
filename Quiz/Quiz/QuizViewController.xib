@@ -41,12 +41,23 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28K-XO-iwQ">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Rzw-DA-qZj"/>
+                    </constraints>
                     <state key="normal" title="Show Answer">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <variation key="widthClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="20" y="373" width="600" height="30"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Rzw-DA-qZj"/>
+                        </mask>
                     </variation>
+                    <variation key="widthClass=regular">
+                        <mask key="constraints">
+                            <include reference="Rzw-DA-qZj"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=regular"/>
                     <connections>
                         <action selector="showAnswer:" destination="-1" eventType="touchUpInside" id="7HC-YM-KRE"/>
                     </connections>
@@ -73,20 +84,37 @@
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpZ-xz-Mor">
                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Qnp-Mr-r3x"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
-                    <variation key="widthClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="20" y="344" width="600" height="21"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Qnp-Mr-r3x"/>
+                        </mask>
                     </variation>
+                    <variation key="widthClass=regular">
+                        <mask key="constraints">
+                            <include reference="Qnp-Mr-r3x"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=regular"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="LGv-M9-SS7" firstAttribute="top" secondItem="GVp-RR-ihL" secondAttribute="top" constant="49" id="2ME-7Y-CgB"/>
                 <constraint firstItem="w3y-bZ-NZt" firstAttribute="top" secondItem="LGv-M9-SS7" secondAttribute="bottom" constant="13" id="5OS-Gh-NH7"/>
+                <constraint firstItem="28K-XO-iwQ" firstAttribute="top" secondItem="qpZ-xz-Mor" secondAttribute="bottom" constant="8" id="79h-mR-D1b"/>
+                <constraint firstAttribute="bottom" secondItem="28K-XO-iwQ" secondAttribute="bottom" constant="77" id="AeN-iY-REA"/>
                 <constraint firstItem="LGv-M9-SS7" firstAttribute="leading" secondItem="GVp-RR-ihL" secondAttribute="leading" constant="20" id="Btp-u2-vIJ"/>
+                <constraint firstItem="28K-XO-iwQ" firstAttribute="leading" secondItem="GVp-RR-ihL" secondAttribute="leading" constant="20" id="E9J-G5-qHS"/>
                 <constraint firstItem="w3y-bZ-NZt" firstAttribute="leading" secondItem="GVp-RR-ihL" secondAttribute="leading" constant="20" id="MXC-gt-pby"/>
+                <constraint firstAttribute="trailing" secondItem="28K-XO-iwQ" secondAttribute="trailing" constant="20" id="QIi-Yb-vYU"/>
+                <constraint firstItem="qpZ-xz-Mor" firstAttribute="leading" secondItem="GVp-RR-ihL" secondAttribute="leading" constant="20" id="UTy-xi-pxs"/>
+                <constraint firstAttribute="trailing" secondItem="qpZ-xz-Mor" secondAttribute="trailing" constant="20" id="fbX-o4-adz"/>
                 <constraint firstAttribute="trailing" secondItem="LGv-M9-SS7" secondAttribute="trailing" constant="20" id="fp7-MQ-InP"/>
                 <constraint firstAttribute="trailing" secondItem="w3y-bZ-NZt" secondAttribute="trailing" constant="20" id="hUl-1q-q9j"/>
             </constraints>
@@ -107,6 +135,12 @@
                     <exclude reference="5OS-Gh-NH7"/>
                     <exclude reference="MXC-gt-pby"/>
                     <exclude reference="hUl-1q-q9j"/>
+                    <exclude reference="UTy-xi-pxs"/>
+                    <exclude reference="fbX-o4-adz"/>
+                    <exclude reference="79h-mR-D1b"/>
+                    <exclude reference="AeN-iY-REA"/>
+                    <exclude reference="E9J-G5-qHS"/>
+                    <exclude reference="QIi-Yb-vYU"/>
                 </mask>
             </variation>
             <variation key="widthClass=regular">
@@ -117,6 +151,12 @@
                     <include reference="5OS-Gh-NH7"/>
                     <include reference="MXC-gt-pby"/>
                     <include reference="hUl-1q-q9j"/>
+                    <include reference="UTy-xi-pxs"/>
+                    <include reference="fbX-o4-adz"/>
+                    <include reference="79h-mR-D1b"/>
+                    <include reference="AeN-iY-REA"/>
+                    <include reference="E9J-G5-qHS"/>
+                    <include reference="QIi-Yb-vYU"/>
                 </mask>
             </variation>
             <variation key="widthClass=regular">
