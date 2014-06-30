@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		3D25E7BF19542F31005CC519 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25E7BE19542F31005CC519 /* Item.swift */; };
 		3D25E7C119543935005CC519 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25E7C019543935005CC519 /* ItemStore.swift */; };
+		3D33EFBC19611FD900CD44DA /* DateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D33EFBE19611FD900CD44DA /* DateViewController.xib */; };
 		3D81BEA4195ABD1C0028EE23 /* CrosshairView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D81BEA3195ABD1C0028EE23 /* CrosshairView.swift */; };
 		3D917A65195A50F100753029 /* ImageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D917A64195A50F100753029 /* ImageStore.swift */; };
 		3DB34A8119582327005768CE /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB34A7F19582327005768CE /* DateViewController.swift */; };
-		3DB34A8219582327005768CE /* DateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DB34A8019582327005768CE /* DateViewController.xib */; };
 		3DB384141953CDA900C14E20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB384131953CDA900C14E20 /* AppDelegate.swift */; };
 		3DB384161953CDA900C14E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB384151953CDA900C14E20 /* Images.xcassets */; };
 		3DB384221953CDAA00C14E20 /* HomepwnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB384211953CDAA00C14E20 /* HomepwnerTests.swift */; };
@@ -35,10 +35,10 @@
 /* Begin PBXFileReference section */
 		3D25E7BE19542F31005CC519 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3D25E7C019543935005CC519 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		3D33EFBD19611FD900CD44DA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DateViewController.xib; sourceTree = "<group>"; };
 		3D81BEA3195ABD1C0028EE23 /* CrosshairView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrosshairView.swift; sourceTree = "<group>"; };
 		3D917A64195A50F100753029 /* ImageStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageStore.swift; sourceTree = "<group>"; };
 		3DB34A7F19582327005768CE /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
-		3DB34A8019582327005768CE /* DateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DateViewController.xib; sourceTree = "<group>"; };
 		3DB3840E1953CDA900C14E20 /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB384121953CDA900C14E20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB384131953CDA900C14E20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 				3D81BEA3195ABD1C0028EE23 /* CrosshairView.swift */,
 				3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */,
 				3DB34A7F19582327005768CE /* DateViewController.swift */,
-				3DB34A8019582327005768CE /* DateViewController.xib */,
+				3D33EFBE19611FD900CD44DA /* DateViewController.xib */,
 				3DB384151953CDA900C14E20 /* Images.xcassets */,
 				3DB384111953CDA900C14E20 /* Supporting Files */,
 			);
@@ -214,7 +214,7 @@
 			files = (
 				3DB384161953CDA900C14E20 /* Images.xcassets in Resources */,
 				3DD1CE2F1957995C00DC5C94 /* DetailViewController.xib in Resources */,
-				3DB34A8219582327005768CE /* DateViewController.xib in Resources */,
+				3D33EFBC19611FD900CD44DA /* DateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +261,17 @@
 			targetProxy = 3DB3841C1953CDAA00C14E20 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3D33EFBE19611FD900CD44DA /* DateViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D33EFBD19611FD900CD44DA /* en */,
+			);
+			name = DateViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3DB384231953CDAA00C14E20 /* Debug */ = {
