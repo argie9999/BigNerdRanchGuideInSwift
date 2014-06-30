@@ -55,14 +55,14 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                     <variation key="widthClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="20" y="344" width="600" height="21"/>
+                        <rect key="frame" x="20" y="344" width="600" height="20.5"/>
                     </variation>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="AbstractSizeClassScreen[widthClass=regular]"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="w3y-bZ-NZt"/>
