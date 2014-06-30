@@ -12,17 +12,12 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     }
 
     func addNewItem() {
-        // Add a new item to the store.
         let newItem = ItemStore.sharedStore.createItem()
-        let allItems = ItemStore.sharedStore.allItems
-        let rowNumber = allItems.indexOf() { $0 == newItem }
-        println("Index of \(newItem.itemName) is: \(rowNumber)")
+        let dvc = DetailViewController(isNew: true)
+        dvc.item = newItem
 
-        if let lastRow = rowNumber {
-            let indexPaths: NSIndexPath[] = [NSIndexPath(forRow: lastRow, inSection: 0)]
-            println("Adding new item. Table currently has \(allItems.count) item(s) in total.")
-            tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Top)
-        }
+        let navController = UINavigationController(rootViewController: dvc)
+        presentViewController(navController, animated: true) { println("Showing DetailViewController via UINavigationController") }
     }
 
     // MARK: overridden functions
@@ -73,7 +68,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         println("Selected row:\(indexPath.row)")
         let items = ItemStore.sharedStore.allItems
         let selectedItem = items[indexPath.row]
-        let detailViewController = DetailViewController(item: selectedItem)
+        let detailViewController = DetailViewController(isNew: false)
         navigationController.pushViewController(detailViewController, animated: true)
     }
 

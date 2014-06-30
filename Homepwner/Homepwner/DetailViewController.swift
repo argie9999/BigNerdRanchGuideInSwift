@@ -1,6 +1,6 @@
 import UIKit
 
-let _dateFormatter: NSDateFormatter? = nil
+let DateFormatter: NSDateFormatter? = nil
 class DetailViewController: UIViewController, UINavigationControllerDelegate,
      UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverControllerDelegate
 {
@@ -16,14 +16,25 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet weak var toolbar: UIToolbar
 
     // MARK: Stored properties
-    let item: Item
-    var dateFormatter = _dateFormatter
+    var item: Item?
+    var dateFormatter = DateFormatter
     var imagePickerPopover: UIPopoverController?
 
     init(item: Item) {
-        self.item = item
+        NSException(name: "Wrong initializer", reason: "Use init(isNew:)", userInfo: nil)
         super.init(nibName: nil, bundle: nil)
-        navigationItem.title = item.itemName
+    }
+
+    init(isNew: Bool) {
+        super.init(nibName: nil, bundle: nil)
+
+        if isNew {
+            let doneItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "save:")
+            navigationItem.rightBarButtonItem = doneItem
+
+            let cancelItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancel:")
+            navigationItem.leftBarButtonItem = cancelItem
+        }
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -32,22 +43,24 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         let interfaceOrientation = UIApplication.sharedApplication().statusBarOrientation
         prepareViewsForOrientation(interfaceOrientation)
 
-        nameField.text = item.itemName
-        serialNumberField.text = item.serialNumber
-        valueField.text = String(item.valueInDollars)
+        if item {
+            nameField.text = item!.itemName
+            serialNumberField.text = item!.serialNumber
+            valueField.text = String(item!.valueInDollars)
 
-        if !dateFormatter {
-            dateFormatter = NSDateFormatter()
-            dateFormatter!.dateStyle = .MediumStyle
-            dateFormatter!.timeStyle = .NoStyle
-        }
-        self.dateLabel.text = dateFormatter?.stringFromDate(item.dateCreated)
+            if !dateFormatter {
+                dateFormatter = NSDateFormatter()
+                dateFormatter!.dateStyle = .MediumStyle
+                dateFormatter!.timeStyle = .NoStyle
+            }
+            self.dateLabel.text = dateFormatter?.stringFromDate(item!.dateCreated)
 
-        if let imageKey = item.itemKey {
-            let image = ImageStore.sharedStore.dictionary[imageKey]
-            if let imageToDisplay = image {
-                imageView.image = imageToDisplay
-                trashItem.enabled = true
+            if let imageKey = item!.itemKey {
+                let image = ImageStore.sharedStore.dictionary[imageKey]
+                if let imageToDisplay = image {
+                    imageView.image = imageToDisplay
+                    trashItem.enabled = true
+                }
             }
         }
     }
@@ -96,11 +109,13 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         // Clear first responder
         view.endEditing(true)
 
-        // Save changes to Item
-        item.itemName = nameField.text
-        item.serialNumber = serialNumberField.text
-        if let value = valueField.text.toInt() {
-            item.valueInDollars = value
+        if item {
+            // Save changes to Item
+            item!.itemName = nameField.text
+            item!.serialNumber = serialNumberField.text
+            if let value = valueField.text.toInt() {
+                item!.valueInDollars = value
+            }
         }
     }
 
@@ -110,7 +125,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     {
         let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
         if let image = editedImage {
-            if let imageKey = item.itemKey {
+            if let imageKey = item!.itemKey {
                 ImageStore.sharedStore.dictionary[imageKey] = image
                 imageView.image = image
                 if imagePickerPopover {
@@ -167,7 +182,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
 
     // MARK: IBActions
     @IBAction func changeDate(sender: UIButton) {
-        let dateViewController = DateViewController(item: item)
+        let dateViewController = DateViewController(item: item!)
         navigationController.pushViewController(dateViewController, animated: true)
     }
 
@@ -222,7 +237,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             // When the user clicks on Delete, the closure is invoked and removes the image.
             alert.addAction(UIAlertAction(title: "Delete", style: .Destructive) { (_: UIAlertAction!) in
                 println("Removing picture")
-                self.item.itemKey = nil
+                self.item!.itemKey = nil
                 self.imageView.image = nil
                 self.trashItem.enabled = false
                 })
@@ -238,5 +253,23 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     // Silver challenge: dismiss the keyboard when user touches the background
     @IBAction func backgroundTapped(sender: UIControl) {
         view.endEditing(true)
+    }
+
+
+    // MARK: selectors
+
+    func save(sender: AnyObject) {
+        presentingViewController.dismissViewControllerAnimated(true) {
+            println("Saving Item and asking to dismiss DetailViewController.")
+        }
+    }
+
+    func cancel(sender: AnyObject) {
+        if item {
+            ItemStore.sharedStore.removeItem(item!)
+            presentingViewController.dismissViewControllerAnimated(true) {
+                println("Cancelling new item creation and asking to dismiss DetailViewController.")
+            }
+        }
     }
 }

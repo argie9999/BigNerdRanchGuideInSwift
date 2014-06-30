@@ -78,32 +78,32 @@
                     <exclude reference="QNJ-1C-23R"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="Y5L-6N-GLj"/>
-                    <exclude reference="aTF-Ei-ApH"/>
-                    <exclude reference="pPu-CG-waE"/>
                     <exclude reference="0F6-HF-TlK"/>
                     <exclude reference="5MU-68-YVC"/>
                     <exclude reference="FMC-bC-beo"/>
                     <exclude reference="MXt-UG-u7n"/>
                     <exclude reference="eYG-BH-hxt"/>
+                    <exclude reference="Y5L-6N-GLj"/>
+                    <exclude reference="aTF-Ei-ApH"/>
+                    <exclude reference="pPu-CG-waE"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="constraints">
+                    <include reference="0F6-HF-TlK"/>
+                    <include reference="5MU-68-YVC"/>
+                    <include reference="FMC-bC-beo"/>
+                    <include reference="MXt-UG-u7n"/>
+                    <include reference="eYG-BH-hxt"/>
+                    <include reference="Y5L-6N-GLj"/>
+                    <include reference="aTF-Ei-ApH"/>
+                    <include reference="pPu-CG-waE"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="subviews">
                     <include reference="bOP-0u-qNr"/>
                     <include reference="QNJ-1C-23R"/>
-                </mask>
-            </variation>
-            <variation key="heightClass=regular-widthClass=compact">
-                <mask key="constraints">
-                    <include reference="Y5L-6N-GLj"/>
-                    <include reference="aTF-Ei-ApH"/>
-                    <include reference="pPu-CG-waE"/>
-                    <include reference="0F6-HF-TlK"/>
-                    <include reference="5MU-68-YVC"/>
-                    <include reference="FMC-bC-beo"/>
-                    <include reference="MXt-UG-u7n"/>
-                    <include reference="eYG-BH-hxt"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="370" y="148"/>
