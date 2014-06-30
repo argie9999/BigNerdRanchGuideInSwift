@@ -22,7 +22,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="widthClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="20" y="85" width="600" height="30"/>
+                        <rect key="frame" x="20" y="83" width="600" height="30"/>
                     </variation>
                     <connections>
                         <action selector="showQuestion:" destination="-1" eventType="touchUpInside" id="Obg-ye-kSo"/>
@@ -42,12 +42,23 @@
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGv-M9-SS7">
                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="nTw-W3-wU2"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
-                    <variation key="widthClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="20" y="56" width="600" height="21"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="nTw-W3-wU2"/>
+                        </mask>
                     </variation>
+                    <variation key="widthClass=regular">
+                        <mask key="constraints">
+                            <include reference="nTw-W3-wU2"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=regular"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="???" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpZ-xz-Mor">
                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
@@ -55,20 +66,37 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                     <variation key="widthClass=regular" fixedFrame="YES">
-                        <rect key="frame" x="20" y="344" width="600" height="20.5"/>
+                        <rect key="frame" x="20" y="344" width="600" height="21"/>
                     </variation>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="LGv-M9-SS7" firstAttribute="top" secondItem="GVp-RR-ihL" secondAttribute="top" constant="49" id="2ME-7Y-CgB"/>
+                <constraint firstItem="LGv-M9-SS7" firstAttribute="leading" secondItem="GVp-RR-ihL" secondAttribute="leading" constant="20" id="Btp-u2-vIJ"/>
+                <constraint firstAttribute="trailing" secondItem="LGv-M9-SS7" secondAttribute="trailing" constant="20" id="fp7-MQ-InP"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="AbstractSizeClassScreen[widthClass=regular]"/>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="w3y-bZ-NZt"/>
                     <exclude reference="28K-XO-iwQ"/>
                     <exclude reference="LGv-M9-SS7"/>
                     <exclude reference="qpZ-xz-Mor"/>
+                </mask>
+                <mask key="constraints">
+                    <exclude reference="2ME-7Y-CgB"/>
+                    <exclude reference="Btp-u2-vIJ"/>
+                    <exclude reference="fp7-MQ-InP"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=regular">
+                <mask key="constraints">
+                    <include reference="2ME-7Y-CgB"/>
+                    <include reference="Btp-u2-vIJ"/>
+                    <include reference="fp7-MQ-InP"/>
                 </mask>
             </variation>
             <variation key="widthClass=regular">
