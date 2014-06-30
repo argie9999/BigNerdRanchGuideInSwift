@@ -45,11 +45,50 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let imgView = UIImageView(image: nil)
+        imgView.contentMode = .ScaleAspectFit
+        // Do not produce a translated constraint for this view
+        imgView.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+        view.addSubview(imgView)
+        imageView = imgView
+
+        // Set the vertical priorities to be less than those of the other subviews
+        imageView.setContentHuggingPriority(200, forAxis: .Vertical)
+        imageView.setContentCompressionResistancePriority(200, forAxis: .Vertical)
+
+        let nameMap = [
+            "imageView": imageView,
+            "dateLabel": dateLabel,
+            "toolbar": toolbar
+        ]
+
+        // MARK: Constraints
+        // ImageView is 0 points from the left and right edges
+        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[imageView]-0-|",
+            options: nil,
+            metrics: nil,
+            views: nameMap)
+
+        // ImageView is 8 pooints from the date label and the toolbar.
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[dateLabel]-[imageView]-[toolbar]",
+            options: nil,
+            metrics: nil,
+            views: nameMap)
+
+        // Add constrains to view
+        view.addConstraints(horizontalConstraints)
+        view.addConstraints(verticalConstraints)
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         // Clear first responder
         view.endEditing(true)
-
+        
         // Save changes to Item
         item.itemName = nameField.text
         item.serialNumber = serialNumberField.text
@@ -57,7 +96,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             item.valueInDollars = value
         }
     }
-
+    
     // MARK: UIImagePickerControllerDelegate
     func imagePickerController(picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: NSDictionary!)
@@ -73,24 +112,24 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         // Enable the trash toolbar item
         trashItem.enabled = true
     }
-
+    
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-
+    
     // MARK: IBActions
     @IBAction func changeDate(sender: UIButton) {
         let dateViewController = DateViewController(item: item)
         navigationController.pushViewController(dateViewController, animated: true)
     }
-
+    
     @IBAction func takePicture(sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
         if UIImagePickerController.isSourceTypeAvailable(.Camera) {
             imagePicker.sourceType = .Camera
-
+            
             // Gold challenge: Add a cross hair view in the middle of the image capture area.
             imagePicker.cameraOverlayView = CrosshairView(frame: view.bounds)
         }
@@ -101,7 +140,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         imagePicker.delegate = self
         presentViewController(imagePicker, animated: true, completion: nil)
     }
-
+    
     // Silver challenge: Allow a user to remove an item's image.
     @IBAction func removePicture(sender: UIBarButtonItem) {
         if imageView.image {
@@ -116,16 +155,16 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 self.item.itemKey = nil
                 self.imageView.image = nil
                 self.trashItem.enabled = false
-            })
-
+                })
+            
             // When user presses cancel, don't do anything.
             alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel) { (_: UIAlertAction!) in
                 println("User selected not to remove image.")
-            })
+                })
             presentViewController(alert, animated: true, completion: nil)
         }
     }
-
+    
     // Silver challenge: dismiss the keyboard when user touches the background
     @IBAction func backgroundTapped(sender: UIControl) {
         view.endEditing(true)

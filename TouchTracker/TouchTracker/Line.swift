@@ -27,7 +27,5 @@ func == (lhs: Line, rhs: Line) -> Bool {
     if lhs.begin == rhs.begin && lhs.end == rhs.end {
         return true
     }
-    else {
-        return false
-    }
+    return false
 }
