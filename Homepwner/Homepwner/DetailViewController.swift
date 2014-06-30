@@ -9,6 +9,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet weak var serialNumberField: UITextField
     @IBOutlet weak var valueField: UITextField
     @IBOutlet weak var dateLabel: UILabel
+    @IBOutlet weak var changeDateButton: UIButton
     @IBOutlet weak var imageView: UIImageView
     @IBOutlet weak var trashItem: UIBarButtonItem
     @IBOutlet weak var cameraButton: UIBarButtonItem
@@ -67,7 +68,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
 
         let nameMap = [
             "imageView": imageView,
-            "dateLabel": dateLabel,
+            "changeDateButton": changeDateButton,
             "toolbar": toolbar
         ]
 
@@ -79,7 +80,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             views: nameMap)
 
         // ImageView is 8 pooints from the date label and the toolbar.
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[dateLabel]-[imageView]-[toolbar]",
+        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:[changeDateButton]-[imageView]-[toolbar]",
             options: nil,
             metrics: nil,
             views: nameMap)

@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Homepwner" customModuleProvider="target">
             <connections>
                 <outlet property="cameraButton" destination="zDV-vS-6bi" id="aed-IY-RMU"/>
+                <outlet property="changeDateButton" destination="M9G-EF-lPH" id="7hr-uA-ptA"/>
                 <outlet property="dateLabel" destination="3Ys-bd-uug" id="B3x-Fo-4ep"/>
                 <outlet property="nameField" destination="g39-1S-21d" id="ycL-hM-AeP"/>
                 <outlet property="serialNumberField" destination="H4w-sp-CNZ" id="5Wl-Hk-4Aq"/>
