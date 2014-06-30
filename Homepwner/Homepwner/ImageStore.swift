@@ -1,12 +1,12 @@
 import UIKit
 
 class ImageStore: NSObject {
+    var dictionary = Dictionary<NSString, UIImage>()
+
     class var sharedStore: ImageStore {
         return SharedStore
     }
 
-    var dictionary = Dictionary<NSString, UIImage>()
-    
     init() {
         NSException(name: "Singleton", reason: "Use ItemStore.sharedStore", userInfo: nil)
     }
