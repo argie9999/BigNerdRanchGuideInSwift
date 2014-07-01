@@ -217,10 +217,10 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             println("Detected iPad, showing image picker in popover controller.")
             imagePickerPopover = UIPopoverController(contentViewController: imagePicker)
-            imagePickerPopover!.popoverBackgroundViewClass = DarkPopoverBackgroundView.classForCoder()
             imagePickerPopover!.delegate = self
 
             // Use a dark popover background
+            imagePickerPopover!.popoverBackgroundViewClass = DarkPopoverBackgroundView.classForCoder()
             imagePickerPopover!.presentPopoverFromBarButtonItem(sender,
                 permittedArrowDirections: .Any,
                 animated: true)
