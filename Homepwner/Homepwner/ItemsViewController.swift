@@ -74,6 +74,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
         let items = ItemStore.sharedStore.allItems
         let selectedItem = items[indexPath.row]
         let detailViewController = DetailViewController(isNew: false)
+        detailViewController.item = selectedItem
         navigationController.pushViewController(detailViewController, animated: true)
     }
 
