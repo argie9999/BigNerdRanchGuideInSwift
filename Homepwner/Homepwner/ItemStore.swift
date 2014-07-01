@@ -14,11 +14,18 @@ class ItemStore {
     }
 
     init () {
-        NSException(name: "Singleton", reason: "Use ItemStore.sharedStore", userInfo: nil)
+        let archivedItems : AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithFile(itemArchivePath())
+
+        if archivedItems {
+            privateItems = archivedItems as Item[]
+        }
+        else {
+            privateItems = Item[]()
+        }
     }
 
     func createItem() -> Item {
-        let item = Item.randomItem()
+        let item = Item()
         privateItems.append(item)
 
         return item
