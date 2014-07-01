@@ -31,6 +31,7 @@ class ImageStore: NSObject {
     }
 
     func deleteImageForKey(key: String) {
+        println("Removing image: \(dictionary[key])")
         dictionary.removeValueForKey(key)
 
         let imagePath = imagePathForKey(key)

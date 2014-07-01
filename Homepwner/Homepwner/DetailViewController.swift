@@ -241,6 +241,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             // When the user clicks on Delete, the closure is invoked and removes the image.
             alert.addAction(UIAlertAction(title: "Delete", style: .Destructive) { (_: UIAlertAction!) in
                 println("Removing picture")
+                ImageStore.sharedStore.deleteImageForKey(self.item!.itemKey!)
                 self.item!.itemKey = nil
                 self.imageView.image = nil
                 self.trashItem.enabled = false
