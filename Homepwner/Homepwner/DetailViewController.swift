@@ -57,7 +57,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             self.dateLabel.text = dateFormatter?.stringFromDate(item!.dateCreated)
 
             if let imageKey = item!.itemKey {
-                let image = ImageStore.sharedStore.dictionary[imageKey]
+                let image = ImageStore.sharedStore.imageForKey(imageKey)
                 if let imageToDisplay = image {
                     imageView.image = imageToDisplay
                     trashItem.enabled = true
@@ -127,7 +127,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
         if let image = editedImage {
             if let imageKey = item!.itemKey {
-                ImageStore.sharedStore.dictionary[imageKey] = image
+                ImageStore.sharedStore.setImage(image, forKey: imageKey)
                 imageView.image = image
                 if imagePickerPopover {
                     imagePickerPopover!.dismissPopoverAnimated(true)
