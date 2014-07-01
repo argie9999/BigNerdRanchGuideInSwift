@@ -45,4 +45,21 @@ class ItemStore {
         privateItems.removeAtIndex(fromIndex)
         privateItems.insert(item, atIndex: toIndex)
     }
+
+    // MARK: Archiving related methods
+
+    /**
+    Constructs a path to the documents directory for storing instances of Item
+    */
+    func itemArchivePath() -> String {
+        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+
+        return path.stringByAppendingPathComponent("items.archive")
+    }
+
+    func saveChanges() -> Bool {
+        let path = itemArchivePath()
+
+        return NSKeyedArchiver.archiveRootObject(privateItems, toFile: path)
+    }
 }

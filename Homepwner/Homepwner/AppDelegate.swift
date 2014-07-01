@@ -15,4 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+
+    func applicationDidEnterBackground(application: UIApplication!) {
+        let success = ItemStore.sharedStore.saveChanges()
+
+        if success {
+            println("Saved all of the Items")
+        }
+        else {
+            println("Could not save any of the Items.")
+        }
+    }
 }

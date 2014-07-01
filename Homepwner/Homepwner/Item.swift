@@ -1,6 +1,6 @@
 import Foundation
 
-class Item: Equatable {
+class Item: NSObject, Equatable, NSCoding {
     var itemName: String
     var serialNumber: String
     var valueInDollars: Int
@@ -46,6 +46,25 @@ class Item: Equatable {
 
     func description() -> String {
         return "\(itemName) (\(serialNumber)): Worth $\(valueInDollars), recorded on \(dateCreated)"
+    }
+
+    // MARK: NSCoding protocol methods
+    init(coder aDecoder: NSCoder!) {
+        itemName = aDecoder.decodeObjectForKey("itemName") as String
+        serialNumber = aDecoder.decodeObjectForKey("serialNumber") as String
+        dateCreated = aDecoder.decodeObjectForKey("dateCreated") as NSDate
+        itemKey = aDecoder.decodeObjectForKey("itemKey") as String
+        valueInDollars = aDecoder.decodeIntegerForKey("valueInDollars")
+        super.init()
+    }
+
+    func encodeWithCoder(aCoder: NSCoder!) {
+        // Add the names and values of the item's properties to the stream
+        aCoder.encodeObject(itemName, forKey: "itemName")
+        aCoder.encodeObject(serialNumber, forKey: "serialNumber")
+        aCoder.encodeObject(dateCreated, forKey: "dateCreated")
+        aCoder.encodeObject(itemKey, forKey: "itemKey")
+        aCoder.encodeInteger(valueInDollars, forKey: "valueInDollars")
     }
 }
 
