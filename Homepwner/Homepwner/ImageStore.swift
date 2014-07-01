@@ -23,10 +23,11 @@ class ImageStore: NSObject {
     func setImage(image: UIImage, forKey key: String) {
         dictionary[key] = image
         let imagePath = imagePathForKey(key)
-        let data = UIImageJPEGRepresentation(image, 0.5)
+        // Bronze challenge: Save each image as a PNG.
+        let pngData = UIImagePNGRepresentation(image)
 
         println("Writing image to \(imagePath)")
-        data.writeToFile(imagePath, atomically: true)
+        pngData.writeToFile(imagePath, atomically: true)
     }
 
     func deleteImageForKey(key: String) {
@@ -49,7 +50,7 @@ class ImageStore: NSObject {
                 dictionary[key] = result
             }
             else {
-                println("Unable to find \(imagePathForKey(key)) at \(imagePath)")
+                println("Unable to find image.")
             }
         }
 
