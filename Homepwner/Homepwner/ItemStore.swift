@@ -4,8 +4,13 @@ class ItemStore {
     var privateItems = Item[]()
     var allItems: Item[] { return privateItems }
 
+    // Thread safe Singleton
+    // Bronze challenge: Make sharedStore thread-safe.
     class var sharedStore: ItemStore {
-        return SharedStorage
+        struct Static {
+            static let instance: ItemStore = ItemStore()
+        }
+        return Static.instance
     }
 
     init () {
@@ -41,5 +46,3 @@ class ItemStore {
         privateItems.insert(item, atIndex: toIndex)
     }
 }
-
-let SharedStorage = ItemStore()
