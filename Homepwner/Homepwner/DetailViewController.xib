@@ -45,30 +45,18 @@
                 </textField>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qZx-H6-IGI">
                     <rect key="frame" x="10" y="85" width="54" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="54" id="nSE-2x-lzL"/>
-                        <constraint firstAttribute="height" constant="20" id="sUW-oY-KZp"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serial" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tP-KF-78L">
                     <rect key="frame" x="10" y="130" width="54" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="54" id="IWa-Lu-dcG"/>
-                        <constraint firstAttribute="height" constant="20" id="gIt-IZ-amx"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hen-78-yxv">
                     <rect key="frame" x="10" y="174" width="54" height="20.5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="54" id="7qn-HS-3Aj"/>
-                        <constraint firstAttribute="height" constant="20" id="w2K-ec-IhV"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -88,9 +76,6 @@
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ys-bd-uug">
                     <rect key="frame" x="219" y="211" width="42" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="gxJ-zb-2Z5"/>
-                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -137,7 +122,9 @@
                 <constraint firstItem="4tP-KF-78L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="0hn-gh-r9y"/>
                 <constraint firstAttribute="trailing" secondItem="H4w-sp-CNZ" secondAttribute="trailing" constant="20" id="1XS-fQ-I16"/>
                 <constraint firstItem="4tP-KF-78L" firstAttribute="baseline" secondItem="H4w-sp-CNZ" secondAttribute="baseline" id="1eW-Ax-a32"/>
+                <constraint firstItem="4tP-KF-78L" firstAttribute="width" secondItem="qZx-H6-IGI" secondAttribute="width" id="1l1-kO-hiV"/>
                 <constraint firstItem="4tP-KF-78L" firstAttribute="top" secondItem="qZx-H6-IGI" secondAttribute="bottom" constant="25" id="8fD-Vf-vp2"/>
+                <constraint firstItem="4tP-KF-78L" firstAttribute="width" secondItem="Hen-78-yxv" secondAttribute="width" id="AlZ-l2-NDr"/>
                 <constraint firstItem="TKz-yf-JxW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Big-aC-acE"/>
                 <constraint firstAttribute="trailing" secondItem="TKz-yf-JxW" secondAttribute="trailing" id="I82-Xp-qHD"/>
                 <constraint firstItem="H4w-sp-CNZ" firstAttribute="leading" secondItem="4tP-KF-78L" secondAttribute="trailing" constant="10" id="JC9-OY-7et"/>
@@ -167,9 +154,17 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="AbstractSizeClassScreen[widthClass=regular]"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="1l1-kO-hiV"/>
+                    <exclude reference="AlZ-l2-NDr"/>
                     <exclude reference="Big-aC-acE"/>
                     <exclude reference="LYl-WQ-oyi"/>
                     <exclude reference="fRx-Pe-N8y"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=regular">
+                <mask key="constraints">
+                    <include reference="1l1-kO-hiV"/>
+                    <include reference="AlZ-l2-NDr"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
