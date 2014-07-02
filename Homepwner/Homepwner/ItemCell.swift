@@ -7,6 +7,10 @@
 //
 
 import UIKit
-class ItemCell {
 
+class ItemCell: UITableViewCell {
+    @IBOutlet weak var thumnailView: UIImageView
+    @IBOutlet weak var nameLabel: UILabel
+    @IBOutlet weak var serialNumberLabel: UILabel
+    @IBOutlet weak var valueLabel: UILabel
 }

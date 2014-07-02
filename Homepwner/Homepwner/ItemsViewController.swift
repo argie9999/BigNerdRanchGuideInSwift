@@ -28,7 +28,8 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     // MARK: overridden functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        let nib = UINib(nibName: "ItemCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "ItemCell")
     }
 
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
@@ -36,9 +37,14 @@ class ItemsViewController: UITableViewController, UITableViewDelegate, UITableVi
     }
 
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell", forIndexPath: indexPath) as ItemCell
         let items = ItemStore.sharedStore.allItems
-        cell.textLabel.text = items[indexPath.row].description()
+        let item = items[indexPath.row]
+
+        // Configure the cell with the Item
+        cell.nameLabel.text = item.itemName
+        cell.serialNumberLabel.text = item.serialNumber
+        cell.valueLabel.text = String(item.valueInDollars)
 
         return cell
     }
