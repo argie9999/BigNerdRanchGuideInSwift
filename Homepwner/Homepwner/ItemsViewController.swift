@@ -50,15 +50,19 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         cell.serialNumberLabel.text = item.serialNumber
         cell.valueLabel.text = String(item.valueInDollars)
         cell.thumbnailView.image = item.thumbnail
+
+        weak var weakCell = cell
         cell.actionBlock = {
             println("Going to show image for \(item)")
+
+            let strongCell = weakCell
             if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
                 let itemKey = item.itemKey!
 
                 // If there is no image, don't display anything
                 if let img = ImageStore.sharedStore.imageForKey(itemKey) {
                     // Make a rectangle for the frame of the thumbnail relative to our tableView
-                    let rect = self.view.convertRect(cell.thumbnailView.bounds, fromView: cell.thumbnailView)
+                    let rect = self.view.convertRect(strongCell!.thumbnailView.bounds, fromView: strongCell!.thumbnailView)
                     // Create a new ImageViewController and set its image
                     let ivc = ImageViewController()
                     ivc.image = img
