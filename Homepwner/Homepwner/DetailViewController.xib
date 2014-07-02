@@ -10,10 +10,13 @@
                 <outlet property="changeDateButton" destination="M9G-EF-lPH" id="7hr-uA-ptA"/>
                 <outlet property="dateLabel" destination="3Ys-bd-uug" id="B3x-Fo-4ep"/>
                 <outlet property="nameField" destination="g39-1S-21d" id="ycL-hM-AeP"/>
+                <outlet property="nameLabel" destination="qZx-H6-IGI" id="guV-jS-fcs"/>
                 <outlet property="serialNumberField" destination="H4w-sp-CNZ" id="5Wl-Hk-4Aq"/>
+                <outlet property="serialNumberLabel" destination="4tP-KF-78L" id="ett-7F-i2N"/>
                 <outlet property="toolbar" destination="TKz-yf-JxW" id="rU3-Aw-nbE"/>
                 <outlet property="trashItem" destination="yKb-3A-Ieh" id="TO4-GD-I1X"/>
                 <outlet property="valueField" destination="pCC-IP-Jw6" id="PJc-lO-QwL"/>
+                <outlet property="valueLabel" destination="Hen-78-yxv" id="rgc-qw-2Yv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="GZ5-1e-eq6"/>
             </connections>
         </placeholder>

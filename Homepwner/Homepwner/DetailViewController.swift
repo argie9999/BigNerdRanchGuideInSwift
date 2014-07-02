@@ -5,15 +5,18 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
      UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverControllerDelegate
 {
     // MARK: Outlets
-    @IBOutlet weak var nameField: UITextField
-    @IBOutlet weak var serialNumberField: UITextField
-    @IBOutlet weak var valueField: UITextField
-    @IBOutlet weak var dateLabel: UILabel
-    @IBOutlet weak var changeDateButton: UIButton
-    @IBOutlet weak var imageView: UIImageView
-    @IBOutlet weak var trashItem: UIBarButtonItem
     @IBOutlet weak var cameraButton: UIBarButtonItem
+    @IBOutlet weak var changeDateButton: UIButton
+    @IBOutlet weak var dateLabel: UILabel
+    @IBOutlet weak var imageView: UIImageView
+    @IBOutlet weak var nameField: UITextField
+    @IBOutlet weak var nameLabel: UILabel
+    @IBOutlet weak var serialNumberField: UITextField
+    @IBOutlet weak var serialNumberLabel: UILabel
     @IBOutlet weak var toolbar: UIToolbar
+    @IBOutlet weak var trashItem: UIBarButtonItem
+    @IBOutlet weak var valueField: UITextField
+    @IBOutlet weak var valueLabel: UILabel
 
     // MARK: Stored properties
     var item: Item?
@@ -36,6 +39,23 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             let cancelItem = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancel:")
             navigationItem.leftBarButtonItem = cancelItem
         }
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFonts",
+            name: UIContentSizeCategoryDidChangeNotification, object: nil)
+    }
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    // Support dynamic type
+    func updateFonts() {
+        println("Updating fonts for dynamic type")
+        let font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+
+        // Update the labels and text fields to use dynamic fonts
+        (nameLabel.font, serialNumberLabel.font, valueLabel.font, dateLabel.font) = (font, font, font, font)
+        (nameField.font, serialNumberField.font, valueField.font) = (font, font, font)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -64,6 +84,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 }
             }
         }
+        updateFonts()
     }
 
     override func viewDidLoad() {
