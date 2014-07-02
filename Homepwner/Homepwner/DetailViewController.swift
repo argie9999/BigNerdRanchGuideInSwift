@@ -148,6 +148,10 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         return true
     }
 
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+
     // Mark: UIPopoverControllerDelegate
     func popoverControllerDidDismissPopover(popoverController: UIPopoverController) {
         println("User dismissed popover")
