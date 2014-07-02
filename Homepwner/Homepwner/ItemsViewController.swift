@@ -113,10 +113,6 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         navigationController.pushViewController(detailViewController, animated: true)
     }
 
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
