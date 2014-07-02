@@ -52,7 +52,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         // Bronze challenge: Color coding
         // If Item is worth more than $50, value label text should be green, otherwise red.
         if (item.valueInDollars > 50) {
-            // This is less harsh than UIColor.lightColor() 😊
+            // This is less harsh than UIColor.greenColor() 😊
             cell.valueLabel.textColor = UIColor(red: 0.1, green: 0.7, blue: 0, alpha: 1)
         }
         else {
