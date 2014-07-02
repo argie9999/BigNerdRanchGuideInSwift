@@ -9,8 +9,15 @@
 import UIKit
 
 class ItemCell: UITableViewCell {
-    @IBOutlet weak var thumnailView: UIImageView
+    @IBOutlet weak var thumbnailView: UIImageView
     @IBOutlet weak var nameLabel: UILabel
     @IBOutlet weak var serialNumberLabel: UILabel
     @IBOutlet weak var valueLabel: UILabel
+    var actionBlock: (() -> ())?
+
+    @IBAction func showImage(id: UIButton) {
+        if actionBlock {
+            actionBlock!()
+        }
+    }
 }

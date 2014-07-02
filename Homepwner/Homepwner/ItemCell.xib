@@ -13,13 +13,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZm-B9-R8n">
-                        <rect key="frame" x="258" y="12" width="42" height="20.5"/>
+                        <rect key="frame" x="258" y="12" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTR-wt-fkI">
-                        <rect key="frame" x="50" y="2" width="200" height="21"/>
+                        <rect key="frame" x="50" y="1" width="200" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="NZH-qw-bib"/>
                         </constraints>
@@ -28,7 +28,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4w-Mv-2yk">
-                        <rect key="frame" x="50" y="28.5" width="200" height="15"/>
+                        <rect key="frame" x="50" y="29" width="200" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="qeJ-zv-eWv"/>
                         </constraints>
@@ -37,22 +37,35 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h0A-Vf-6PF">
-                        <rect key="frame" x="2" y="3" width="40" height="40"/>
+                        <rect key="frame" x="2" y="2.5" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="UW0-M0-lvM"/>
                             <constraint firstAttribute="width" constant="40" id="XUG-Yz-3gx"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5WP-u7-4Dy">
+                        <rect key="frame" x="2" y="2" width="40" height="40"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="showImage:" destination="KFv-M8-FSm" eventType="touchUpInside" id="nHM-HF-I7c"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="dZm-B9-R8n" firstAttribute="leading" secondItem="c4w-Mv-2yk" secondAttribute="trailing" constant="8" id="256-d2-DiF"/>
+                    <constraint firstItem="5WP-u7-4Dy" firstAttribute="trailing" secondItem="h0A-Vf-6PF" secondAttribute="trailing" id="6Vj-7g-yHd"/>
                     <constraint firstItem="h0A-Vf-6PF" firstAttribute="leading" secondItem="A2h-DR-1dH" secondAttribute="leading" constant="2" id="996-Kt-7Hq"/>
+                    <constraint firstItem="5WP-u7-4Dy" firstAttribute="leading" secondItem="h0A-Vf-6PF" secondAttribute="leading" id="AwI-lA-7GO"/>
                     <constraint firstItem="vTR-wt-fkI" firstAttribute="top" secondItem="A2h-DR-1dH" secondAttribute="top" constant="1" id="Cqc-0w-bfa"/>
                     <constraint firstAttribute="centerY" secondItem="h0A-Vf-6PF" secondAttribute="centerY" id="HFe-I6-d2x"/>
                     <constraint firstItem="c4w-Mv-2yk" firstAttribute="top" relation="greaterThanOrEqual" secondItem="vTR-wt-fkI" secondAttribute="bottom" constant="5" id="Iwl-94-0ua"/>
+                    <constraint firstItem="5WP-u7-4Dy" firstAttribute="top" secondItem="h0A-Vf-6PF" secondAttribute="top" id="WYI-QQ-6mQ"/>
                     <constraint firstAttribute="trailing" secondItem="dZm-B9-R8n" secondAttribute="trailing" constant="20" id="Xk3-fA-RsJ"/>
                     <constraint firstItem="vTR-wt-fkI" firstAttribute="leading" secondItem="h0A-Vf-6PF" secondAttribute="trailing" constant="8" id="Xwf-IP-SDZ"/>
                     <constraint firstItem="c4w-Mv-2yk" firstAttribute="leading" secondItem="h0A-Vf-6PF" secondAttribute="trailing" constant="8" id="Zew-dN-Gyz"/>
+                    <constraint firstItem="5WP-u7-4Dy" firstAttribute="bottom" secondItem="h0A-Vf-6PF" secondAttribute="bottom" id="fuw-Z6-lb2"/>
                     <constraint firstItem="dZm-B9-R8n" firstAttribute="leading" secondItem="vTR-wt-fkI" secondAttribute="trailing" constant="8" id="v1x-OX-1hj"/>
                     <constraint firstAttribute="bottom" secondItem="c4w-Mv-2yk" secondAttribute="bottom" constant="1" id="ysB-1z-aBZ"/>
                     <constraint firstAttribute="centerY" secondItem="dZm-B9-R8n" secondAttribute="centerY" id="zM7-kE-Ymp"/>
@@ -61,7 +74,7 @@
             <connections>
                 <outlet property="nameLabel" destination="vTR-wt-fkI" id="Ahy-3q-CU5"/>
                 <outlet property="serialNumberLabel" destination="c4w-Mv-2yk" id="yhg-q5-hNo"/>
-                <outlet property="thumnailView" destination="h0A-Vf-6PF" id="dtw-VA-2Md"/>
+                <outlet property="thumbnailView" destination="h0A-Vf-6PF" id="akp-mj-pVz"/>
                 <outlet property="valueLabel" destination="dZm-B9-R8n" id="TR8-Bs-FpE"/>
             </connections>
             <point key="canvasLocation" x="355" y="343"/>
