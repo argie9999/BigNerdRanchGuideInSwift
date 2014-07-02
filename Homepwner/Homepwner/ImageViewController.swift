@@ -13,8 +13,13 @@ class ImageViewController: UIViewController {
 
     override func loadView() {
         let imageView = UIImageView()
-        imageView.contentMode = .ScaleAspectFit
         view = imageView
+
+        // Gold challenge: Add Zooming to ImageViewController and center the image.
+        view.contentMode = .Center
+        view.userInteractionEnabled = true
+        let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: "zoom:")
+        view.addGestureRecognizer(pinchRecognizer)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -23,5 +28,9 @@ class ImageViewController: UIViewController {
         // Cast the view to UIImageView so the compiler knows it
         let imageView = view as UIImageView
         imageView.image = image
+    }
+
+    func zoom(gesture: UIPinchGestureRecognizer) {
+        view.transform = CGAffineTransformMakeScale(gesture.scale, gesture.scale)
     }
 }
