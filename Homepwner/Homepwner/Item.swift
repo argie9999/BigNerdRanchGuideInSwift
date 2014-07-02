@@ -1,12 +1,14 @@
-import Foundation
+import UIKit
 
 class Item: NSObject, Equatable, NSCoding {
     var itemName: String
     var serialNumber: String
     var valueInDollars: Int
     var dateCreated: NSDate
+    var thumbnail: UIImage?
     @NSCopying var itemKey: NSString?
 
+    // MARK: Initializers
     // Designated Initializer
     init(name: String, valueInDollars: Int, serialNumber: String) {
         self.itemName = name
@@ -27,6 +29,28 @@ class Item: NSObject, Equatable, NSCoding {
         self.init(itemName: "Item")
     }
 
+    // MARK: NSCoding protocol methods
+    init(coder aDecoder: NSCoder!) {
+        itemName = aDecoder.decodeObjectForKey("itemName") as String
+        serialNumber = aDecoder.decodeObjectForKey("serialNumber") as String
+        dateCreated = aDecoder.decodeObjectForKey("dateCreated") as NSDate
+        itemKey = aDecoder.decodeObjectForKey("itemKey") as String
+        thumbnail = aDecoder.decodeObjectForKey("thumbnail") as? UIImage
+        valueInDollars = aDecoder.decodeIntegerForKey("valueInDollars")
+        super.init()
+    }
+
+    func encodeWithCoder(aCoder: NSCoder!) {
+        // Add the names and values of the item's properties to the stream
+        aCoder.encodeObject(itemName, forKey: "itemName")
+        aCoder.encodeObject(serialNumber, forKey: "serialNumber")
+        aCoder.encodeObject(dateCreated, forKey: "dateCreated")
+        aCoder.encodeObject(itemKey, forKey: "itemKey")
+        aCoder.encodeObject(thumbnail, forKey: "thumbnail")
+        aCoder.encodeInteger(valueInDollars, forKey: "valueInDollars")
+    }
+
+    // MARK: Item methods
     class func randomItem() -> Item {
         let randomAdjectiveList = ["Fluffy", "Rusty", "Shiny"]
         let randomNounList = ["Bear", "Spork", "Mac"]
@@ -48,23 +72,35 @@ class Item: NSObject, Equatable, NSCoding {
         return "\(itemName) (\(serialNumber)): Worth $\(valueInDollars), recorded on \(dateCreated)"
     }
 
-    // MARK: NSCoding protocol methods
-    init(coder aDecoder: NSCoder!) {
-        itemName = aDecoder.decodeObjectForKey("itemName") as String
-        serialNumber = aDecoder.decodeObjectForKey("serialNumber") as String
-        dateCreated = aDecoder.decodeObjectForKey("dateCreated") as NSDate
-        itemKey = aDecoder.decodeObjectForKey("itemKey") as String
-        valueInDollars = aDecoder.decodeIntegerForKey("valueInDollars")
-        super.init()
-    }
+    func setThumbnailFromImage(image: UIImage!) {
+        let origImageSize = image.size
+        let newRect = CGRectMake(0, 0, 40, 40)
+        // Figure out a scaling ratio to make sure we maintain the same aspect ratio
+        let ratio = max(newRect.size.width / origImageSize.width,
+            newRect.size.height / origImageSize.height)
 
-    func encodeWithCoder(aCoder: NSCoder!) {
-        // Add the names and values of the item's properties to the stream
-        aCoder.encodeObject(itemName, forKey: "itemName")
-        aCoder.encodeObject(serialNumber, forKey: "serialNumber")
-        aCoder.encodeObject(dateCreated, forKey: "dateCreated")
-        aCoder.encodeObject(itemKey, forKey: "itemKey")
-        aCoder.encodeInteger(valueInDollars, forKey: "valueInDollars")
+        // Create a transparent bitmap context with a scaling factor equal to that of the screen
+        UIGraphicsBeginImageContextWithOptions(newRect.size, false, 0.0)
+
+        // Create a path that is a rounded rectangle
+        let path = UIBezierPath(roundedRect: newRect, cornerRadius: 5.0)
+        // Make all subsequent drawing clip to this rounded rectangle
+        path.addClip()
+
+        // Center the image in the thumbnail
+        var projectRect = CGRect()
+        projectRect.size = CGSize(width: ratio * origImageSize.width, height: ratio * origImageSize.height)
+        projectRect.origin = CGPoint(x: newRect.size.width / 20, y: projectRect.size.width / 2.0)
+
+        // Draw the image on it
+        image.drawInRect(projectRect)
+
+        // Get the image from the image context; keep it as our thumbnail
+        let smallImage = UIGraphicsGetImageFromCurrentImageContext()
+        thumbnail = smallImage
+
+        // Cleanup image context resources; we're done
+        UIGraphicsEndImageContext()
     }
 }
 

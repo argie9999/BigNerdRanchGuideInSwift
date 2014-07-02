@@ -127,6 +127,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
         if let image = editedImage {
             if let imageKey = item!.itemKey {
+                item!.setThumbnailFromImage(image)
                 ImageStore.sharedStore.setImage(image, forKey: imageKey)
                 imageView.image = image
                 if imagePickerPopover {
