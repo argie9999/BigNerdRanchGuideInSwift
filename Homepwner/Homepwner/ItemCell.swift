@@ -14,7 +14,6 @@ class ItemCell: UITableViewCell {
     @IBOutlet weak var serialNumberLabel: UILabel
     @IBOutlet weak var valueLabel: UILabel
     @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint
-    @IBOutlet weak var imageViewWidthConstraint: NSLayoutConstraint
     var actionBlock: (() -> ())?
 
     @IBAction func showImage(id: UIButton) {
@@ -50,7 +49,6 @@ class ItemCell: UITableViewCell {
         // Just to be safe.
         if let imgSize = imageSize {
             imageViewHeightConstraint.constant = CGFloat(imgSize)
-            imageViewWidthConstraint.constant = CGFloat(imgSize)
         }
     }
 
@@ -60,5 +58,10 @@ class ItemCell: UITableViewCell {
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: "updateInterfaceForDynamicTypeSize",
             name: UIContentSizeCategoryDidChangeNotification, object: nil)
+
+        let constraint = NSLayoutConstraint(item: thumbnailView, attribute: .Height,
+            relatedBy: .Equal, toItem: thumbnailView,
+            attribute: .Width, multiplier: 1, constant: 0)
+        thumbnailView.addConstraint(constraint)
     }
 }

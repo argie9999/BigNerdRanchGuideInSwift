@@ -34,7 +34,7 @@
                         <rect key="frame" x="2" y="2.5" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="UW0-M0-lvM"/>
-                            <constraint firstAttribute="width" constant="40" id="XUG-Yz-3gx"/>
+                            <constraint firstAttribute="width" constant="40" placeholder="YES" id="XUG-Yz-3gx"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5WP-u7-4Dy">
@@ -67,7 +67,6 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="imageViewHeightConstraint" destination="UW0-M0-lvM" id="mnG-8S-slr"/>
-                <outlet property="imageViewWidthConstraint" destination="XUG-Yz-3gx" id="h88-xO-dLY"/>
                 <outlet property="nameLabel" destination="vTR-wt-fkI" id="Ahy-3q-CU5"/>
                 <outlet property="serialNumberLabel" destination="c4w-Mv-2yk" id="yhg-q5-hNo"/>
                 <outlet property="thumbnailView" destination="h0A-Vf-6PF" id="akp-mj-pVz"/>
