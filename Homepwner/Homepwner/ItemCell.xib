@@ -66,6 +66,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imageViewHeightConstraint" destination="UW0-M0-lvM" id="mnG-8S-slr"/>
+                <outlet property="imageViewWidthConstraint" destination="XUG-Yz-3gx" id="h88-xO-dLY"/>
                 <outlet property="nameLabel" destination="vTR-wt-fkI" id="Ahy-3q-CU5"/>
                 <outlet property="serialNumberLabel" destination="c4w-Mv-2yk" id="yhg-q5-hNo"/>
                 <outlet property="thumbnailView" destination="h0A-Vf-6PF" id="akp-mj-pVz"/>
