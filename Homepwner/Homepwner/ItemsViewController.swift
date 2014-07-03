@@ -13,6 +13,13 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         navigationItem.leftBarButtonItem = editButtonItem()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add,
             target: self, action: "addNewItem")
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewForDynamicTypeSize",
+            name: UIContentSizeCategoryDidChangeNotification, object: nil)
+    }
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
     func addNewItem() {
@@ -130,6 +137,25 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        updateTableViewForDynamicTypeSize()
+    }
+
+    func updateTableViewForDynamicTypeSize() {
+        struct Static {
+            static let cellHeightDictionary: Dictionary<NSString, Int> = [
+                UIContentSizeCategoryExtraSmall: 44,
+                UIContentSizeCategorySmall: 44,
+                UIContentSizeCategoryMedium: 44,
+                UIContentSizeCategoryLarge: 44,
+                UIContentSizeCategoryExtraLarge: 55,
+                UIContentSizeCategoryExtraExtraLarge: 65,
+                UIContentSizeCategoryExtraExtraExtraLarge: 75,
+            ]
+        }
+
+        let userSize = UIApplication.sharedApplication().preferredContentSizeCategory
+        let cellHeight = Static.cellHeightDictionary[userSize]
+        tableView.rowHeight = CGFloat(cellHeight!)
         tableView.reloadData()
     }
 
