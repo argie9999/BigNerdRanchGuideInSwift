@@ -20,18 +20,12 @@
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTR-wt-fkI">
                         <rect key="frame" x="50" y="1" width="200" height="21"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="NZH-qw-bib"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4w-Mv-2yk">
                         <rect key="frame" x="50" y="29" width="200" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="qeJ-zv-eWv"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.24027013894627447" green="0.24374764781571417" blue="0.26154891304347827" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
