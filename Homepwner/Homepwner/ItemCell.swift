@@ -20,4 +20,22 @@ class ItemCell: UITableViewCell {
             actionBlock!()
         }
     }
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    func updateInterfaceForDynamicTypeSize() {
+        let font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+
+        (nameLabel.font, serialNumberLabel.font, valueLabel.font) = (font, font, font)
+    }
+
+    override func awakeFromNib() {
+        updateInterfaceForDynamicTypeSize()
+
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "updateInterfaceForDynamicTypeSize",
+            name: UIContentSizeCategoryDidChangeNotification, object: nil)
+    }
 }
