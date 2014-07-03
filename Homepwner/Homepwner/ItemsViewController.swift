@@ -14,6 +14,9 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add,
             target: self, action: "addNewItem")
 
+        // NOTE: Currently there is a bug which is preventing this notification from
+        // being triggered.
+        // Link: http://stackoverflow.com/questions/24090313/dynamic-type-notification-is-not-getting-triggered
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewForDynamicTypeSize",
             name: UIContentSizeCategoryDidChangeNotification, object: nil)
     }
