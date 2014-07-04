@@ -1,76 +1,24 @@
+//
+//  Item.swift
+//  Homepwner
+//
+//  Created by Akshay Hegde on 7/4/14.
+//  Copyright (c) 2014 Akshay Hegde. All rights reserved.
+//
+
 import UIKit
+import CoreData
 
-class Item: NSObject, Equatable, NSCoding {
-    var itemName: String
-    var serialNumber: String
-    var valueInDollars: Int
-    var dateCreated: NSDate
-    var thumbnail: UIImage?
-    @NSCopying var itemKey: NSString?
-
-    // MARK: Initializers
-    // Designated Initializer
-    init(name: String, valueInDollars: Int, serialNumber: String) {
-        self.itemName = name
-        self.serialNumber = serialNumber
-        self.valueInDollars = valueInDollars
-        dateCreated = NSDate()
-
-        // Create a NSUUID object and get its string representation
-        let uuid = NSUUID()
-        itemKey = uuid.UUIDString
-    }
-
-    convenience init(itemName name: String) {
-        self.init(name: name, valueInDollars: 0, serialNumber: "")
-    }
-
-    convenience init() {
-        self.init(itemName: "Item")
-    }
-
-    // MARK: NSCoding protocol methods
-    init(coder aDecoder: NSCoder!) {
-        itemName = aDecoder.decodeObjectForKey("itemName") as String
-        serialNumber = aDecoder.decodeObjectForKey("serialNumber") as String
-        dateCreated = aDecoder.decodeObjectForKey("dateCreated") as NSDate
-        itemKey = aDecoder.decodeObjectForKey("itemKey") as String
-        thumbnail = aDecoder.decodeObjectForKey("thumbnail") as? UIImage
-        valueInDollars = aDecoder.decodeIntegerForKey("valueInDollars")
-        super.init()
-    }
-
-    func encodeWithCoder(aCoder: NSCoder!) {
-        // Add the names and values of the item's properties to the stream
-        aCoder.encodeObject(itemName, forKey: "itemName")
-        aCoder.encodeObject(serialNumber, forKey: "serialNumber")
-        aCoder.encodeObject(dateCreated, forKey: "dateCreated")
-        aCoder.encodeObject(itemKey, forKey: "itemKey")
-        aCoder.encodeObject(thumbnail, forKey: "thumbnail")
-        aCoder.encodeInteger(valueInDollars, forKey: "valueInDollars")
-    }
-
-    // MARK: Item methods
-    class func randomItem() -> Item {
-        let randomAdjectiveList = ["Fluffy", "Rusty", "Shiny"]
-        let randomNounList = ["Bear", "Spork", "Mac"]
-        let adjectiveIndex = Int(arc4random()) % randomAdjectiveList.count
-        let nounIndex = Int(arc4random()) % randomNounList.count
-
-        let randomName = "\(randomAdjectiveList[adjectiveIndex]) \(randomNounList[nounIndex])"
-        let randomVal = Int(arc4random()) % 100
-        let aStr = "A" + 0
-
-        let randomSerial =
-            "\(arc4random() % 10)\(aStr + Int(arc4random() % 26))" +
-            "\(arc4random() % 10)\(aStr + Int(arc4random() % 26))\(arc4random() % 10)"
-
-        return Item(name: randomName, valueInDollars: randomVal, serialNumber: randomSerial)
-    }
-
-    func description() -> String {
-        return "\(itemName) (\(serialNumber)): Worth $\(valueInDollars), recorded on \(dateCreated)"
-    }
+@objc(Item)  // Needed for compatibility with Objective-C
+class Item: NSManagedObject {
+    @NSManaged var itemName: String
+    @NSManaged var serialNumber: String
+    @NSManaged var valueInDollars: Int
+    @NSManaged var dateCreated: NSDate
+    @NSManaged var itemKey: String?
+    @NSManaged var thumbnail: UIImage?
+    @NSManaged var orderingValue: Double
+    @NSManaged var assetType: NSManagedObject
 
     func setThumbnailFromImage(image: UIImage!) {
         let origImageSize = image.size
@@ -102,12 +50,13 @@ class Item: NSObject, Equatable, NSCoding {
         // Cleanup image context resources; we're done
         UIGraphicsEndImageContext()
     }
-}
 
-// Conform to the Equatable Protocol (I have to put this outside the class' scope)
-func == (lhs: Item, rhs: Item) -> Bool {
-    return lhs.itemName == rhs.itemName &&
-           lhs.serialNumber == rhs.serialNumber &&
-           lhs.dateCreated == rhs.dateCreated &&
-           lhs.valueInDollars == rhs.valueInDollars
+    override func awakeFromInsert() {
+        super.awakeFromInsert()
+
+        dateCreated = NSDate()
+
+        let uuid = NSUUID()
+        itemKey = uuid.UUIDString
+    }
 }
