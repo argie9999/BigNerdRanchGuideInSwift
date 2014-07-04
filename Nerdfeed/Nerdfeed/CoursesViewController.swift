@@ -41,7 +41,7 @@ class CoursesViewController: UITableViewController, NSURLSessionDataDelegate {
                 let jsonObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
                 self.courses = jsonObject["courses"] as Array<Dictionary<String, String>>
 
-                //println(self.courses)
+                println(self.courses)
 
                 // Reload table view data on the main thread
                 dispatch_async(dispatch_get_main_queue()) { self.tableView.reloadData() }
@@ -85,7 +85,9 @@ class CoursesViewController: UITableViewController, NSURLSessionDataDelegate {
 
         webViewController!.title = course["title"]
         webViewController!.URL = url
-        navigationController.pushViewController(webViewController, animated: true)
+        if !splitViewController {
+            navigationController.pushViewController(webViewController, animated: true)
+        }
     }
 
     // NSURLSessionDataDelegate methods

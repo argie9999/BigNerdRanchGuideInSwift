@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WebViewController: UIViewController {
+class WebViewController: UIViewController, UISplitViewControllerDelegate {
 
     var toolbar: UIToolbar?
 
@@ -50,5 +50,24 @@ class WebViewController: UIViewController {
 
         toolbar!.items = [backButton, forwardButton]
         view.addSubview(toolbar)
+    }
+
+    // MARK: UISplitViewControllerDelegate methods
+
+    // Note: this method is deprecated in iOS 8. 👎
+    func splitViewController(svc: UISplitViewController, willHideViewController aViewController: UIViewController,
+        withBarButtonItem barButtonItem: UIBarButtonItem, forPopoverController pc: UIPopoverController)
+    {
+        barButtonItem.title = "Courses"
+        navigationItem.leftBarButtonItem = barButtonItem
+    }
+
+    // Note: this method is deprecated in iOS 8. 👎
+    func splitViewController(svc: UISplitViewController, willShowViewController aViewController: UIViewController,
+        withBarButtonItem barButtonItem: UIBarButtonItem, forPopoverController pc: UIPopoverController)
+    {
+        if barButtonItem == navigationItem.leftBarButtonItem {
+            navigationItem.leftBarButtonItem = nil
+        }
     }
 }
