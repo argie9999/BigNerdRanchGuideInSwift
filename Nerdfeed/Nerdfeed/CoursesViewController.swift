@@ -67,4 +67,13 @@ class CoursesViewController: UITableViewController {
 
             return cell
     }
+
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        let course = courses[indexPath.row] as Dictionary<String, String>
+        let url = NSURL(string: course["url"])
+
+        webViewController!.title = course["title"]
+        webViewController!.URL = url
+        navigationController.pushViewController(webViewController, animated: true)
+    }
 }
