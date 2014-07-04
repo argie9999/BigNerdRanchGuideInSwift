@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CoursesViewController: UITableViewController {
+class CoursesViewController: UITableViewController, NSURLSessionDataDelegate {
 
     var session: NSURLSession?
     var courses: NSArray
@@ -23,7 +23,7 @@ class CoursesViewController: UITableViewController {
         self.init(nibName: nil, bundle: nil)
 
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        session = NSURLSession(configuration: config, delegate: nil, delegateQueue: nil)
+        session = NSURLSession(configuration: config, delegate: self, delegateQueue: nil)
         navigationItem.title = "Courses"
         courses = []
         fetchFeed()
@@ -31,13 +31,15 @@ class CoursesViewController: UITableViewController {
 
     func fetchFeed() {
         if session {
-            let requestString = "http://bookapi.bignerdranch.com/courses.json"
+            // the secure url given in the book is actually https://bookapi.bignerdranch.com/private/courses.json
+            // but that doesn't seem to work :|
+            let requestString = "https://bookapi.bignerdranch.com/courses.json"
             let url = NSURL(string: requestString)
             let request = NSURLRequest(URL: url)
             let dataTask = session!.dataTaskWithRequest(request) {
                 (data, _, _) in
                 let jsonObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
-                self.courses = jsonObject["courses"] as NSArray
+                self.courses = jsonObject["courses"] as Array<Dictionary<String, String>>
 
                 println(self.courses)
 
@@ -75,5 +77,13 @@ class CoursesViewController: UITableViewController {
         webViewController!.title = course["title"]
         webViewController!.URL = url
         navigationController.pushViewController(webViewController, animated: true)
+    }
+
+    // NSURLSessionDataDelegate methods
+    func URLSession(session: NSURLSession!, didReceiveChallenge challenge: NSURLAuthenticationChallenge!,
+        completionHandler: ((NSURLSessionAuthChallengeDisposition, NSURLCredential!) -> Void)!)
+    {
+        let cred = NSURLCredential(user: "BigNerdRanch", password: "AchieveNerdvana", persistence: .ForSession)
+        completionHandler(.UseCredential, cred)
     }
 }
