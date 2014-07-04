@@ -10,9 +10,11 @@ import UIKit
 
 class CoursesViewController: UITableViewController {
 
-     var session: NSURLSession?
+    var session: NSURLSession?
+    var courses: NSArray
 
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        courses = []
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -22,7 +24,8 @@ class CoursesViewController: UITableViewController {
 
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
         session = NSURLSession(configuration: config, delegate: nil, delegateQueue: nil)
-        navigationItem.title = "BNR Courses"
+        navigationItem.title = "Courses"
+        courses = []
         fetchFeed()
     }
 
@@ -33,25 +36,39 @@ class CoursesViewController: UITableViewController {
             let url = NSURL(string: requestString)
             let request = NSURLRequest(URL: url)
             let dataTask = session!.dataTaskWithRequest(request) {
-                (data: NSData!, _: NSURLResponse!, _: NSError!) in
-                let jsonObject: AnyObject! = NSJSONSerialization.JSONObjectWithData(data,
-                    options: nil, error: nil)
+                (data, _, _) in
+                let jsonObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
+                self.courses = jsonObject["courses"] as NSArray
 
-                println(jsonObject)
+                println(self.courses)
+
+                // Reload table view data on the main thread
+                dispatch_async(dispatch_get_main_queue()) { self.tableView.reloadData() }
             }
             dataTask.resume()
         }
     }
 
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+
+        tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
+    }
+
     // MARK: UITableViewController methods
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
     {
-        return 0
+        return courses.count
     }
 
     override func tableView(tableView: UITableView!,
         cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
-        return nil
+        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
+        let course = courses[indexPath.row] as NSDictionary
+        cell.textLabel.text = course["title"] as String
+
+        return cell
     }
 }
