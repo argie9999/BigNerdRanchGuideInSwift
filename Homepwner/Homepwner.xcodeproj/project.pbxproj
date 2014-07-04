@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D173DB919675F340049C5E6 /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D173DB719675F340049C5E6 /* Homepwner.xcdatamodeld */; };
 		3D25E7BF19542F31005CC519 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25E7BE19542F31005CC519 /* Item.swift */; };
 		3D25E7C119543935005CC519 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25E7C019543935005CC519 /* ItemStore.swift */; };
 		3D33EFBC19611FD900CD44DA /* DateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D33EFBE19611FD900CD44DA /* DateViewController.xib */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D173DB819675F340049C5E6 /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
 		3D25E7BE19542F31005CC519 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3D25E7C019543935005CC519 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
 		3D33EFBD19611FD900CD44DA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DateViewController.xib; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				3DAF23DD1963AECB005D84AF /* ImageViewController.swift */,
 				3D25E7BE19542F31005CC519 /* Item.swift */,
 				3D7A2DE01962BCF9006449D5 /* ItemCell.swift */,
+				3D173DB719675F340049C5E6 /* Homepwner.xcdatamodeld */,
 				3D25E7C019543935005CC519 /* ItemStore.swift */,
 				3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */,
 				3DB384151953CDA900C14E20 /* Images.xcassets */,
@@ -254,6 +257,7 @@
 				3D81BEA4195ABD1C0028EE23 /* CrosshairView.swift in Sources */,
 				3DD1CE2E1957995C00DC5C94 /* DetailViewController.swift in Sources */,
 				3D25E7C119543935005CC519 /* ItemStore.swift in Sources */,
+				3D173DB919675F340049C5E6 /* Homepwner.xcdatamodeld in Sources */,
 				3D5470AA1962497100759EAD /* DarkPopoverBackgroundView.swift in Sources */,
 				3DAF23DE1963AECB005D84AF /* ImageViewController.swift in Sources */,
 				3DB3842C1953CE6C00C14E20 /* ItemsViewController.swift in Sources */,
@@ -466,6 +470,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3D173DB719675F340049C5E6 /* Homepwner.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3D173DB819675F340049C5E6 /* Homepwner.xcdatamodel */,
+			);
+			currentVersion = 3D173DB819675F340049C5E6 /* Homepwner.xcdatamodel */;
+			path = Homepwner.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3DB384061953CDA900C14E20 /* Project object */;
 }
