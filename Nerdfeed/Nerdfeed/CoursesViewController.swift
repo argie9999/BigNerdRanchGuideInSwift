@@ -41,7 +41,7 @@ class CoursesViewController: UITableViewController, NSURLSessionDataDelegate {
                 let jsonObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
                 self.courses = jsonObject["courses"] as Array<Dictionary<String, String>>
 
-                println(self.courses)
+                //println(self.courses)
 
                 // Reload table view data on the main thread
                 dispatch_async(dispatch_get_main_queue()) { self.tableView.reloadData() }
@@ -53,7 +53,9 @@ class CoursesViewController: UITableViewController, NSURLSessionDataDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
+        let nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
+        // Load the custom table view cell
+        tableView.registerNib(nib, forCellReuseIdentifier: "CustomTableViewCell")
     }
 
     // MARK: UITableViewController methods
@@ -63,9 +65,16 @@ class CoursesViewController: UITableViewController, NSURLSessionDataDelegate {
 
     override func tableView(tableView: UITableView!,
         cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("CustomTableViewCell", forIndexPath: indexPath) as CustomTableViewCell
             let course = courses[indexPath.row] as NSDictionary
-            cell.textLabel.text = course["title"] as String
+            let courseTitle = course["title"] as String
+
+            // Try to find the next start date for the course (Chapter 21 Gold Challenge)
+            let upcomingTimes = (course["upcoming"] as NSArray).objectAtIndex(0) as NSDictionary
+            let startDate = upcomingTimes["start_date"] as String
+
+            cell.titleLabel.text = courseTitle
+            cell.upcomingLabel.text = "Upcoming on: \(startDate)"
 
             return cell
     }
