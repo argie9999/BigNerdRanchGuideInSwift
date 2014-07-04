@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D2D7C7F1966373D0075A952 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2D7C7E1966373D0075A952 /* WebViewController.swift */; };
 		3D71A81619651B7F0017D523 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D71A81519651B7F0017D523 /* AppDelegate.swift */; };
 		3D71A81819651B7F0017D523 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D71A81719651B7F0017D523 /* Images.xcassets */; };
 		3D71A82419651B7F0017D523 /* NerdfeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D71A82319651B7F0017D523 /* NerdfeedTests.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D2D7C7E1966373D0075A952 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebViewController.swift; path = Nerdfeed/WebViewController.swift; sourceTree = "<group>"; };
 		3D71A81019651B7F0017D523 /* Nerdfeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerdfeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D71A81419651B7F0017D523 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D71A81519651B7F0017D523 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 		3D71A80719651B7F0017D523 = {
 			isa = PBXGroup;
 			children = (
+				3D2D7C7E1966373D0075A952 /* WebViewController.swift */,
 				3D71A81219651B7F0017D523 /* Nerdfeed */,
 				3D71A82019651B7F0017D523 /* NerdfeedTests */,
 				3D71A81119651B7F0017D523 /* Products */,
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D71A81619651B7F0017D523 /* AppDelegate.swift in Sources */,
+				3D2D7C7F1966373D0075A952 /* WebViewController.swift in Sources */,
 				3D71A82E19651C5D0017D523 /* CoursesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +387,7 @@
 				3D71A82919651B7F0017D523 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D71A82A19651B7F0017D523 /* Build configuration list for PBXNativeTarget "NerdfeedTests" */ = {
 			isa = XCConfigurationList;
@@ -391,6 +396,7 @@
 				3D71A82C19651B7F0017D523 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

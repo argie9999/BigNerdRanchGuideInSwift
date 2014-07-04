@@ -10,21 +10,22 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-                            
+
     var window: UIWindow?
 
     func application(application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool
-    {
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        // Override point for customization after application launch.
-        let cvc = CoursesViewController(style: .Plain)
-        let navController = UINavigationController(rootViewController: cvc)
-        window!.rootViewController = navController
+        didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+            window = UIWindow(frame: UIScreen.mainScreen().bounds)
+            // Override point for customization after application launch.
+            let cvc = CoursesViewController(style: .Plain)
+            let wvc = WebViewController()
+            cvc.webViewController = wvc
+            let navController = UINavigationController(rootViewController: cvc)
+            window!.rootViewController = navController
 
-        window!.backgroundColor = UIColor.whiteColor()
-        window!.makeKeyAndVisible()
+            window!.backgroundColor = UIColor.whiteColor()
+            window!.makeKeyAndVisible()
 
-        return true
+            return true
     }
 }

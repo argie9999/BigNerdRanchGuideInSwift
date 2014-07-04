@@ -12,14 +12,14 @@ class CoursesViewController: UITableViewController {
 
     var session: NSURLSession?
     var courses: NSArray
+    var webViewController: WebViewController?
 
     init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         courses = []
         super.init(nibName: nil, bundle: nil)
     }
 
-    convenience init(style: UITableViewStyle)
-    {
+    convenience init(style: UITableViewStyle) {
         self.init(nibName: nil, bundle: nil)
 
         let config = NSURLSessionConfiguration.defaultSessionConfiguration()
@@ -29,8 +29,7 @@ class CoursesViewController: UITableViewController {
         fetchFeed()
     }
 
-    func fetchFeed()
-    {
+    func fetchFeed() {
         if session {
             let requestString = "http://bookapi.bignerdranch.com/courses.json"
             let url = NSURL(string: requestString)
@@ -49,26 +48,23 @@ class CoursesViewController: UITableViewController {
         }
     }
 
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier: "UITableViewCell")
     }
 
     // MARK: UITableViewController methods
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
-    {
+    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return courses.count
     }
 
     override func tableView(tableView: UITableView!,
-        cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
-    {
-        let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
-        let course = courses[indexPath.row] as NSDictionary
-        cell.textLabel.text = course["title"] as String
+        cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+            let cell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
+            let course = courses[indexPath.row] as NSDictionary
+            cell.textLabel.text = course["title"] as String
 
-        return cell
+            return cell
     }
 }
