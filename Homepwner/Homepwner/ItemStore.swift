@@ -9,11 +9,11 @@ extension Array {
     }
 }
 
-class ItemStore {
+class ItemStore: NSObject {
 
-    @lazy var privateItems = Item[]()
+    var privateItems = Item[]()
     var allItems: Item[] { return privateItems }
-    @lazy var allAssetTypes = Item[]()
+    var allAssetTypes = Item[]()
     var context: NSManagedObjectContext?
     var model: NSManagedObjectModel
 
@@ -28,9 +28,9 @@ class ItemStore {
 
     init() {
         // Read in Homepwner.xcdamamodeld
-
         model = NSManagedObjectModel.mergedModelFromBundles(nil)
         let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
+        super.init()
 
         // Where does the SQLite file fo?
         let path = itemArchivePath()
@@ -50,7 +50,7 @@ class ItemStore {
         loadAllItems()
     }
 
-    func createItem() -> Item {
+    func createItem() -> Item? {
         var order: Double
 
         if allItems.count == 0 {
@@ -61,11 +61,18 @@ class ItemStore {
         }
         println("Adding after \(privateItems.count) items. Order: \(order)")
 
-        let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: context) as Item
-        item.orderingValue = order
+        let result : AnyObject = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: context)
 
-        privateItems += item
-        return item
+        if let item = result as? Item {
+            item.orderingValue = order
+
+            item.serialNumber = ""
+            item.itemName = ""
+
+            privateItems += item
+            return item
+        }
+        return nil
     }
 
     func removeItem(item: Item) {
@@ -140,6 +147,7 @@ class ItemStore {
     }
 
     func loadAllItems() {
+        println("In loadAllItems")
         let request = NSFetchRequest()
         let entity = NSEntityDescription.entityForName("Item", inManagedObjectContext: context)
         request.entity = entity

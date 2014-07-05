@@ -13,7 +13,7 @@ import CoreData
 class Item: NSManagedObject {
     @NSManaged var itemName: String
     @NSManaged var serialNumber: String
-    @NSManaged var valueInDollars: Int
+    @NSManaged var valueInDollars: Double
     @NSManaged var dateCreated: NSDate
     @NSManaged var itemKey: String?
     @NSManaged var thumbnail: UIImage?

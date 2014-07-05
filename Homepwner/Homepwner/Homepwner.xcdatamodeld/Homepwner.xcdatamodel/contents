@@ -11,11 +11,11 @@
         <attribute name="orderingValue" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="serialNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="thumbnail" optional="YES" attributeType="Transformable" valueTransformerName="ImageTransformer" syncable="YES"/>
-        <attribute name="valueInDollars" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="valueInDollars" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <relationship name="assetType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AssetType" inverseName="items" inverseEntity="AssetType" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-3438" positionY="-1521" width="315" height="163"/>
         <element name="AssetType" positionX="-3330" positionY="-1449" width="128" height="73"/>
+        <element name="Item" positionX="-3438" positionY="-1521" width="315" height="165"/>
     </elements>
 </model>
