@@ -1,8 +1,21 @@
 import Foundation
+import CoreData
+
+extension Array {
+    var last: T {
+        get {
+            return self[endIndex - 1]
+        }
+    }
+}
 
 class ItemStore {
-    var privateItems = Item[]()
+
+    @lazy var privateItems = Item[]()
     var allItems: Item[] { return privateItems }
+    @lazy var allAssetTypes = Item[]()
+    var context: NSManagedObjectContext?
+    var model: NSManagedObjectModel
 
     // Thread safe Singleton
     // Bronze challenge: Make sharedStore thread-safe.
@@ -13,21 +26,45 @@ class ItemStore {
         return Static.instance
     }
 
-    init () {
-        let archivedItems : AnyObject? = NSKeyedUnarchiver.unarchiveObjectWithFile(itemArchivePath())
+    init() {
+        // Read in Homepwner.xcdamamodeld
 
-        if archivedItems {
-            privateItems = archivedItems as Item[]
+        model = NSManagedObjectModel.mergedModelFromBundles(nil)
+        let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
+
+        // Where does the SQLite file fo?
+        let path = itemArchivePath()
+        let storeURL = NSURL(fileURLWithPath: path)
+        var error: NSError? = nil
+
+        if !psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL,
+            options: nil, error: &error)
+        {
+            let ex = NSException(name: "OpenFailure", reason: error!.localizedDescription,
+                userInfo: nil)
+            ex.raise()
         }
-        else {
-            privateItems = Item[]()
-        }
+        context = NSManagedObjectContext()
+        context!.persistentStoreCoordinator = psc
+
+        loadAllItems()
     }
 
     func createItem() -> Item {
-        let item = Item()
-        privateItems.append(item)
+        var order: Double
 
+        if allItems.count == 0 {
+            order = 1.0
+        }
+        else {
+            order = privateItems.last.orderingValue + 1.0
+        }
+        println("Adding after \(privateItems.count) items. Order: \(order)")
+
+        let item = NSEntityDescription.insertNewObjectForEntityForName("Item", inManagedObjectContext: context) as Item
+        item.orderingValue = order
+
+        privateItems += item
         return item
     }
 
@@ -35,6 +72,8 @@ class ItemStore {
         if let imageKey = item.itemKey {
             ImageStore.sharedStore.dictionary.removeValueForKey(imageKey)
         }
+
+        context!.deleteObject(item)
 
         let indexOfItem = privateItems.indexOf() { $0 == item }
         if let index = indexOfItem {
@@ -47,10 +86,36 @@ class ItemStore {
         if fromIndex == toIndex {
             return
         }
+
         let item = privateItems[fromIndex]
         println("Moving item from row:\(fromIndex) to row:\(toIndex)")
         privateItems.removeAtIndex(fromIndex)
         privateItems.insert(item, atIndex: toIndex)
+
+        // Computing a new orderValue for the object that was moved
+        var lowerBound = 0.0
+
+        // Is there an object before it in the array?
+        if toIndex > 0 {
+            lowerBound = privateItems[toIndex - 1].orderingValue
+        }
+        else {
+            lowerBound = privateItems[1].orderingValue - 2.0
+        }
+
+        var upperBound = 0.0
+
+        // Is there an object after it in the array?
+        if toIndex < privateItems.count - 1 {
+            upperBound = privateItems[toIndex + 1].orderingValue
+        }
+        else {
+            upperBound = privateItems[toIndex - 1].orderingValue + 2.0
+        }
+
+        let newOrderValue = (lowerBound + upperBound) / 2.0
+        println("Moving to order \(newOrderValue)")
+        item.orderingValue = newOrderValue
     }
 
     // MARK: Archiving related methods
@@ -61,12 +126,34 @@ class ItemStore {
     func itemArchivePath() -> String {
         let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
 
-        return path.stringByAppendingPathComponent("items.archive")
+        return path.stringByAppendingPathComponent("store.data")
     }
 
     func saveChanges() -> Bool {
-        let path = itemArchivePath()
+        var error: NSError?
+        let success = context!.save(&error)
+        if !success {
+            println("Error saving; \(error!.localizedDescription)")
+        }
 
-        return NSKeyedArchiver.archiveRootObject(privateItems, toFile: path)
+        return success
+    }
+
+    func loadAllItems() {
+        let request = NSFetchRequest()
+        let entity = NSEntityDescription.entityForName("Item", inManagedObjectContext: context)
+        request.entity = entity
+
+        let sd = [NSSortDescriptor(key: "orderingValue", ascending: true)]
+        request.sortDescriptors = sd
+
+        var error: NSError?
+        let result = context!.executeFetchRequest(request, error: &error)
+        if !result {
+            let ex = NSException(name: "Fetch failed", reason: "\(error!.localizedDescription)", userInfo: nil)
+            ex.raise()
+        }
+
+        privateItems = result as Item[]
     }
 }
