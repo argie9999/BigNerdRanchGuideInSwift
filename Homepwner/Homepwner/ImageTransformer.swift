@@ -8,6 +8,7 @@
 
 import UIKit
 
+@objc(ImageTransformer)
 class ImageTransformer: NSValueTransformer {
 
     func transformedValueClass() -> AnyClass! {
