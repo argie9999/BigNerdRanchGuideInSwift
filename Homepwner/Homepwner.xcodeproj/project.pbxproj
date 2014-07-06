@@ -23,6 +23,7 @@
 		3DB384161953CDA900C14E20 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB384151953CDA900C14E20 /* Images.xcassets */; };
 		3DB384221953CDAA00C14E20 /* HomepwnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB384211953CDAA00C14E20 /* HomepwnerTests.swift */; };
 		3DB3842C1953CE6C00C14E20 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */; };
+		3DB65F411968F92F00A5EAA0 /* AssetTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB65F401968F92F00A5EAA0 /* AssetTypeViewController.swift */; };
 		3DD1CE2E1957995C00DC5C94 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */; };
 		3DD1CE2F1957995C00DC5C94 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */; };
 		3DD1CE311957ACAD00DC5C94 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */; };
@@ -59,6 +60,7 @@
 		3DB384201953CDAA00C14E20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DB384211953CDAA00C14E20 /* HomepwnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepwnerTests.swift; sourceTree = "<group>"; };
 		3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		3DB65F401968F92F00A5EAA0 /* AssetTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetTypeViewController.swift; sourceTree = "<group>"; };
 		3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				3DB384131953CDA900C14E20 /* AppDelegate.swift */,
 				3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */,
+				3DB65F401968F92F00A5EAA0 /* AssetTypeViewController.swift */,
 				3D81BEA3195ABD1C0028EE23 /* CrosshairView.swift */,
 				3D5470A91962497100759EAD /* DarkPopoverBackgroundView.swift */,
 				3DB34A7F19582327005768CE /* DateViewController.swift */,
@@ -255,6 +258,7 @@
 				3DD1CE311957ACAD00DC5C94 /* ArrayExtensions.swift in Sources */,
 				3DB34A8119582327005768CE /* DateViewController.swift in Sources */,
 				3D7A2DE11962BCF9006449D5 /* ItemCell.swift in Sources */,
+				3DB65F411968F92F00A5EAA0 /* AssetTypeViewController.swift in Sources */,
 				3D173DC7196772E80049C5E6 /* Item.swift in Sources */,
 				3D917A65195A50F100753029 /* ImageStore.swift in Sources */,
 				3D81BEA4195ABD1C0028EE23 /* CrosshairView.swift in Sources */,

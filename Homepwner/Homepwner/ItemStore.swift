@@ -11,11 +11,16 @@ extension Array {
 
 class ItemStore: NSObject {
 
+    // MARK: Stored properties
     var privateItems = Item[]()
     var allItems: Item[] { return privateItems }
-    var allAssetTypes = Item[]()
+
+    // MARK: Core Data related properties
     var context: NSManagedObjectContext?
     var model: NSManagedObjectModel
+    @lazy var allAssetTypes = AnyObject[]()
+
+    // MARK: Initializers
 
     // Thread safe Singleton
     // Bronze challenge: Make sharedStore thread-safe.
@@ -49,6 +54,8 @@ class ItemStore: NSObject {
 
         loadAllItems()
     }
+
+    // MARK: Item methods
 
     func createItem() -> Item? {
         var order: Double
@@ -163,5 +170,46 @@ class ItemStore: NSObject {
         }
 
         privateItems = result as Item[]
+    }
+
+    func configAssetTypes() -> AnyObject[] {
+        let request = NSFetchRequest()
+        let entity = NSEntityDescription.entityForName("AssetType", inManagedObjectContext: context)
+        request.entity = entity
+
+        var error: NSError?
+        let result = context!.executeFetchRequest(request, error: &error)
+
+        if !result {
+            let ex = NSException(name: "Fetch failed", reason: "\(error!.localizedDescription)",
+                userInfo: nil)
+            ex.raise()
+        }
+
+        allAssetTypes = result.copy()
+
+        // Is this the first time the program is being run?
+        if allAssetTypes.count == 0 {
+
+            // Furniture asset
+            var type : AnyObject! = NSEntityDescription.insertNewObjectForEntityForName("AssetType",
+                inManagedObjectContext: context)
+            type.setValue("Furniture", forKey: "label")
+            allAssetTypes += type
+
+            // Jewelry asset
+            type = NSEntityDescription.insertNewObjectForEntityForName("AssetType",
+                inManagedObjectContext: context)
+            type.setValue("Jewelry", forKey: "label")
+            allAssetTypes += type
+
+            // Electronics asset
+            type = NSEntityDescription.insertNewObjectForEntityForName("AssetType",
+                inManagedObjectContext: context)
+            type.setValue("Electronics", forKey: "label")
+            allAssetTypes += type
+        }
+
+        return allAssetTypes
     }
 }

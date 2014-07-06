@@ -17,6 +17,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     @IBOutlet weak var trashItem: UIBarButtonItem
     @IBOutlet weak var valueField: UITextField
     @IBOutlet weak var valueLabel: UILabel
+    @IBOutlet weak var assetTypeButton: UIBarButtonItem
 
     // MARK: Stored properties
     var item: Item?
@@ -84,6 +85,12 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 }
             }
         }
+        var typeLabel = item!.assetType.valueForKey("label") as? String
+        if !typeLabel {
+            typeLabel = "None"
+        }
+
+        assetTypeButton.title = "Type: \(typeLabel)"
         updateFonts()
     }
 
@@ -282,6 +289,13 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         view.endEditing(true)
     }
 
+    @IBAction func showAssetTypePicker(sender: UIBarButtonItem) {
+        view.endEditing(true)
+        let avc = AssetTypeViewController()
+        avc.item = item
+
+        navigationController.pushViewController(avc, animated: true)
+    }
 
     // MARK: selectors
 
