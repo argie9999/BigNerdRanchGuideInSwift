@@ -143,7 +143,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             item!.itemName = nameField.text
             item!.serialNumber = serialNumberField.text
             if let value = valueField.text.toInt() {
-                item!.valueInDollars = Double(value)
+                item!.valueInDollars = value
             }
         }
     }
