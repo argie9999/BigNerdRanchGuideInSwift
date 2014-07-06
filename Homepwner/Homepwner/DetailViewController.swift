@@ -275,6 +275,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 println("Removing picture")
                 ImageStore.sharedStore.deleteImageForKey(self.item!.itemKey!)
                 self.item!.itemKey = nil
+                self.item!.thumbnail = nil
                 self.imageView.image = nil
                 self.trashItem.enabled = false
                 })

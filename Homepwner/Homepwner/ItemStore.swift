@@ -40,7 +40,7 @@ class ItemStore: NSObject {
         // Where does the SQLite file fo?
         let path = itemArchivePath()
         let storeURL = NSURL(fileURLWithPath: path)
-        var error: NSError? = nil
+        var error: NSError?
 
         if !psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL,
             options: nil, error: &error)
@@ -189,7 +189,6 @@ class ItemStore: NSObject {
 
         // Is this the first time the program is being run?
         if privateAssets.count == 0 {
-
             // Furniture asset
             var type : AnyObject! = NSEntityDescription.insertNewObjectForEntityForName("AssetType",
                 inManagedObjectContext: context)
