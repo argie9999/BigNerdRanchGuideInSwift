@@ -62,19 +62,6 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9G-EF-lPH">
-                    <rect key="frame" x="135" y="231" width="210" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="210" id="rvQ-JC-xri"/>
-                    </constraints>
-                    <state key="normal" title="Change Date">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <variation key="heightClass=regular-widthClass=compact"/>
-                    <connections>
-                        <action selector="changeDate:" destination="-1" eventType="touchUpInside" id="tbg-Kv-sJY"/>
-                    </connections>
-                </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ys-bd-uug">
                     <rect key="frame" x="219" y="211" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -122,6 +109,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                     </variation>
                 </toolbar>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9G-EF-lPH">
+                    <rect key="frame" x="135" y="231" width="210" height="30"/>
+                    <state key="normal" title="Change Date">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="heightClass=regular-widthClass=compact"/>
+                    <connections>
+                        <action selector="changeDate:" destination="-1" eventType="touchUpInside" id="tbg-Kv-sJY"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <gestureRecognizers/>
@@ -130,6 +127,8 @@
                 <constraint firstAttribute="trailing" secondItem="H4w-sp-CNZ" secondAttribute="trailing" constant="20" id="1XS-fQ-I16"/>
                 <constraint firstItem="4tP-KF-78L" firstAttribute="baseline" secondItem="H4w-sp-CNZ" secondAttribute="baseline" id="1eW-Ax-a32"/>
                 <constraint firstItem="4tP-KF-78L" firstAttribute="width" secondItem="qZx-H6-IGI" secondAttribute="width" id="1l1-kO-hiV"/>
+                <constraint firstAttribute="centerX" secondItem="M9G-EF-lPH" secondAttribute="centerX" id="4m6-EV-qC6"/>
+                <constraint firstItem="M9G-EF-lPH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="7aT-1R-rFG"/>
                 <constraint firstItem="4tP-KF-78L" firstAttribute="top" secondItem="qZx-H6-IGI" secondAttribute="bottom" constant="25" id="8fD-Vf-vp2"/>
                 <constraint firstItem="4tP-KF-78L" firstAttribute="width" secondItem="Hen-78-yxv" secondAttribute="width" id="AlZ-l2-NDr"/>
                 <constraint firstItem="TKz-yf-JxW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Big-aC-acE"/>
@@ -140,10 +139,12 @@
                 <constraint firstAttribute="bottom" secondItem="TKz-yf-JxW" secondAttribute="bottom" id="LYl-WQ-oyi"/>
                 <constraint firstItem="g39-1S-21d" firstAttribute="leading" secondItem="qZx-H6-IGI" secondAttribute="trailing" constant="10" id="MHB-2P-KS2"/>
                 <constraint firstItem="qZx-H6-IGI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="QO5-Ko-Uhg"/>
+                <constraint firstItem="M9G-EF-lPH" firstAttribute="top" secondItem="3Ys-bd-uug" secondAttribute="bottom" constant="14.5" id="RZu-mg-cO6"/>
                 <constraint firstItem="qZx-H6-IGI" firstAttribute="baseline" secondItem="g39-1S-21d" secondAttribute="baseline" id="VBh-FQ-vuO"/>
                 <constraint firstAttribute="bottom" secondItem="TKz-yf-JxW" secondAttribute="bottom" id="VS8-of-rWF"/>
                 <constraint firstItem="4tP-KF-78L" firstAttribute="leading" secondItem="qZx-H6-IGI" secondAttribute="leading" id="Vct-2L-H8r"/>
                 <constraint firstItem="Hen-78-yxv" firstAttribute="baseline" secondItem="pCC-IP-Jw6" secondAttribute="baseline" id="Wab-SN-wse"/>
+                <constraint firstAttribute="trailing" secondItem="M9G-EF-lPH" secondAttribute="trailing" constant="20" id="XYf-JQ-Est"/>
                 <constraint firstAttribute="trailing" secondItem="g39-1S-21d" secondAttribute="trailing" constant="20" id="YTp-K6-myn"/>
                 <constraint firstItem="Hen-78-yxv" firstAttribute="top" secondItem="4tP-KF-78L" secondAttribute="bottom" constant="24" id="Zt0-4k-kkb"/>
                 <constraint firstAttribute="centerX" secondItem="M9G-EF-lPH" secondAttribute="centerX" id="bmD-X5-iPk"/>
@@ -163,6 +164,10 @@
                 <mask key="constraints">
                     <exclude reference="1l1-kO-hiV"/>
                     <exclude reference="AlZ-l2-NDr"/>
+                    <exclude reference="4m6-EV-qC6"/>
+                    <exclude reference="7aT-1R-rFG"/>
+                    <exclude reference="RZu-mg-cO6"/>
+                    <exclude reference="XYf-JQ-Est"/>
                     <exclude reference="Big-aC-acE"/>
                     <exclude reference="LYl-WQ-oyi"/>
                     <exclude reference="fRx-Pe-N8y"/>
@@ -172,6 +177,12 @@
                 <mask key="constraints">
                     <include reference="1l1-kO-hiV"/>
                     <include reference="AlZ-l2-NDr"/>
+                    <include reference="4m6-EV-qC6"/>
+                    <include reference="7aT-1R-rFG"/>
+                    <include reference="RZu-mg-cO6"/>
+                    <include reference="XYf-JQ-Est"/>
+                    <exclude reference="bmD-X5-iPk"/>
+                    <exclude reference="ou0-Yy-VC9"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
