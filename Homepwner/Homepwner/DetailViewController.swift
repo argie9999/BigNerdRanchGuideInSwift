@@ -84,13 +84,12 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                     trashItem.enabled = true
                 }
             }
+//            var typeLabel = item!.assetType.valueForKey("label") as? String
+//            if !typeLabel {
+//                typeLabel = "None"
+//            }
+//            assetTypeButton.title = "Type: \(typeLabel)"
         }
-        var typeLabel = item!.assetType.valueForKey("label") as? String
-        if !typeLabel {
-            typeLabel = "None"
-        }
-
-        assetTypeButton.title = "Type: \(typeLabel)"
         updateFonts()
     }
 
@@ -143,7 +142,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             item!.itemName = nameField.text
             item!.serialNumber = serialNumberField.text
             if let value = valueField.text.toInt() {
-                item!.valueInDollars = value
+                item!.valueInDollars = CInt(value)
             }
         }
     }

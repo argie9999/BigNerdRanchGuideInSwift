@@ -70,7 +70,11 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         }
         cell.valueLabel.text = String(item.valueInDollars)
 
-        cell.thumbnailView.image = item.thumbnail
+        let img = item.thumbnail as UIImage?
+
+        if img {
+            cell.thumbnailView.image = img
+        }
 
         weak var weakCell = cell
         cell.actionBlock = {
