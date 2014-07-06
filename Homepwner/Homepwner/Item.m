@@ -22,7 +22,7 @@
 - (void)setThumbnailFromImage:(UIImage *)image
 {
     CGSize origImageSize = image.size;
-    CGRect newRect = CGRectMake(0, 0, 40, 0);
+    CGRect newRect = CGRectMake(0, 0, 40, 40);
     float ratio = MAX(newRect.size.width / origImageSize.width,
                       newRect.size.height / origImageSize.height);
 
