@@ -17,48 +17,16 @@
             <subviews>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bOP-0u-qNr">
                     <rect key="frame" x="-160" y="-81" width="320" height="162"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="440" id="G9C-25-xKF"/>
-                        <constraint firstAttribute="height" constant="162" id="PdK-fj-qNQ"/>
-                    </constraints>
                     <date key="date" timeIntervalSinceReferenceDate="425206605.24073201">
                         <!--<__NSDate Class=2014-06-23 08:56:45 +0000 timeInterval=425206605.240732 ISO8601=2014-06-23T01:56:45.241-0700>-->
                     </date>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="G9C-25-xKF"/>
-                            <exclude reference="PdK-fj-qNQ"/>
-                        </mask>
-                    </variation>
-                    <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="G9C-25-xKF"/>
-                            <include reference="PdK-fj-qNQ"/>
-                        </mask>
-                    </variation>
                 </datePicker>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNJ-1C-23R">
                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="Bpo-kz-Zwr"/>
-                        <constraint firstAttribute="width" constant="440" id="IG5-hg-hD3"/>
-                    </constraints>
                     <state key="normal" title="Confirm Change">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="Bpo-kz-Zwr"/>
-                            <exclude reference="IG5-hg-hD3"/>
-                        </mask>
-                    </variation>
                     <variation key="heightClass=regular-widthClass=compact"/>
-                    <variation key="heightClass=regular-widthClass=compact">
-                        <mask key="constraints">
-                            <include reference="Bpo-kz-Zwr"/>
-                            <include reference="IG5-hg-hD3"/>
-                        </mask>
-                    </variation>
                     <connections>
                         <action selector="confirmDateChange:" destination="-1" eventType="touchUpInside" id="6rj-Vq-RCr"/>
                     </connections>
@@ -66,9 +34,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="centerX" secondItem="bOP-0u-qNr" secondAttribute="centerX" id="2ih-Nq-jeO"/>
                 <constraint firstItem="QNJ-1C-23R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="EYi-bV-qia"/>
                 <constraint firstItem="bOP-0u-qNr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="95" id="Hha-r7-ST3"/>
                 <constraint firstAttribute="centerX" secondItem="QNJ-1C-23R" secondAttribute="centerX" id="T8w-VZ-T3T"/>
+                <constraint firstAttribute="centerX" secondItem="QNJ-1C-23R" secondAttribute="centerX" id="TBo-74-pOj"/>
                 <constraint firstAttribute="trailing" secondItem="QNJ-1C-23R" secondAttribute="trailing" constant="20" id="aKn-jp-uh5"/>
                 <constraint firstAttribute="bottom" secondItem="QNJ-1C-23R" secondAttribute="bottom" constant="118" id="ckv-GB-STI"/>
                 <constraint firstAttribute="centerX" secondItem="bOP-0u-qNr" secondAttribute="centerX" id="hwl-Uf-TsQ"/>
@@ -85,34 +55,38 @@
                     <exclude reference="QNJ-1C-23R"/>
                 </mask>
                 <mask key="constraints">
+                    <exclude reference="2ih-Nq-jeO"/>
                     <exclude reference="Hha-r7-ST3"/>
                     <exclude reference="hwl-Uf-TsQ"/>
                     <exclude reference="m2p-Xx-qKY"/>
                     <exclude reference="qLh-J1-uaF"/>
                     <exclude reference="EYi-bV-qia"/>
                     <exclude reference="T8w-VZ-T3T"/>
+                    <exclude reference="TBo-74-pOj"/>
                     <exclude reference="aKn-jp-uh5"/>
                     <exclude reference="ckv-GB-STI"/>
                     <exclude reference="qPX-3Y-eEg"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
-                <mask key="subviews">
-                    <include reference="bOP-0u-qNr"/>
-                    <include reference="QNJ-1C-23R"/>
-                </mask>
-            </variation>
-            <variation key="heightClass=regular-widthClass=compact">
                 <mask key="constraints">
+                    <include reference="2ih-Nq-jeO"/>
                     <include reference="Hha-r7-ST3"/>
                     <include reference="hwl-Uf-TsQ"/>
                     <include reference="m2p-Xx-qKY"/>
                     <include reference="qLh-J1-uaF"/>
                     <include reference="EYi-bV-qia"/>
                     <include reference="T8w-VZ-T3T"/>
+                    <include reference="TBo-74-pOj"/>
                     <include reference="aKn-jp-uh5"/>
                     <include reference="ckv-GB-STI"/>
                     <include reference="qPX-3Y-eEg"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="bOP-0u-qNr"/>
+                    <include reference="QNJ-1C-23R"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="370" y="148"/>
