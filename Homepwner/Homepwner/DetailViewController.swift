@@ -84,11 +84,15 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                     trashItem.enabled = true
                 }
             }
-//            var typeLabel = item!.assetType.valueForKey("label") as? String
-//            if !typeLabel {
-//                typeLabel = "None"
-//            }
-//            assetTypeButton.title = "Type: \(typeLabel)"
+            var typeLabel: String
+            var labelText: AnyObject! = item!.assetType?.valueForKey("label")
+            if labelText {
+                typeLabel = labelText as String
+            }
+            else {
+                typeLabel = "None"
+            }
+            assetTypeButton.title = "Type: \(typeLabel)"
         }
         updateFonts()
     }
