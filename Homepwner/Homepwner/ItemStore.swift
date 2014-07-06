@@ -18,7 +18,7 @@ class ItemStore: NSObject {
     // MARK: Core Data related properties
     var context: NSManagedObjectContext?
     var model: NSManagedObjectModel
-    @lazy var allAssetTypes = AnyObject[]()
+    var privateAssets = AnyObject[]()
 
     // MARK: Initializers
 
@@ -172,7 +172,7 @@ class ItemStore: NSObject {
         privateItems = result as Item[]
     }
 
-    func configAssetTypes() -> AnyObject[] {
+    func allAssetTypes() -> AnyObject[] {
         let request = NSFetchRequest()
         let entity = NSEntityDescription.entityForName("AssetType", inManagedObjectContext: context)
         request.entity = entity
@@ -186,30 +186,30 @@ class ItemStore: NSObject {
             ex.raise()
         }
 
-        allAssetTypes = result.copy()
+        privateAssets = result.copy()
 
         // Is this the first time the program is being run?
-        if allAssetTypes.count == 0 {
+        if privateAssets.count == 0 {
 
             // Furniture asset
             var type : AnyObject! = NSEntityDescription.insertNewObjectForEntityForName("AssetType",
                 inManagedObjectContext: context)
             type.setValue("Furniture", forKey: "label")
-            allAssetTypes += type
+            privateAssets += type
 
             // Jewelry asset
             type = NSEntityDescription.insertNewObjectForEntityForName("AssetType",
                 inManagedObjectContext: context)
             type.setValue("Jewelry", forKey: "label")
-            allAssetTypes += type
+            privateAssets += type
 
             // Electronics asset
             type = NSEntityDescription.insertNewObjectForEntityForName("AssetType",
                 inManagedObjectContext: context)
             type.setValue("Electronics", forKey: "label")
-            allAssetTypes += type
+            privateAssets += type
         }
 
-        return allAssetTypes
+        return privateAssets
     }
 }
