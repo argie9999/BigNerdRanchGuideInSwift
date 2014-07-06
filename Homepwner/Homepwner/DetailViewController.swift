@@ -85,7 +85,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 }
             }
             var typeLabel: String
-            var labelText: AnyObject! = item!.assetType?.valueForKey("label")
+            var labelText: AnyObject? = item!.assetType?.valueForKey("label")
             if labelText {
                 typeLabel = labelText as String
             }
