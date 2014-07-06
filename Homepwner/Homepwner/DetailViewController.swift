@@ -24,6 +24,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     var dismissBlock: (() -> ())?
     var dateFormatter = DateFormatter
     var imagePickerPopover: UIPopoverController?
+    var assetPickerPopover: UIPopoverController?
 
     init(item: Item) {
         NSException(name: "Wrong initializer", reason: "Use init(isNew:)", userInfo: nil)
@@ -183,7 +184,12 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     // Mark: UIPopoverControllerDelegate
     func popoverControllerDidDismissPopover(popoverController: UIPopoverController) {
         println("User dismissed popover")
-        imagePickerPopover = nil
+        if imagePickerPopover {
+            imagePickerPopover = nil
+        }
+        if assetPickerPopover {
+            assetPickerPopover = nil
+        }
     }
 
     // MARK: Orientation related methods
@@ -298,7 +304,31 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         let avc = AssetTypeViewController()
         avc.item = item
 
-        navigationController.pushViewController(avc, animated: true)
+        // Bronze challenge; present the AssetTypeViewController in 
+        // a PopoverController if the device is an iPad
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            assetPickerPopover = UIPopoverController(contentViewController: avc)
+            assetPickerPopover!.delegate = self
+            avc.dismissBlock = {
+                self.assetPickerPopover!.dismissPopoverAnimated(true)
+                self.assetPickerPopover = nil
+                var typeLabel: String
+                var labelText: AnyObject? = self.item!.assetType?.valueForKey("label")
+                if labelText {
+                    typeLabel = labelText as String
+                }
+                else {
+                    typeLabel = "None"
+                }
+                self.assetTypeButton.title = "Type: \(typeLabel)"
+            }
+            assetPickerPopover!.presentPopoverFromBarButtonItem(sender,
+                permittedArrowDirections: .Any,
+                animated: true)
+        }
+        else {
+            navigationController.pushViewController(avc, animated: true)
+        }
     }
 
     // MARK: selectors

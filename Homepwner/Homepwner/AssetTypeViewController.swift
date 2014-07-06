@@ -9,9 +9,10 @@
 import UIKit
 import CoreData
 
-class AssetTypeViewController: UITableViewController {
+class AssetTypeViewController: UITableViewController, UIPopoverControllerDelegate {
 
     var item: Item?
+    var dismissBlock: (() -> ())?
 
     convenience init() {
         self.init(style: .Plain)
@@ -58,7 +59,13 @@ class AssetTypeViewController: UITableViewController {
         let allAssets = ItemStore.sharedStore.allAssetTypes()
         let assetType = allAssets[indexPath.row] as NSManagedObject
         item!.assetType = assetType
-
-        navigationController.popViewControllerAnimated(true)
+        if UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+            navigationController.popViewControllerAnimated(true)
+        }
+        else {
+            if dismissBlock {
+                dismissBlock!()
+            }
+        }
     }
 }
