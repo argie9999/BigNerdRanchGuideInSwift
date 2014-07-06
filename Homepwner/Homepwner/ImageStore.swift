@@ -47,7 +47,7 @@ class ImageStore: NSObject {
             result = UIImage(contentsOfFile: imagePath)
 
             if result {
-                println("Found image at \(imagePath)")
+                println("Image was found in file system.")
                 dictionary[key] = result
             }
             else {

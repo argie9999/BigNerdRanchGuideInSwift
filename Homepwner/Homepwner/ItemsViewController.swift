@@ -134,8 +134,8 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
     }
 
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        println("Selected row:\(indexPath.row)")
         let items = ItemStore.sharedStore.allItems
+        println("Selected row:\(indexPath.row), item order: \(items[indexPath.row].orderingValue)")
         let selectedItem = items[indexPath.row]
         let detailViewController = DetailViewController(isNew: false)
         detailViewController.item = selectedItem

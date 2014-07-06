@@ -87,10 +87,9 @@ class ItemStore: NSObject {
             ImageStore.sharedStore.dictionary.removeValueForKey(imageKey)
         }
 
-        context!.deleteObject(item)
-
-        let indexOfItem = privateItems.indexOf() { $0 == item }
+        let indexOfItem = privateItems.indexOf() { $0 === item }
         if let index = indexOfItem {
+            context!.deleteObject(item)
             privateItems.removeAtIndex(index)
             println("Removed item at index \(index)")
         }
@@ -128,7 +127,7 @@ class ItemStore: NSObject {
         }
 
         let newOrderValue = (lowerBound + upperBound) / 2.0
-        println("Moving to order \(newOrderValue)")
+        println("Moving to order: \(newOrderValue)")
         item.orderingValue = newOrderValue
     }
 
