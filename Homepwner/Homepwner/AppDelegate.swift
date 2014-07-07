@@ -42,14 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-    func application(application: UIApplication!, shouldSaveApplicationState: Bool,
-        coder: NSCoder!) -> Bool
+    func application(application: UIApplication!,
+        shouldSaveApplicationState coder: NSCoder!) -> Bool
     {
         return true
     }
 
-    func application(application: UIApplication!, shouldRestoreApplicationState: Bool,
-        coder: NSCoder!) -> Bool
+    func application(application: UIApplication!,
+        shouldRestoreApplicationState coder: NSCoder!) -> Bool
     {
         return true
     }
