@@ -9,12 +9,18 @@ extension UILocalNotification {
     }
 }
 
-class ReminderViewController: UIViewController {
+class ReminderViewController: UIViewController, UIViewControllerRestoration {
+
     @IBOutlet weak var datePicker: UIDatePicker
+
     init() {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.title = "Reminder"
         tabBarItem.image = UIImage(named: "Time.png")
+
+        // Report ReminderViewController's restoration id
+        restorationIdentifier = NSStringFromClass(classForCoder)
+        restorationClass = classForCoder
     }
 
     override func viewDidLoad() {
@@ -34,5 +40,12 @@ class ReminderViewController: UIViewController {
         // Using the cool extension to UILocalNotification defined above.
         let note = UILocalNotification(alert: "Hypnotize me!", withDate: date)
         UIApplication.sharedApplication().scheduleLocalNotification(note)
+    }
+
+    // MARK: UIViewControllerRestoration protocol methods
+    class func viewControllerWithRestorationIdentifierPath(identifierComponents: AnyObject[]!,
+        coder: NSCoder!) -> UIViewController!
+    {
+        return ReminderViewController()
     }
 }

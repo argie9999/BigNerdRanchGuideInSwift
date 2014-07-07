@@ -9,11 +9,15 @@ extension UILabel {
     }
 }
 
-class HypnosisViewController: UIViewController, UITextFieldDelegate {
+class HypnosisViewController: UIViewController, UITextFieldDelegate, UIViewControllerRestoration {
     init() {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.title = "Hypnotize"
         tabBarItem.image = UIImage(named: "Hypno.png")
+
+        // Report HypnosisViewController's restoration id
+        restorationIdentifier = NSStringFromClass(classForCoder)
+        restorationClass = classForCoder
     }
 
     override func loadView() {
@@ -75,5 +79,12 @@ class HypnosisViewController: UIViewController, UITextFieldDelegate {
             motionEffect.maximumRelativeValue = 25
             messageLabel.addMotionEffect(motionEffect)
         }
+    }
+
+    // MARK: UIViewControllerRestoration protocol methods
+    class func viewControllerWithRestorationIdentifierPath(identifierComponents: AnyObject[]!,
+        coder: NSCoder!) -> UIViewController!
+    {
+        return HypnosisViewController()
     }
 }

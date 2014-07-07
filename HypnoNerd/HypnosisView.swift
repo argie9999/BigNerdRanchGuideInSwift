@@ -11,12 +11,18 @@ class HypnosisView: UIView {
         circleColor = UIColor.lightGrayColor()
         super.init(frame: frame)
         backgroundColor = UIColor.clearColor()
+
+        // Report the restoration identifier
+        restorationIdentifier = NSStringFromClass(classForCoder)
     }
 
     init(frame: CGRect) {
         circleColor = UIColor.lightGrayColor()
         super.init(frame: frame)
         backgroundColor = UIColor.clearColor()
+
+        // Report the restoration identifier
+        restorationIdentifier = NSStringFromClass(classForCoder)
     }
 
     override func drawRect(rect: CGRect) {
