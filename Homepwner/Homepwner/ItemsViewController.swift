@@ -1,7 +1,8 @@
 import UIKit
 
 class ItemsViewController: UITableViewController, UITableViewDelegate,
-    UITableViewDataSource, UIPopoverControllerDelegate, UIViewControllerRestoration
+    UITableViewDataSource, UIPopoverControllerDelegate, UIViewControllerRestoration,
+    UIDataSourceModelAssociation
 {
     var imagePopover: UIPopoverController?
 
@@ -49,6 +50,9 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         super.viewDidLoad()
         let nib = UINib(nibName: "ItemCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "ItemCell")
+
+        // Return to the previous scroll offset.
+        tableView.restorationIdentifier = "ItemsViewControllerView"
     }
 
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
@@ -178,10 +182,61 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         imagePopover = nil
     }
 
-    // MARK: UIViewControllerRestoration method
+    // MARK: UIViewControllerRestoration protocol methods
     class func viewControllerWithRestorationIdentifierPath(identifierComponents: AnyObject[]!,
         coder: NSCoder!) -> UIViewController!
     {
         return ItemsViewController()
+    }
+
+    override func encodeRestorableStateWithCoder(coder: NSCoder!) {
+        coder.encodeBool(editing, forKey: "TableViewEditing")
+
+        super.encodeRestorableStateWithCoder(coder)
+    }
+
+    override func decodeRestorableStateWithCoder(coder: NSCoder!) {
+        editing = coder.decodeBoolForKey("TableViewEditing")
+
+        super.decodeRestorableStateWithCoder(coder)
+    }
+
+    // MARK: UIDataSourceModelAssociation protocol methods
+    func modelIdentifierForElementAtIndexPath(idx: NSIndexPath!,
+        inView view: UIView!) -> String!
+    {
+        var identifier: String?
+
+        // Build fails when testing two optionals in DP 2 :(, will test again in DP 3.
+        if idx {
+            if view {
+                let item = ItemStore.sharedStore.allItems[idx.row]
+                identifier = item.itemKey
+            }
+        }
+
+        return identifier
+    }
+
+    func indexPathForElementWithModelIdentifier(identifier: String!,
+        inView view: UIView!) -> NSIndexPath!
+    {
+        var indexPath: NSIndexPath?
+
+        if identifier {
+            if view {
+                let items = ItemStore.sharedStore.allItems
+
+                for item in items {
+                    if identifier == item.itemKey {
+                        let row = items.indexOf() { $0 === item }
+                        indexPath = NSIndexPath(forRow: row!, inSection: 0)
+                        break
+                    }
+                }
+            }
+        }
+
+        return indexPath
     }
 }
