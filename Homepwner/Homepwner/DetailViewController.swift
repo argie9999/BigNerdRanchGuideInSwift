@@ -2,7 +2,8 @@ import UIKit
 
 let DateFormatter: NSDateFormatter? = nil
 class DetailViewController: UIViewController, UINavigationControllerDelegate,
-     UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverControllerDelegate
+    UIImagePickerControllerDelegate, UITextFieldDelegate, UIPopoverControllerDelegate,
+    UIViewControllerRestoration
 {
     // MARK: Outlets
     @IBOutlet weak var cameraButton: UIBarButtonItem
@@ -348,5 +349,15 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 println("Cancelling new item creation and asking to dismiss DetailViewController.")
             }
         }
+    }
+
+    // MARK: UIViewControllerRestoration method
+    class func viewControllerWithRestorationIdentifierPath(identifierComponents: AnyObject[]!,
+        coder: NSCoder!) -> UIViewController!
+    {
+        // If creating a new item, path array's count will be 3, otherwise 2.
+        let isNew = identifierComponents.count == 3 ? true : false
+
+        return DetailViewController(isNew: isNew)
     }
 }

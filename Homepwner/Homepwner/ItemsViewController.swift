@@ -1,7 +1,7 @@
 import UIKit
 
 class ItemsViewController: UITableViewController, UITableViewDelegate,
-    UITableViewDataSource, UIPopoverControllerDelegate
+    UITableViewDataSource, UIPopoverControllerDelegate, UIViewControllerRestoration
 {
     var imagePopover: UIPopoverController?
 
@@ -176,5 +176,12 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
     // MARK: UIPopoverController Delegate methods
     func popoverControllerDidDismissPopover(popoverController: UIPopoverController) {
         imagePopover = nil
+    }
+
+    // MARK: UIViewControllerRestoration method
+    class func viewControllerWithRestorationIdentifierPath(identifierComponents: AnyObject[]!,
+        coder: NSCoder!) -> UIViewController!
+    {
+        return ItemsViewController()
     }
 }
