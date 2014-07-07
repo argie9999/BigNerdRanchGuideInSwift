@@ -55,32 +55,32 @@
                     <exclude reference="QNJ-1C-23R"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="2ih-Nq-jeO"/>
-                    <exclude reference="Hha-r7-ST3"/>
-                    <exclude reference="hwl-Uf-TsQ"/>
-                    <exclude reference="m2p-Xx-qKY"/>
-                    <exclude reference="qLh-J1-uaF"/>
                     <exclude reference="EYi-bV-qia"/>
                     <exclude reference="T8w-VZ-T3T"/>
                     <exclude reference="TBo-74-pOj"/>
                     <exclude reference="aKn-jp-uh5"/>
                     <exclude reference="ckv-GB-STI"/>
                     <exclude reference="qPX-3Y-eEg"/>
+                    <exclude reference="2ih-Nq-jeO"/>
+                    <exclude reference="Hha-r7-ST3"/>
+                    <exclude reference="hwl-Uf-TsQ"/>
+                    <exclude reference="m2p-Xx-qKY"/>
+                    <exclude reference="qLh-J1-uaF"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
                 <mask key="constraints">
-                    <include reference="2ih-Nq-jeO"/>
-                    <include reference="Hha-r7-ST3"/>
-                    <include reference="hwl-Uf-TsQ"/>
-                    <include reference="m2p-Xx-qKY"/>
-                    <include reference="qLh-J1-uaF"/>
                     <include reference="EYi-bV-qia"/>
                     <include reference="T8w-VZ-T3T"/>
                     <include reference="TBo-74-pOj"/>
                     <include reference="aKn-jp-uh5"/>
                     <include reference="ckv-GB-STI"/>
                     <include reference="qPX-3Y-eEg"/>
+                    <include reference="2ih-Nq-jeO"/>
+                    <include reference="Hha-r7-ST3"/>
+                    <include reference="hwl-Uf-TsQ"/>
+                    <include reference="m2p-Xx-qKY"/>
+                    <include reference="qLh-J1-uaF"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">

@@ -23,9 +23,9 @@
 		3DB384221953CDAA00C14E20 /* HomepwnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB384211953CDAA00C14E20 /* HomepwnerTests.swift */; };
 		3DB3842C1953CE6C00C14E20 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */; };
 		3DB65F411968F92F00A5EAA0 /* AssetTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB65F401968F92F00A5EAA0 /* AssetTypeViewController.swift */; };
+		3DBFB9A2196A8976002AF2E0 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DBFB9A4196A8976002AF2E0 /* DetailViewController.xib */; };
 		3DCCE69219692E44007C5266 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCE69019692E44007C5266 /* Item.m */; };
 		3DD1CE2E1957995C00DC5C94 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */; };
-		3DD1CE2F1957995C00DC5C94 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */; };
 		3DD1CE311957ACAD00DC5C94 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +43,6 @@
 		3D173DB819675F340049C5E6 /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
 		3D173DBA1967628E0049C5E6 /* ImageTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTransformer.swift; sourceTree = "<group>"; };
 		3D25E7C019543935005CC519 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
-		3D33EFBD19611FD900CD44DA /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DateViewController.xib; sourceTree = "<group>"; };
 		3D5470A91962497100759EAD /* DarkPopoverBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkPopoverBackgroundView.swift; sourceTree = "<group>"; };
 		3D7A2DDE1962BCDE006449D5 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		3D7A2DE01962BCF9006449D5 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
@@ -60,11 +59,13 @@
 		3DB384211953CDAA00C14E20 /* HomepwnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepwnerTests.swift; sourceTree = "<group>"; };
 		3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		3DB65F401968F92F00A5EAA0 /* AssetTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetTypeViewController.swift; sourceTree = "<group>"; };
+		3DBFB9A5196A89DB002AF2E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DateViewController.xib; sourceTree = "<group>"; };
+		3DBFB9A6196A89DB002AF2E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		3DBFB9A9196A8AA6002AF2E0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DetailViewController.strings; sourceTree = "<group>"; };
 		3DCCE68F19692E43007C5266 /* Homepwner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Homepwner-Bridging-Header.h"; sourceTree = "<group>"; };
 		3DCCE69019692E44007C5266 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		3DCCE69119692E44007C5266 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,7 +116,7 @@
 				3DB34A7F19582327005768CE /* DateViewController.swift */,
 				3D33EFBE19611FD900CD44DA /* DateViewController.xib */,
 				3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */,
-				3DD1CE2D1957995C00DC5C94 /* DetailViewController.xib */,
+				3DBFB9A4196A8976002AF2E0 /* DetailViewController.xib */,
 				3DCCE68F19692E43007C5266 /* Homepwner-Bridging-Header.h */,
 				3D173DB719675F340049C5E6 /* Homepwner.xcdatamodeld */,
 				3DB384151953CDA900C14E20 /* Images.xcassets */,
@@ -220,6 +221,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 3DB384051953CDA900C14E20;
 			productRefGroup = 3DB3840F1953CDA900C14E20 /* Products */;
@@ -239,7 +241,7 @@
 			files = (
 				3D7A2DDF1962BCDE006449D5 /* ItemCell.xib in Resources */,
 				3DB384161953CDA900C14E20 /* Images.xcassets in Resources */,
-				3DD1CE2F1957995C00DC5C94 /* DetailViewController.xib in Resources */,
+				3DBFB9A2196A8976002AF2E0 /* DetailViewController.xib in Resources */,
 				3D33EFBC19611FD900CD44DA /* DateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,9 +300,18 @@
 		3D33EFBE19611FD900CD44DA /* DateViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3D33EFBD19611FD900CD44DA /* en */,
+				3DBFB9A5196A89DB002AF2E0 /* Base */,
 			);
 			name = DateViewController.xib;
+			sourceTree = "<group>";
+		};
+		3DBFB9A4196A8976002AF2E0 /* DetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3DBFB9A6196A89DB002AF2E0 /* Base */,
+				3DBFB9A9196A8AA6002AF2E0 /* es */,
+			);
+			name = DetailViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

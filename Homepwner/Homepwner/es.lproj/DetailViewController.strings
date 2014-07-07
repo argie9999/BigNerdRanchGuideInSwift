@@ -1,0 +1,18 @@
+
+/* Class = "IBUILabel"; text = "Label"; ObjectID = "3Ys-bd-uug"; */
+"3Ys-bd-uug.text" = "Label";
+
+/* Class = "IBUILabel"; text = "Serial"; ObjectID = "4tP-KF-78L"; */
+"4tP-KF-78L.text" = "Numéro de serie";
+
+/* Class = "IBUIBarButtonItem"; title = "Item"; ObjectID = "Gey-nl-2Vy"; */
+"Gey-nl-2Vy.title" = "Item";
+
+/* Class = "IBUILabel"; text = "Value"; ObjectID = "Hen-78-yxv"; */
+"Hen-78-yxv.text" = "Valor";
+
+/* Class = "IBUIButton"; normalTitle = "Change Date"; ObjectID = "M9G-EF-lPH"; */
+"M9G-EF-lPH.normalTitle" = "Fecha de Cambio de";
+
+/* Class = "IBUILabel"; text = "Name"; ObjectID = "qZx-H6-IGI"; */
+"qZx-H6-IGI.text" = "Nombre";
