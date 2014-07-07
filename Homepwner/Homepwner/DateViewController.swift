@@ -7,6 +7,10 @@ class DateViewController: UIViewController {
     init(item: Item) {
         self.item = item
         super.init(nibName: nil, bundle: nil)
+
+        // Report DateViewController's restoration identifier for state restoration
+        restorationIdentifier = NSStringFromClass(classForCoder)
+        restorationClass = classForCoder
     }
 
     // Restrict Item created date. It must be created some time in the past.

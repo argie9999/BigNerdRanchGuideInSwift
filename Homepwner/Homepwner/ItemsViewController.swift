@@ -9,6 +9,10 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         self.init(style: .Plain)
         navigationItem.title = "Homepwner"
 
+        // Report itemsViewController's restoration identifier for state restoration
+        restorationIdentifier = NSStringFromClass(classForCoder)
+        restorationClass = classForCoder
+
         // A button for adding new items
         navigationItem.leftBarButtonItem = editButtonItem()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add,
@@ -35,6 +39,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         }
 
         let navController = UINavigationController(rootViewController: dvc)
+        navController.restorationIdentifier = NSStringFromClass(navController.classForCoder)
         navController.modalPresentationStyle = .FormSheet
         presentViewController(navController, animated: true) { println("Showing DetailViewController via UINavigationController") }
     }

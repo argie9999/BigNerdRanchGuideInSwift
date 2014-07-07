@@ -9,6 +9,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let ivc = ItemsViewController()
         let navController = UINavigationController(rootViewController: ivc)
+
+        // Give the navigation controller a restoration identifier that is the same 
+        // name as the class.
+        navController.restorationIdentifier = NSStringFromClass(navController.classForCoder)
+
         self.window!.rootViewController = navController
         self.window!.backgroundColor = UIColor.whiteColor()
         self.window!.makeKeyAndVisible()

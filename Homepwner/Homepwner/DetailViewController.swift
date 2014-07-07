@@ -27,12 +27,16 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     var assetPickerPopover: UIPopoverController?
 
     init(item: Item) {
-        NSException(name: "Wrong initializer", reason: "Use init(isNew:)", userInfo: nil)
+        NSException(name: "Wrong initializer", reason: "Use init(isNew:)", userInfo: nil).raise()
         super.init(nibName: nil, bundle: nil)
     }
 
     init(isNew: Bool) {
         super.init(nibName: nil, bundle: nil)
+
+        // Report DetailViewController's restoration identifier for state restoration
+        restorationIdentifier = NSStringFromClass(classForCoder)
+        restorationClass = classForCoder
 
         if isNew {
             let doneItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "save:")
