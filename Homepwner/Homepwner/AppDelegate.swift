@@ -26,4 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             println("Could not save any of the Items.")
         }
     }
+
+    func application(application: UIApplication!, shouldSaveApplicationState: Bool,
+        coder: NSCoder!) -> Bool
+    {
+        return true
+    }
+
+    func application(application: UIApplication!, shouldRestoreApplicationState: Bool,
+        coder: NSCoder!) -> Bool
+    {
+        return true
+    }
 }
