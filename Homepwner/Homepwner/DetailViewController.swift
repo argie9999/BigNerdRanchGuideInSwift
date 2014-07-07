@@ -381,13 +381,17 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     }
 
     override func decodeRestorableStateWithCoder(coder: NSCoder!) {
-        let itemKey = coder.decodeObjectForKey("item.itemKey") as String
+        let itemKey = coder.decodeObjectForKey("item.itemKey") as? String
         let allItems = ItemStore.sharedStore.allItems
 
         for item in allItems {
-            if itemKey == item.itemKey {
-                self.item = item
-                break;
+            if itemKey {
+                if item.itemKey {
+                    if itemKey == item.itemKey! {
+                        self.item = item
+                        break;
+                    }
+                }
             }
         }
 
