@@ -351,7 +351,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         }
     }
 
-    // MARK: UIViewControllerRestoration method
+    // MARK: UIViewControllerRestoration methods
     class func viewControllerWithRestorationIdentifierPath(identifierComponents: AnyObject[]!,
         coder: NSCoder!) -> UIViewController!
     {
@@ -359,5 +359,38 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         let isNew = identifierComponents.count == 3 ? true : false
 
         return DetailViewController(isNew: isNew)
+    }
+
+    override func encodeRestorableStateWithCoder(coder: NSCoder!) {
+        if item {
+            println("Encoding item information for restoration later")
+            coder.encodeObject(item!.itemKey, forKey: "item.itemKey")
+
+            // Save changes into item
+            self.item!.itemName = nameField.text
+            self.item!.serialNumber = serialNumberField.text
+            if let value = valueField.text.toInt() {
+                self.item!.valueInDollars = CInt(value)
+            }
+
+            // Have store save changes to disk
+            ItemStore.sharedStore.saveChanges()
+        }
+
+        super.encodeRestorableStateWithCoder(coder)
+    }
+
+    override func decodeRestorableStateWithCoder(coder: NSCoder!) {
+        let itemKey = coder.decodeObjectForKey("item.itemKey") as String
+        let allItems = ItemStore.sharedStore.allItems
+
+        for item in allItems {
+            if itemKey == item.itemKey {
+                self.item = item
+                break;
+            }
+        }
+
+        super.decodeRestorableStateWithCoder(coder)
     }
 }
