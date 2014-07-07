@@ -24,6 +24,11 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         // Link: http://stackoverflow.com/questions/24090313/dynamic-type-notification-is-not-getting-triggered
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateTableViewForDynamicTypeSize",
             name: UIContentSizeCategoryDidChangeNotification, object: nil)
+
+        // Register for locale change notifications
+        // NOTE: Same bug from above exists here as well.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "localeChanged:",
+            name: NSCurrentLocaleDidChangeNotification, object: nil)
     }
 
     deinit {
@@ -68,6 +73,15 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         cell.nameLabel.text = item.itemName
         cell.serialNumberLabel.text = item.serialNumber
 
+        struct Static {
+            static var currencyFormatter: NSNumberFormatter? = nil
+        }
+
+        if !Static.currencyFormatter {
+            Static.currencyFormatter = NSNumberFormatter()
+            Static.currencyFormatter!.numberStyle = .CurrencyStyle
+        }
+
         // Bronze challenge: Color coding
         // If Item is worth more than $50, value label text should be green, otherwise red.
         if (item.valueInDollars > 50) {
@@ -77,7 +91,8 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         else {
             cell.valueLabel.textColor = UIColor.redColor()
         }
-        cell.valueLabel.text = String(item.valueInDollars)
+        cell.valueLabel.text = Static.currencyFormatter!.stringFromNumber(
+            NSNumber.numberWithInt(item.valueInDollars))
 
         let img = item.thumbnail as UIImage?
 
@@ -174,6 +189,10 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         let userSize = UIApplication.sharedApplication().preferredContentSizeCategory
         let cellHeight = Static.cellHeightDictionary[userSize]
         tableView.rowHeight = CGFloat(cellHeight!)
+        tableView.reloadData()
+    }
+
+    func localeChanged(note: NSNotification!) {
         tableView.reloadData()
     }
 
