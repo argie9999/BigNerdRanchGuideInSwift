@@ -10,6 +10,7 @@
 		3D173DB919675F340049C5E6 /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D173DB719675F340049C5E6 /* Homepwner.xcdatamodeld */; };
 		3D173DBB1967628E0049C5E6 /* ImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D173DBA1967628E0049C5E6 /* ImageTransformer.swift */; };
 		3D25E7C119543935005CC519 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25E7C019543935005CC519 /* ItemStore.swift */; };
+		3D297902196AA0170072CB15 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D297904196AA0170072CB15 /* Localizable.strings */; };
 		3D33EFBC19611FD900CD44DA /* DateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D33EFBE19611FD900CD44DA /* DateViewController.xib */; };
 		3D5470AA1962497100759EAD /* DarkPopoverBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5470A91962497100759EAD /* DarkPopoverBackgroundView.swift */; };
 		3D7A2DDF1962BCDE006449D5 /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D7A2DDE1962BCDE006449D5 /* ItemCell.xib */; };
@@ -43,6 +44,8 @@
 		3D173DB819675F340049C5E6 /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
 		3D173DBA1967628E0049C5E6 /* ImageTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTransformer.swift; sourceTree = "<group>"; };
 		3D25E7C019543935005CC519 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		3D297903196AA0170072CB15 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3D297905196AA07D0072CB15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3D5470A91962497100759EAD /* DarkPopoverBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkPopoverBackgroundView.swift; sourceTree = "<group>"; };
 		3D7A2DDE1962BCDE006449D5 /* ItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		3D7A2DE01962BCF9006449D5 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
@@ -116,6 +119,7 @@
 				3DB34A7F19582327005768CE /* DateViewController.swift */,
 				3D33EFBE19611FD900CD44DA /* DateViewController.xib */,
 				3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */,
+				3D297904196AA0170072CB15 /* Localizable.strings */,
 				3DBFB9A4196A8976002AF2E0 /* DetailViewController.xib */,
 				3DCCE68F19692E43007C5266 /* Homepwner-Bridging-Header.h */,
 				3D173DB719675F340049C5E6 /* Homepwner.xcdatamodeld */,
@@ -239,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D297902196AA0170072CB15 /* Localizable.strings in Resources */,
 				3D7A2DDF1962BCDE006449D5 /* ItemCell.xib in Resources */,
 				3DB384161953CDA900C14E20 /* Images.xcassets in Resources */,
 				3DBFB9A2196A8976002AF2E0 /* DetailViewController.xib in Resources */,
@@ -297,6 +302,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3D297904196AA0170072CB15 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D297903196AA0170072CB15 /* es */,
+				3D297905196AA07D0072CB15 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		3D33EFBE19611FD900CD44DA /* DateViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

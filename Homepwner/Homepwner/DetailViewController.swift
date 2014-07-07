@@ -98,7 +98,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             else {
                 typeLabel = "None"
             }
-            assetTypeButton.title = "Type: \(typeLabel)"
+            assetTypeButton.title = NSLocalizedString("Type: \(typeLabel)", comment: "Asset type button")
         }
         updateFonts()
     }
@@ -309,7 +309,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         let avc = AssetTypeViewController()
         avc.item = item
 
-        // Bronze challenge; present the AssetTypeViewController in 
+        // Bronze challenge; present the AssetTypeViewController in
         // a PopoverController if the device is an iPad
         if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
             assetPickerPopover = UIPopoverController(contentViewController: avc)

@@ -8,7 +8,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
 
     convenience init() {
         self.init(style: .Plain)
-        navigationItem.title = "Homepwner"
+        navigationItem.title = NSLocalizedString("Homepwner", comment:"Name of application")
 
         // Report itemsViewController's restoration identifier for state restoration
         restorationIdentifier = NSStringFromClass(classForCoder)

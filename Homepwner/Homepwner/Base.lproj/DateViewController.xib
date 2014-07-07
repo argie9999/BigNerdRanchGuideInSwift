@@ -69,6 +69,12 @@
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
+                <mask key="subviews">
+                    <include reference="bOP-0u-qNr"/>
+                    <include reference="QNJ-1C-23R"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular-widthClass=compact">
                 <mask key="constraints">
                     <include reference="EYi-bV-qia"/>
                     <include reference="T8w-VZ-T3T"/>
@@ -81,12 +87,6 @@
                     <include reference="hwl-Uf-TsQ"/>
                     <include reference="m2p-Xx-qKY"/>
                     <include reference="qLh-J1-uaF"/>
-                </mask>
-            </variation>
-            <variation key="heightClass=regular-widthClass=compact">
-                <mask key="subviews">
-                    <include reference="bOP-0u-qNr"/>
-                    <include reference="QNJ-1C-23R"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="370" y="148"/>
