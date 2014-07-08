@@ -36,10 +36,10 @@
             </objects>
             <point key="canvasLocation" x="899" y="283"/>
         </scene>
-        <!--View Controller-->
+        <!--Color View Controller-->
         <scene sceneID="jr6-S5-3ga">
             <objects>
-                <viewController id="Jag-4e-BIn" sceneMemberID="viewController">
+                <viewController id="Jag-4e-BIn" customClass="ColorViewController" customModule="Colorboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xJH-fh-3Qh"/>
                         <viewControllerLayoutGuide type="bottom" id="Kei-eK-d5L"/>
@@ -50,7 +50,11 @@
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="S8u-EZ-Hv0">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="cZO-63-HHj"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="cZO-63-HHj">
+                            <connections>
+                                <action selector="dismiss:" destination="Jag-4e-BIn" id="iHa-47-zxg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhQ-BO-0h2" userLabel="First Responder" sceneMemberID="firstResponder"/>
