@@ -24,8 +24,8 @@
 		3DB384221953CDAA00C14E20 /* HomepwnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB384211953CDAA00C14E20 /* HomepwnerTests.swift */; };
 		3DB3842C1953CE6C00C14E20 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */; };
 		3DB65F411968F92F00A5EAA0 /* AssetTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB65F401968F92F00A5EAA0 /* AssetTypeViewController.swift */; };
-		3DBEBB05196B9C5B00A13281 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBEBB04196B9C5B00A13281 /* Item.swift */; };
 		3DBFB9A2196A8976002AF2E0 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3DBFB9A4196A8976002AF2E0 /* DetailViewController.xib */; };
+		3DCCE69219692E44007C5266 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DCCE69019692E44007C5266 /* Item.m */; };
 		3DD1CE2E1957995C00DC5C94 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */; };
 		3DD1CE311957ACAD00DC5C94 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -62,10 +62,12 @@
 		3DB384211953CDAA00C14E20 /* HomepwnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepwnerTests.swift; sourceTree = "<group>"; };
 		3DB3842B1953CE6C00C14E20 /* ItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		3DB65F401968F92F00A5EAA0 /* AssetTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssetTypeViewController.swift; sourceTree = "<group>"; };
-		3DBEBB04196B9C5B00A13281 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		3DBFB9A5196A89DB002AF2E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DateViewController.xib; sourceTree = "<group>"; };
 		3DBFB9A6196A89DB002AF2E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DetailViewController.xib; sourceTree = "<group>"; };
 		3DBFB9A9196A8AA6002AF2E0 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DetailViewController.strings; sourceTree = "<group>"; };
+		3DCCE68F19692E43007C5266 /* Homepwner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Homepwner-Bridging-Header.h"; sourceTree = "<group>"; };
+		3DCCE69019692E44007C5266 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		3DCCE69119692E44007C5266 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		3DD1CE2C1957995C00DC5C94 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +111,9 @@
 		3DB384101953CDA900C14E20 /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				3DCCE68F19692E43007C5266 /* Homepwner-Bridging-Header.h */,
+				3DCCE69119692E44007C5266 /* Item.h */,
+				3DCCE69019692E44007C5266 /* Item.m */,
 				3DB384131953CDA900C14E20 /* AppDelegate.swift */,
 				3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */,
 				3DB65F401968F92F00A5EAA0 /* AssetTypeViewController.swift */,
@@ -127,7 +132,6 @@
 				3D33EFBE19611FD900CD44DA /* DateViewController.xib */,
 				3DBFB9A4196A8976002AF2E0 /* DetailViewController.xib */,
 				3D173DB719675F340049C5E6 /* Homepwner.xcdatamodeld */,
-				3DBEBB04196B9C5B00A13281 /* Item.swift */,
 				3D297904196AA0170072CB15 /* Localizable.strings */,
 				3DB384111953CDA900C14E20 /* Supporting Files */,
 			);
@@ -261,10 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DCCE69219692E44007C5266 /* Item.m in Sources */,
 				3DB384141953CDA900C14E20 /* AppDelegate.swift in Sources */,
 				3DD1CE311957ACAD00DC5C94 /* ArrayExtensions.swift in Sources */,
 				3DB34A8119582327005768CE /* DateViewController.swift in Sources */,
-				3DBEBB05196B9C5B00A13281 /* Item.swift in Sources */,
 				3D7A2DE11962BCF9006449D5 /* ItemCell.swift in Sources */,
 				3DB65F411968F92F00A5EAA0 /* AssetTypeViewController.swift in Sources */,
 				3D917A65195A50F100753029 /* ImageStore.swift in Sources */,
@@ -365,7 +369,6 @@
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -401,7 +404,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_INSTALL_OBJC_HEADER = NO;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

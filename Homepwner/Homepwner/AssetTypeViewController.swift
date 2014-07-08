@@ -42,7 +42,7 @@ class AssetTypeViewController: UITableViewController, UIPopoverControllerDelegat
 
         if item {
             // Checkmark the one that is currently selected
-            if assetType == item!.assetType {
+            if assetType == item!.assetType? {
                 cell.accessoryType = .Checkmark
             }
             else {

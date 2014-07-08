@@ -106,22 +106,24 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
 
             let strongCell = weakCell
             if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-                let itemKey = item.itemKey
+                if item.itemKey {
+                    let itemKey = item.itemKey!
 
-                // If there is no image, don't display anything
-                if let img = ImageStore.sharedStore.imageForKey(itemKey) {
-                    // Make a rectangle for the frame of the thumbnail relative to our tableView
-                    let rect = self.view.convertRect(strongCell!.thumbnailView.bounds, fromView: strongCell!.thumbnailView)
-                    // Create a new ImageViewController and set its image
-                    let ivc = ImageViewController()
-                    ivc.image = img
+                    // If there is no image, don't display anything
+                    if let img = ImageStore.sharedStore.imageForKey(itemKey) {
+                        // Make a rectangle for the frame of the thumbnail relative to our tableView
+                        let rect = self.view.convertRect(strongCell!.thumbnailView.bounds, fromView: strongCell!.thumbnailView)
+                        // Create a new ImageViewController and set its image
+                        let ivc = ImageViewController()
+                        ivc.image = img
 
-                    // Present a 600x600 popover from the rect
-                    self.imagePopover = UIPopoverController(contentViewController: ivc)
-                    self.imagePopover!.delegate = self
-                    self.imagePopover!.popoverContentSize = CGSizeMake(600, 600)
-                    self.imagePopover!.presentPopoverFromRect(rect, inView: self.view,
-                        permittedArrowDirections: .Any, animated: true)
+                        // Present a 600x600 popover from the rect
+                        self.imagePopover = UIPopoverController(contentViewController: ivc)
+                        self.imagePopover!.delegate = self
+                        self.imagePopover!.popoverContentSize = CGSizeMake(600, 600)
+                        self.imagePopover!.presentPopoverFromRect(rect, inView: self.view,
+                            permittedArrowDirections: .Any, animated: true)
+                    }
                 }
             }
             else {

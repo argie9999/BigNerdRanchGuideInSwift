@@ -83,7 +83,9 @@ class ItemStore: NSObject {
     }
 
     func removeItem(item: Item) {
-        ImageStore.sharedStore.dictionary.removeValueForKey(item.itemKey)
+        if let imageKey = item.itemKey {
+            ImageStore.sharedStore.dictionary.removeValueForKey(imageKey)
+        }
 
         let indexOfItem = privateItems.indexOf() { $0 === item }
         if let index = indexOfItem {
