@@ -4,8 +4,8 @@ class QuizViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel
     @IBOutlet weak var answerLabel: UILabel
     var currentQuestionIndex: Int = 0
-    var questions: String[]
-    var answers: String[]
+    var questions: [String]
+    var answers: [String]
 
     init() {
         questions = ["From what is cognac made?", "What is 7 + 7?", "What is the capital of Vermont?"]
