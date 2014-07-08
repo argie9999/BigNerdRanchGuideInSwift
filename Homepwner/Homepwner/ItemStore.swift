@@ -12,13 +12,13 @@ extension Array {
 class ItemStore: NSObject {
 
     // MARK: Stored properties
-    var privateItems = Item[]()
-    var allItems: Item[] { return privateItems }
+    var privateItems = [Item]()
+    var allItems: [Item] { return privateItems }
 
     // MARK: Core Data related properties
     var context: NSManagedObjectContext?
     var model: NSManagedObjectModel
-    var privateAssets = AnyObject[]()
+    var privateAssets = [AnyObject]()
 
     // MARK: Initializers
 
@@ -168,10 +168,10 @@ class ItemStore: NSObject {
             ex.raise()
         }
 
-        privateItems = result as Item[]
+        privateItems = result as [Item]
     }
 
-    func allAssetTypes() -> AnyObject[] {
+    func allAssetTypes() -> [AnyObject] {
         let request = NSFetchRequest()
         let entity = NSEntityDescription.entityForName("AssetType", inManagedObjectContext: context)
         request.entity = entity
@@ -185,7 +185,7 @@ class ItemStore: NSObject {
             ex.raise()
         }
 
-        privateAssets = result.copy()
+        privateAssets = result
 
         // Is this the first time the program is being run?
         if privateAssets.count == 0 {

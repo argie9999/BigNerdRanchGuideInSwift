@@ -352,7 +352,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     }
 
     // MARK: UIViewControllerRestoration methods
-    class func viewControllerWithRestorationIdentifierPath(identifierComponents: AnyObject[]!,
+    class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject]!,
         coder: NSCoder!) -> UIViewController!
     {
         // If creating a new item, path array's count will be 3, otherwise 2.

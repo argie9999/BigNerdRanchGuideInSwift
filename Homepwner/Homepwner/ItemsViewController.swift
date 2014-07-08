@@ -202,7 +202,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
     }
 
     // MARK: UIViewControllerRestoration protocol methods
-    class func viewControllerWithRestorationIdentifierPath(identifierComponents: AnyObject[]!,
+    class func viewControllerWithRestorationIdentifierPath(identifierComponents: [AnyObject]!,
         coder: NSCoder!) -> UIViewController!
     {
         return ItemsViewController()

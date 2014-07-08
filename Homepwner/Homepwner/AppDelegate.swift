@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication!,
-        viewControllerWithRestorationIdentifierPath identifierComponents: AnyObject[]!,
+        viewControllerWithRestorationIdentifierPath identifierComponents: [AnyObject]!,
         coder: NSCoder!) -> UIViewController!
     {
         // Create a new navigation controller
