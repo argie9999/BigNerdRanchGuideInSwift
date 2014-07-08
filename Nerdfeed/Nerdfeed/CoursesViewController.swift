@@ -33,13 +33,15 @@ class CoursesViewController: UITableViewController, NSURLSessionDataDelegate {
         if session {
             // the secure url given in the book is actually https://bookapi.bignerdranch.com/private/courses.json
             // but that doesn't seem to work :|
-            let requestString = "https://bookapi.bignerdranch.com/courses.json"
+            let requestString = "https://bookapi.bignerdranch.com/private/courses.json"
             let url = NSURL(string: requestString)
             let request = NSURLRequest(URL: url)
             let dataTask = session!.dataTaskWithRequest(request) {
                 (data, _, _) in
-                let jsonObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as NSDictionary
-                self.courses = jsonObject["courses"] as Array<Dictionary<String, String>>
+                let jsonObject = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary
+                if jsonObject {
+                    self.courses = jsonObject!["courses"] as [[String: String]]
+                }
 
                 println(self.courses)
 
