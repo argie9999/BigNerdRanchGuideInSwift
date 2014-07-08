@@ -42,7 +42,7 @@ class HypnosisViewController: UIViewController, UITextFieldDelegate {
     }
 
     func drawHypnoticMessage(message: String) {
-        for _ in 0..20 {
+        for _ in 0..<20 {
             // use the cool extension to UILabel defined above.
             let messageLabel = UILabel(backgroundColor: UIColor.clearColor(), text: message)
             messageLabel.sizeToFit()
