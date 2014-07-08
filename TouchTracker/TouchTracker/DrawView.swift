@@ -114,11 +114,11 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
 
                 // Let each quadrant have its own color
                 switch angleInDegrees {
-                case 0..90:
+                case 0..<90:
                     line.color = UIColor.cyanColor()
-                case 90..180:
+                case 90..<180:
                     line.color = UIColor.purpleColor()
-                case 180..270:
+                case 180..<270:
                     line.color = UIColor.yellowColor()
                 case 270...360:
                     line.color = UIColor.brownColor()
@@ -176,7 +176,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         if UIMenuController.sharedMenuController().menuVisible {
             return
         }
-        let allTouches = touches.allObjects as UITouch[]
+        let allTouches = touches.allObjects as [UITouch]
 
         for touch in allTouches {
             let location = touch.locationInView(self)
@@ -190,7 +190,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
 
     override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
         // println("-- Touch moved -- Class: DrawView. Method: touchesMoved")
-        let allTouches = touches.allObjects as UITouch[]
+        let allTouches = touches.allObjects as [UITouch]
 
         for touch in allTouches {
             let key = NSValue(nonretainedObject: touch)
@@ -224,7 +224,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
 
     override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
         println("-- Touch ended -- Class: DrawView. Method: touchesEnded")
-        let allTouches = touches.allObjects as UITouch[]
+        let allTouches = touches.allObjects as [UITouch]
 
         for touch in allTouches {
             let key = NSValue(nonretainedObject: touch)
@@ -243,7 +243,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
 
     override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
         println("-- Touch cancelled -- Class: DrawView. Method: touchesCancelled")
-        let allTouches = touches.allObjects as UITouch[]
+        let allTouches = touches.allObjects as [UITouch]
 
         for touch in allTouches {
             let key = NSValue(nonretainedObject: touch)
