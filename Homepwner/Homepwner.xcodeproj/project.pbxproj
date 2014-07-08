@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D0C6310196BCFA70088A34D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3D0C630F196BCFA70088A34D /* Settings.bundle */; };
 		3D173DB919675F340049C5E6 /* Homepwner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3D173DB719675F340049C5E6 /* Homepwner.xcdatamodeld */; };
 		3D173DBB1967628E0049C5E6 /* ImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D173DBA1967628E0049C5E6 /* ImageTransformer.swift */; };
 		3D25E7C119543935005CC519 /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D25E7C019543935005CC519 /* ItemStore.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D0C630F196BCFA70088A34D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		3D173DB819675F340049C5E6 /* Homepwner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Homepwner.xcdatamodel; sourceTree = "<group>"; };
 		3D173DBA1967628E0049C5E6 /* ImageTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTransformer.swift; sourceTree = "<group>"; };
 		3D25E7C019543935005CC519 /* ItemStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				3DCCE69119692E44007C5266 /* Item.h */,
 				3DCCE69019692E44007C5266 /* Item.m */,
 				3DB384131953CDA900C14E20 /* AppDelegate.swift */,
+				3D0C630F196BCFA70088A34D /* Settings.bundle */,
 				3DD1CE301957ACAD00DC5C94 /* ArrayExtensions.swift */,
 				3DB65F401968F92F00A5EAA0 /* AssetTypeViewController.swift */,
 				3D81BEA3195ABD1C0028EE23 /* CrosshairView.swift */,
@@ -247,6 +250,7 @@
 				3D7A2DDF1962BCDE006449D5 /* ItemCell.xib in Resources */,
 				3DB384161953CDA900C14E20 /* Images.xcassets in Resources */,
 				3DBFB9A2196A8976002AF2E0 /* DetailViewController.xib in Resources */,
+				3D0C6310196BCFA70088A34D /* Settings.bundle in Resources */,
 				3D33EFBC19611FD900CD44DA /* DateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

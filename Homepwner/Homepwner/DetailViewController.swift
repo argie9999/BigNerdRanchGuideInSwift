@@ -49,6 +49,10 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateFonts",
             name: UIContentSizeCategoryDidChangeNotification, object: nil)
+
+        // Observer to watch for settings changes
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "settingsChanged:",
+            name: NSUserDefaultsDidChangeNotification, object: nil)
     }
 
     deinit {
@@ -357,6 +361,14 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 println("Cancelling new item creation and asking to dismiss DetailViewController.")
             }
         }
+    }
+
+    func settingsChanged(note: NSNotification!) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let newItemName = defaults.objectForKey(NEXT_ITEM_NAME_PREFS_KEY) as String
+
+        NSUserDefaults.standardUserDefaults().setObject(newItemName,
+            forKey: NEXT_ITEM_NAME_PREFS_KEY)
     }
 
     // MARK: UIViewControllerRestoration methods
