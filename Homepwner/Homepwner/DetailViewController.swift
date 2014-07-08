@@ -151,8 +151,16 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             // Save changes to Item
             item!.itemName = nameField.text
             item!.serialNumber = serialNumberField.text
+
             if let value = valueField.text.toInt() {
-                item!.valueInDollars = CInt(value)
+                // Is it changed from the default?
+                if CInt(value) != item!.valueInDollars {
+                    item!.valueInDollars = CInt(value)
+
+                    // Store it as the default for the next time.
+                    NSUserDefaults.standardUserDefaults().setInteger(value,
+                        forKey: NEXT_ITEM_VALUE_PREFS_KEY)
+                }
             }
         }
     }
