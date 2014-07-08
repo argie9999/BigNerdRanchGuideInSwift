@@ -73,8 +73,13 @@ class ItemStore: NSObject {
         if let item = result as? Item {
             item.orderingValue = order
 
+            let defaults = NSUserDefaults.standardUserDefaults()
+            item.valueInDollars = CInt(defaults.integerForKey(NEXT_ITEM_VALUE_PREFS_KEY))
+            item.itemName = defaults.objectForKey(NEXT_ITEM_NAME_PREFS_KEY) as String
             item.serialNumber = ""
-            item.itemName = ""
+
+            // Log all the defaults
+            println(defaults.dictionaryRepresentation())
 
             privateItems += item
             return item

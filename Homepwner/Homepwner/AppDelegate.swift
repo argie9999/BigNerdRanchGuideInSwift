@@ -1,9 +1,22 @@
 import UIKit
 
+let NEXT_ITEM_VALUE_PREFS_KEY = "NextItemValue"
+let NEXT_ITEM_NAME_PREFS_KEY = "NextItemName"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
     var window: UIWindow?
 
+    init() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let factorySettings = [
+            NEXT_ITEM_VALUE_PREFS_KEY: 75,
+            NEXT_ITEM_NAME_PREFS_KEY: "Coffee Cup",
+        ]
+
+        defaults.registerDefaults(factorySettings)
+    }
 
     func application(application: UIApplication,
         willFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool
