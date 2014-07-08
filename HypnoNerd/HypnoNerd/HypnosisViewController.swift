@@ -10,6 +10,9 @@ extension UILabel {
 }
 
 class HypnosisViewController: UIViewController, UITextFieldDelegate {
+
+    var textField: UITextField?
+
     init() {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.title = "Hypnotize"
@@ -25,6 +28,7 @@ class HypnosisViewController: UIViewController, UITextFieldDelegate {
         textField.delegate = self
         backgroundView.addSubview(textField)
 
+        self.textField = textField
         view = backgroundView
     }
 
@@ -39,6 +43,17 @@ class HypnosisViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         println("HypnosisViewController loaded!")
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 0.25,
+            initialSpringVelocity: 0.0, options: nil, animations: {
+                if self.textField {
+                    self.textField!.frame = CGRectMake(40, 70, 240, 30)
+                }
+            }, completion: nil)
     }
 
     func drawHypnoticMessage(message: String) {
