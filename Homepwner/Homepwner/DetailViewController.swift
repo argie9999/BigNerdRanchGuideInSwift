@@ -83,15 +83,14 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             }
             self.dateLabel.text = dateFormatter?.stringFromDate(item!.dateCreated)
 
-            if let imageKey = item!.itemKey {
-                let image = ImageStore.sharedStore.imageForKey(imageKey)
-                if let imageToDisplay = image {
-                    imageView.image = imageToDisplay
-                    trashItem.enabled = true
-                }
+            let image = ImageStore.sharedStore.imageForKey(item!.itemKey)
+            if let imageToDisplay = image {
+                imageView.image = imageToDisplay
+                trashItem.enabled = true
             }
+
             var typeLabel: String
-            var labelText: AnyObject? = item!.assetType?.valueForKey("label")
+            var labelText: AnyObject? = item!.assetType.valueForKey("label")
             if labelText {
                 typeLabel = labelText as String
             }
@@ -163,17 +162,15 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     {
         let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
         if let image = editedImage {
-            if let imageKey = item!.itemKey {
-                item!.setThumbnailFromImage(image)
-                ImageStore.sharedStore.setImage(image, forKey: imageKey)
-                imageView.image = image
-                if imagePickerPopover {
-                    imagePickerPopover!.dismissPopoverAnimated(true)
-                    imagePickerPopover = nil
-                }
-                else {
-                    dismissViewControllerAnimated(true) { println("Closing image picker") }
-                }
+            item!.setThumbnailFromImage(image)
+            ImageStore.sharedStore.setImage(image, forKey: item!.itemKey)
+            imageView.image = image
+            if imagePickerPopover {
+                imagePickerPopover!.dismissPopoverAnimated(true)
+                imagePickerPopover = nil
+            }
+            else {
+                dismissViewControllerAnimated(true) { println("Closing image picker") }
             }
         }
         // Enable the trash toolbar item
@@ -284,8 +281,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             // When the user clicks on Delete, the closure is invoked and removes the image.
             alert.addAction(UIAlertAction(title: "Delete", style: .Destructive) { (_: UIAlertAction!) in
                 println("Removing picture")
-                ImageStore.sharedStore.deleteImageForKey(self.item!.itemKey!)
-                self.item!.itemKey = nil
+                ImageStore.sharedStore.deleteImageForKey(self.item!.itemKey)
                 self.item!.thumbnail = nil
                 self.imageView.image = nil
                 self.trashItem.enabled = false
@@ -318,7 +314,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 self.assetPickerPopover!.dismissPopoverAnimated(true)
                 self.assetPickerPopover = nil
                 var typeLabel: String
-                var labelText: AnyObject? = self.item!.assetType?.valueForKey("label")
+                var labelText: AnyObject? = self.item!.assetType.valueForKey("label")
                 if labelText {
                     typeLabel = labelText as String
                 }
@@ -386,11 +382,9 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
 
         for item in allItems {
             if itemKey {
-                if item.itemKey {
-                    if itemKey == item.itemKey! {
-                        self.item = item
-                        break;
-                    }
+                if itemKey == item.itemKey {
+                    self.item = item
+                    break;
                 }
             }
         }
