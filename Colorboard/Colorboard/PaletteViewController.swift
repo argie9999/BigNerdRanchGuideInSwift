@@ -10,16 +10,12 @@ import UIKit
 
 class PaletteViewController: UITableViewController {
 
-    @lazy var colors: [ColorDescription] = {
-        let cd = ColorDescription()
-        var tempColors = [ColorDescription]()
-        tempColors.append(cd)
-
-        return tempColors
-    }()
+    var colors: [ColorDescription] = Array<ColorDescription>()
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+
+        tableView.reloadData()
     }
 
     override func tableView(tableView: UITableView!,
