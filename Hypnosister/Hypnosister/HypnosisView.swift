@@ -33,7 +33,7 @@ class HypnosisView: UIView {
         for var currentRadius = maxRadius; currentRadius > 0; currentRadius -= 20 {
             path.moveToPoint(CGPointMake(center.x + currentRadius, center.y))
             path.addArcWithCenter(center, radius: currentRadius,
-                startAngle: 0.0, endAngle: M_PI * 2, clockwise: true)
+                startAngle: CGFloat(0.0), endAngle: CGFloat(M_PI * 2), clockwise: true)
         }
 
         path.lineWidth = 10
@@ -45,9 +45,9 @@ class HypnosisView: UIView {
 
     override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
         println("%@ was touched", self)
-        let red = CGFloat(arc4random() % 100) / CGFloat(100.0)
-        let green = CGFloat(arc4random() % 100) / CGFloat(100.0)
-        let blue = CGFloat(arc4random() % 100) / CGFloat(100.0)
+        let red = CGFloat(Double(arc4random() % 100) / Double(100.0))
+        let green = CGFloat(Double(arc4random() % 100) / Double(100.0))
+        let blue = CGFloat(Double(arc4random() % 100) / Double(100.0))
         let randomColor = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
         circleColor = randomColor
     }
