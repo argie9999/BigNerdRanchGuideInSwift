@@ -11,10 +11,10 @@ import UIKit
 class ColorViewController: UIViewController {
 
     // MARK: Outlets
-    @IBOutlet weak var textfield: UITextField
-    @IBOutlet weak var redSlider: UISlider
-    @IBOutlet weak var greenSlider: UISlider
-    @IBOutlet weak var blueSlider: UISlider
+    @IBOutlet weak var textfield: UITextField?
+    @IBOutlet weak var redSlider: UISlider?
+    @IBOutlet weak var greenSlider: UISlider?
+    @IBOutlet weak var blueSlider: UISlider?
 
     // MARK: Stored Properties
     var existingColor: Bool = false
@@ -40,13 +40,13 @@ class ColorViewController: UIViewController {
             color.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
 
             // Set the initial slider values
-            redSlider.value = Float(red)
-            greenSlider.value = Float(green)
-            blueSlider.value = Float(blue)
+            redSlider!.value = Float(red)
+            greenSlider!.value = Float(green)
+            blueSlider!.value = Float(blue)
 
             // Set the background color and text field value
             view.backgroundColor = color
-            textfield.text = colorDesc.name
+            textfield!.text = colorDesc.name
         }
     }
 
@@ -54,7 +54,7 @@ class ColorViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         if let colorDesc = colorDescription {
-            colorDesc.name = textfield.text
+            colorDesc.name = textfield!.text
             colorDesc.color = view.backgroundColor
         }
     }
@@ -66,9 +66,9 @@ class ColorViewController: UIViewController {
     }
 
     @IBAction func changeColor(sender: UISlider) {
-        let red = CGFloat(redSlider.value)
-        let green = CGFloat(greenSlider.value)
-        let blue = CGFloat(blueSlider.value)
+        let red = CGFloat(redSlider!.value)
+        let green = CGFloat(greenSlider!.value)
+        let blue = CGFloat(blueSlider!.value)
 
         view.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }

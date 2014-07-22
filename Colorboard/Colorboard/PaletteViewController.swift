@@ -10,7 +10,7 @@ import UIKit
 
 class PaletteViewController: UITableViewController {
 
-    var colors: [ColorDescription] = Array<ColorDescription>()
+    var colors = [ColorDescription]()
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
