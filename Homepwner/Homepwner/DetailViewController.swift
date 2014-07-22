@@ -6,19 +6,19 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     UIViewControllerRestoration
 {
     // MARK: Outlets
-    @IBOutlet weak var cameraButton: UIBarButtonItem
-    @IBOutlet weak var changeDateButton: UIButton
-    @IBOutlet weak var dateLabel: UILabel
-    @IBOutlet weak var imageView: UIImageView
-    @IBOutlet weak var nameField: UITextField
-    @IBOutlet weak var nameLabel: UILabel
-    @IBOutlet weak var serialNumberField: UITextField
-    @IBOutlet weak var serialNumberLabel: UILabel
-    @IBOutlet weak var toolbar: UIToolbar
-    @IBOutlet weak var trashItem: UIBarButtonItem
-    @IBOutlet weak var valueField: UITextField
-    @IBOutlet weak var valueLabel: UILabel
-    @IBOutlet weak var assetTypeButton: UIBarButtonItem
+    @IBOutlet weak var cameraButton: UIBarButtonItem?
+    @IBOutlet weak var changeDateButton: UIButton?
+    @IBOutlet weak var dateLabel: UILabel?
+    @IBOutlet weak var imageView: UIImageView?
+    @IBOutlet weak var nameField: UITextField?
+    @IBOutlet weak var nameLabel: UILabel?
+    @IBOutlet weak var serialNumberField: UITextField?
+    @IBOutlet weak var serialNumberLabel: UILabel?
+    @IBOutlet weak var toolbar: UIToolbar?
+    @IBOutlet weak var trashItem: UIBarButtonItem?
+    @IBOutlet weak var valueField: UITextField?
+    @IBOutlet weak var valueLabel: UILabel?
+    @IBOutlet weak var assetTypeButton: UIBarButtonItem?
 
     // MARK: Stored properties
     var item: Item?
@@ -65,8 +65,8 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         let font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
 
         // Update the labels and text fields to use dynamic fonts
-        (nameLabel.font, serialNumberLabel.font, valueLabel.font, dateLabel.font) = (font, font, font, font)
-        (nameField.font, serialNumberField.font, valueField.font) = (font, font, font)
+        (nameLabel!.font, serialNumberLabel!.font, valueLabel!.font, dateLabel!.font) = (font, font, font, font)
+        (nameField!.font, serialNumberField!.font, valueField!.font) = (font, font, font)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -76,22 +76,22 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         prepareViewsForOrientation(interfaceOrientation)
 
         if item {
-            nameField.text = item!.itemName
-            serialNumberField.text = item!.serialNumber
-            valueField.text = String(item!.valueInDollars)
+            nameField!.text = item!.itemName
+            serialNumberField!.text = item!.serialNumber
+            valueField!.text = String(item!.valueInDollars)
 
             if !dateFormatter {
                 dateFormatter = NSDateFormatter()
                 dateFormatter!.dateStyle = .MediumStyle
                 dateFormatter!.timeStyle = .NoStyle
             }
-            self.dateLabel.text = dateFormatter?.stringFromDate(item!.dateCreated)
+            self.dateLabel!.text = dateFormatter?.stringFromDate(item!.dateCreated)
 
             if let imageKey = item!.itemKey {
                 let image = ImageStore.sharedStore.imageForKey(imageKey)
                 if let imageToDisplay = image {
-                    imageView.image = imageToDisplay
-                    trashItem.enabled = true
+                    imageView!.image = imageToDisplay
+                    trashItem!.enabled = true
                 }
             }
             var typeLabel: String
@@ -102,7 +102,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             else {
                 typeLabel = "None"
             }
-            assetTypeButton.title = NSLocalizedString("Type: \(typeLabel)", comment: "Asset type button")
+            assetTypeButton!.title = NSLocalizedString("Type: \(typeLabel)", comment: "Asset type button")
         }
         updateFonts()
     }
@@ -119,13 +119,13 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         imageView = imgView
 
         // Set the vertical priorities to be less than those of the other subviews
-        imageView.setContentHuggingPriority(200, forAxis: .Vertical)
-        imageView.setContentCompressionResistancePriority(200, forAxis: .Vertical)
+        imageView!.setContentHuggingPriority(200, forAxis: .Vertical)
+        imageView!.setContentCompressionResistancePriority(200, forAxis: .Vertical)
 
         let nameMap = [
-            "imageView": imageView,
-            "changeDateButton": changeDateButton,
-            "toolbar": toolbar
+            "imageView": imageView!,
+            "changeDateButton": changeDateButton!,
+            "toolbar": toolbar!
         ]
 
         // MARK: Constraints
@@ -153,10 +153,10 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
 
         if item {
             // Save changes to Item
-            item!.itemName = nameField.text
-            item!.serialNumber = serialNumberField.text
+            item!.itemName = nameField!.text
+            item!.serialNumber = serialNumberField!.text
 
-            if let value = valueField.text.toInt() {
+            if let value = valueField!.text.toInt() {
                 // Is it changed from the default?
                 if CInt(value) != item!.valueInDollars {
                     item!.valueInDollars = CInt(value)
@@ -178,7 +178,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             if let imageKey = item!.itemKey {
                 item!.setThumbnailFromImage(image)
                 ImageStore.sharedStore.setImage(image, forKey: imageKey)
-                imageView.image = image
+                imageView!.image = image
                 if imagePickerPopover {
                     imagePickerPopover!.dismissPopoverAnimated(true)
                     imagePickerPopover = nil
@@ -189,7 +189,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             }
         }
         // Enable the trash toolbar item
-        trashItem.enabled = true
+        trashItem!.enabled = true
     }
 
     // MARK: UITextFieldDelegate
@@ -221,12 +221,12 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
 
         // Is it landscape?
         if orientation.isLandscape {
-            imageView.hidden = true
-            cameraButton.enabled = false
+            imageView!.hidden = true
+            cameraButton!.enabled = false
         }
         else {
-            imageView.hidden = false
-            cameraButton.enabled = true
+            imageView!.hidden = false
+            cameraButton!.enabled = true
         }
     }
 
@@ -287,7 +287,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
 
     // Silver challenge: Allow a user to remove an item's image.
     @IBAction func removePicture(sender: UIBarButtonItem) {
-        if imageView.image {
+        if imageView!.image {
             println("Alert dialog shown")
             // Show an alert dialog before deleting an image.
             var alert = UIAlertController(title: "Remove Image?", message: "",
@@ -299,8 +299,8 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 ImageStore.sharedStore.deleteImageForKey(self.item!.itemKey!)
                 self.item!.itemKey = nil
                 self.item!.thumbnail = nil
-                self.imageView.image = nil
-                self.trashItem.enabled = false
+                self.imageView!.image = nil
+                self.trashItem!.enabled = false
                 })
 
             // When user presses cancel, don't do anything.
@@ -337,7 +337,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 else {
                     typeLabel = "None"
                 }
-                self.assetTypeButton.title = "Type: \(typeLabel)"
+                self.assetTypeButton!.title = "Type: \(typeLabel)"
             }
             assetPickerPopover!.presentPopoverFromBarButtonItem(sender,
                 permittedArrowDirections: .Any,
@@ -387,9 +387,9 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             coder.encodeObject(item!.itemKey, forKey: "item.itemKey")
 
             // Save changes into item
-            self.item!.itemName = nameField.text
-            self.item!.serialNumber = serialNumberField.text
-            if let value = valueField.text.toInt() {
+            self.item!.itemName = nameField!.text
+            self.item!.serialNumber = serialNumberField!.text
+            if let value = valueField!.text.toInt() {
                 self.item!.valueInDollars = CInt(value)
             }
 

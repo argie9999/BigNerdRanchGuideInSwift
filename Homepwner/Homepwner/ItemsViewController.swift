@@ -70,8 +70,8 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         let item = items[indexPath.row]
 
         // Configure the cell with the Item
-        cell.nameLabel.text = item.itemName
-        cell.serialNumberLabel.text = item.serialNumber
+        cell.nameLabel!.text = item.itemName
+        cell.serialNumberLabel!.text = item.serialNumber
 
         struct Static {
             static var currencyFormatter: NSNumberFormatter? = nil
@@ -86,18 +86,18 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         // If Item is worth more than $50, value label text should be green, otherwise red.
         if (item.valueInDollars > 50) {
             // This is less harsh than UIColor.greenColor() 😊
-            cell.valueLabel.textColor = UIColor(red: 0.1, green: 0.7, blue: 0, alpha: 1)
+            cell.valueLabel!.textColor = UIColor(red: 0.1, green: 0.7, blue: 0, alpha: 1)
         }
         else {
-            cell.valueLabel.textColor = UIColor.redColor()
+            cell.valueLabel!.textColor = UIColor.redColor()
         }
-        cell.valueLabel.text = Static.currencyFormatter!.stringFromNumber(
+        cell.valueLabel!.text = Static.currencyFormatter!.stringFromNumber(
             NSNumber.numberWithInt(item.valueInDollars))
 
         let img = item.thumbnail as UIImage?
 
         if img {
-            cell.thumbnailView.image = img
+            cell.thumbnailView!.image = img
         }
 
         weak var weakCell = cell
@@ -112,7 +112,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
                     // If there is no image, don't display anything
                     if let img = ImageStore.sharedStore.imageForKey(itemKey) {
                         // Make a rectangle for the frame of the thumbnail relative to our tableView
-                        let rect = self.view.convertRect(strongCell!.thumbnailView.bounds, fromView: strongCell!.thumbnailView)
+                        let rect = self.view.convertRect(strongCell!.thumbnailView!.bounds, fromView: strongCell!.thumbnailView)
                         // Create a new ImageViewController and set its image
                         let ivc = ImageViewController()
                         ivc.image = img

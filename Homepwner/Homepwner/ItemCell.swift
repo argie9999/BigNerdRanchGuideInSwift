@@ -9,11 +9,11 @@
 import UIKit
 
 class ItemCell: UITableViewCell {
-    @IBOutlet weak var thumbnailView: UIImageView
-    @IBOutlet weak var nameLabel: UILabel
-    @IBOutlet weak var serialNumberLabel: UILabel
-    @IBOutlet weak var valueLabel: UILabel
-    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint
+    @IBOutlet weak var thumbnailView: UIImageView?
+    @IBOutlet weak var nameLabel: UILabel?
+    @IBOutlet weak var serialNumberLabel: UILabel?
+    @IBOutlet weak var valueLabel: UILabel?
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint?
     var actionBlock: (() -> ())?
 
     @IBAction func showImage(id: UIButton) {
@@ -29,7 +29,7 @@ class ItemCell: UITableViewCell {
     func updateInterfaceForDynamicTypeSize() {
         let font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
 
-        (nameLabel.font, serialNumberLabel.font, valueLabel.font) = (font, font, font)
+        (nameLabel!.font, serialNumberLabel!.font, valueLabel!.font) = (font, font, font)
 
         struct Static {
             static let imageSizeDict: Dictionary<NSString, Int> = [
@@ -48,7 +48,7 @@ class ItemCell: UITableViewCell {
 
         // Just to be safe.
         if let imgSize = imageSize {
-            imageViewHeightConstraint.constant = CGFloat(imgSize)
+            imageViewHeightConstraint!.constant = CGFloat(imgSize)
         }
     }
 
@@ -62,6 +62,6 @@ class ItemCell: UITableViewCell {
         let constraint = NSLayoutConstraint(item: thumbnailView, attribute: .Height,
             relatedBy: .Equal, toItem: thumbnailView,
             attribute: .Width, multiplier: 1, constant: 0)
-        thumbnailView.addConstraint(constraint)
+        thumbnailView!.addConstraint(constraint)
     }
 }
