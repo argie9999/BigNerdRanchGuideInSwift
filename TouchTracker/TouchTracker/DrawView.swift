@@ -31,12 +31,12 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     let threeFingerRecognizer: UISwipeGestureRecognizer?
 
     // MARK: Color Palette related outlets and variable
-    @IBOutlet weak var darkBlueColor: UIButton
-    @IBOutlet weak var lightBlueColor: UIButton
-    @IBOutlet weak var magentaColor: UIButton
-    @IBOutlet weak var lightPurpleColor: UIButton
-    @IBOutlet weak var greenColor: UIButton
-    @IBOutlet weak var yellowColor: UIButton
+    @IBOutlet weak var darkBlueColor: UIButton?
+    @IBOutlet weak var lightBlueColor: UIButton?
+    @IBOutlet weak var magentaColor: UIButton?
+    @IBOutlet weak var lightPurpleColor: UIButton?
+    @IBOutlet weak var greenColor: UIButton?
+    @IBOutlet weak var yellowColor: UIButton?
     @IBOutlet var colorPaletteView: UIView?
     var selectedColor: UIColor?
 
@@ -88,7 +88,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     // Stroke the line with a Bezier Path
     func strokeLine(line: Line) {
         let path = UIBezierPath()
-        path.lineWidth = line.thickness
+        path.lineWidth = CGFloat(line.thickness)
         path.lineCapStyle = kCGLineCapRound
 
         path.moveToPoint(line.begin)
@@ -113,7 +113,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
                 }
 
                 // Let each quadrant have its own color
-                switch angleInDegrees {
+                switch Int(angleInDegrees) {
                 case 0..<90:
                     line.color = UIColor.cyanColor()
                 case 90..<180:
@@ -151,8 +151,8 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
 
             // Check a few points on the line
             for var t = 0.0; t <= 1.0; t += 0.05 {
-                let x = start.x + t * (end.x - start.x)
-                let y = start.y + t * (end.y - start.y)
+                let x = CGFloat(Double(start.x) + t * Double(end.x) - Double(start.x))
+                let y = CGFloat(Double(start.y) + t * Double(end.y) - Double(start.y))
                 let hypotenuse = hypot(x - point.x, y - point.y)
 
                 // If the tapped point is within 20 points, return that line
