@@ -11,6 +11,6 @@ import UIKit
 class CustomTableViewCell: UITableViewCell {
 
     // MARK: Outlets
-    @IBOutlet var titleLabel: UILabel
-    @IBOutlet var upcomingLabel: UILabel
+    @IBOutlet var titleLabel: UILabel?
+    @IBOutlet var upcomingLabel: UILabel?
 }

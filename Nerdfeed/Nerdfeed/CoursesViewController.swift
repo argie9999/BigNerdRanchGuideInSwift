@@ -75,8 +75,8 @@ class CoursesViewController: UITableViewController, NSURLSessionDataDelegate {
             let upcomingTimes = (course["upcoming"] as NSArray).objectAtIndex(0) as NSDictionary
             let startDate = upcomingTimes["start_date"] as String
 
-            cell.titleLabel.text = courseTitle
-            cell.upcomingLabel.text = "Upcoming on: \(startDate)"
+            cell.titleLabel!.text = courseTitle
+            cell.upcomingLabel!.text = "Upcoming on: \(startDate)"
 
             return cell
     }
