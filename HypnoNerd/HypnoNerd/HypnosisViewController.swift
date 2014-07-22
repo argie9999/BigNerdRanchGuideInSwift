@@ -64,14 +64,14 @@ class HypnosisViewController: UIViewController, UITextFieldDelegate {
 
             // Get random x value inside HynosisView
             let width = UInt32(view.bounds.size.width - messageLabel.bounds.size.width)
-            let x = arc4random() % width
+            let x = CGFloat(Double(arc4random()) % Double(width))
 
             // Get random y value inside HypnosisView
             let height = UInt32(view.bounds.size.height - messageLabel.bounds.size.height)
-            let y = arc4random() % height
+            let y = CGFloat(Double(arc4random()) % Double(height))
 
             var frame = messageLabel.frame
-            frame.origin = CGPointMake(CGFloat(x), CGFloat(y))
+            let point = CGPointMake(x, y)
             messageLabel.frame = frame
 
             view.addSubview(messageLabel)
@@ -92,9 +92,9 @@ class HypnosisViewController: UIViewController, UITextFieldDelegate {
                 }
 
                 UIView.addKeyframeWithRelativeStartTime(0.8, relativeDuration: 0.2) {
-                    let x = UInt32(arc4random()) % UInt32(width)
-                    let y = UInt32(arc4random()) % UInt32(height)
-                    messageLabel.center = CGPointMake(CGFloat(x), CGFloat(y))
+                    let x = CGFloat(Double(arc4random()) % Double(width))
+                    let y = CGFloat(Double(arc4random()) % Double(height))
+                    messageLabel.center = CGPointMake(x, y)
                 }
                 }) { Bool -> Void in println("Animation finished") }
 

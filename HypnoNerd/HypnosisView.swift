@@ -1,6 +1,6 @@
 import UIKit
 
-class HypnosisView: UIView {
+public class HypnosisView: UIView {
     var circleColor: UIColor {
     didSet {
         setNeedsDisplay()
@@ -19,7 +19,7 @@ class HypnosisView: UIView {
         backgroundColor = UIColor.clearColor()
     }
 
-    override func drawRect(rect: CGRect) {
+    public override func drawRect(rect: CGRect) {
         let path = UIBezierPath()
         let bounds = self.bounds
         let maxRadius = hypot(CDouble(bounds.size.width), CDouble(bounds.size.height)) / CDouble(2.0)
@@ -29,9 +29,9 @@ class HypnosisView: UIView {
 
         // Drawing concentric circles
         for var currentRadius = maxRadius; currentRadius > 0; currentRadius -= 20 {
-            path.moveToPoint(CGPointMake(center.x + currentRadius, center.y))
+            path.moveToPoint(CGPointMake(center.x + CGFloat(currentRadius), center.y))
             path.addArcWithCenter(center, radius: CGFloat(currentRadius),
-                startAngle: 0.0, endAngle: M_PI * 2.0,clockwise: true)
+                startAngle: CGFloat(0.0), endAngle: CGFloat(M_PI * 2.0), clockwise: true)
         }
 
         path.lineWidth = 10
@@ -41,12 +41,13 @@ class HypnosisView: UIView {
         path.stroke()
     }
 
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
-        println("%@ was touched", self)
-        let red = CGFloat(arc4random() % 100) / CGFloat(100.0)
-        let green = CGFloat(arc4random() % 100) / CGFloat(100.0)
-        let blue = CGFloat(arc4random() % 100) / CGFloat(100.0)
-        let randomColor = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+    public override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+        println("\(self) was touched")
+        let red = CGFloat(Double(arc4random() % 100) / 100.0)
+        let green = CGFloat(Double(arc4random() % 100) / 100.0)
+        let blue = CGFloat(Double(arc4random() % 100) / 100)
+
+        let randomColor = UIColor(red: red as CGFloat, green: green, blue: blue, alpha: 1.0)
         circleColor = randomColor
     }
 }

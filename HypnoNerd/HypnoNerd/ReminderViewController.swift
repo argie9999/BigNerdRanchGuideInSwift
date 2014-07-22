@@ -9,26 +9,27 @@ extension UILocalNotification {
     }
 }
 
-class ReminderViewController: UIViewController {
-    @IBOutlet weak var datePicker: UIDatePicker
+public class ReminderViewController: UIViewController {
+    @IBOutlet var datePicker: UIDatePicker?
+
     init() {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.title = "Reminder"
         tabBarItem.image = UIImage(named: "Time.png")
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         println("ReminderViewController loaded!")
     }
 
-    override func viewWillAppear(animated: Bool) {
+    public override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        datePicker.minimumDate = NSDate(timeIntervalSinceNow: 60)
+        datePicker!.minimumDate = NSDate(timeIntervalSinceNow: 60)
     }
 
-    @IBAction func addReminder(sender: AnyObject) {
-        let date = datePicker.date
+    @IBAction public func addReminder(sender: AnyObject) {
+        let date = datePicker!.date
         // Use that cool extension.
         println("Setting a reminder for %@", date)
         // Using the cool extension to UILocalNotification defined above.
