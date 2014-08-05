@@ -12,10 +12,14 @@ extension UILocalNotification {
 public class ReminderViewController: UIViewController {
     @IBOutlet var datePicker: UIDatePicker?
 
-    init() {
+    override init() {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.title = "Reminder"
         tabBarItem.image = UIImage(named: "Time.png")
+    }
+
+    public required init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
     }
 
     public override func viewDidLoad() {

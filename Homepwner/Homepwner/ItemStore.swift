@@ -31,7 +31,7 @@ class ItemStore: NSObject {
         return Static.instance
     }
 
-    init() {
+    override init() {
         // Read in Homepwner.xcdamamodeld
         model = NSManagedObjectModel.mergedModelFromBundles(nil)
         let psc = NSPersistentStoreCoordinator(managedObjectModel: model)
@@ -81,7 +81,7 @@ class ItemStore: NSObject {
             // Log all the defaults
             println(defaults.dictionaryRepresentation())
 
-            privateItems += item
+            privateItems.append(item)
             return item
         }
         return nil
@@ -198,19 +198,19 @@ class ItemStore: NSObject {
             var type : AnyObject! = NSEntityDescription.insertNewObjectForEntityForName("AssetType",
                 inManagedObjectContext: context)
             type.setValue("Furniture", forKey: "label")
-            privateAssets += type
+            privateAssets.append(type)
 
             // Jewelry asset
             type = NSEntityDescription.insertNewObjectForEntityForName("AssetType",
                 inManagedObjectContext: context)
             type.setValue("Jewelry", forKey: "label")
-            privateAssets += type
+            privateAssets.append(type)
 
             // Electronics asset
             type = NSEntityDescription.insertNewObjectForEntityForName("AssetType",
                 inManagedObjectContext: context)
             type.setValue("Electronics", forKey: "label")
-            privateAssets += type
+            privateAssets.append(type)
         }
 
         return privateAssets

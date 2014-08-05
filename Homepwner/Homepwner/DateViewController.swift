@@ -13,6 +13,10 @@ class DateViewController: UIViewController {
         restorationClass = classForCoder
     }
 
+    convenience required init(coder aDecoder: NSCoder!) {
+        self.init(coder: aDecoder)
+    }
+
     // Restrict Item created date. It must be created some time in the past.
     override func viewWillAppear(animated: Bool) {
         // Don't care about the time. Just set the date.

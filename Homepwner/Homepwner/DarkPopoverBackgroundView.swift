@@ -12,11 +12,15 @@ import UIKit
 
 class DarkPopoverBackgroundView: UIPopoverBackgroundView {
 
-    init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         println("Using custom dark background for UIPopoverController.")
         self.frame = frame
         backgroundColor = UIColor.blackColor()
+    }
+
+    convenience required init(coder aDecoder: NSCoder!) {
+        self.init(frame: CGRectZero)
     }
 
     override class func wantsDefaultContentAppearance() -> Bool {

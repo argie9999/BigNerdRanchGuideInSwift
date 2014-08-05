@@ -3,8 +3,12 @@ import UIKit
 
 class CrosshairView: UIView {
 
-    init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
+    }
+
+    convenience required init(coder aDecoder: NSCoder!) {
+        self.init(frame: CGRectZero)
     }
 
     override func drawRect(rect: CGRect) {

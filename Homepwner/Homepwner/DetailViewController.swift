@@ -55,6 +55,10 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             name: NSUserDefaultsDidChangeNotification, object: nil)
     }
 
+    required convenience init(coder aDecoder: NSCoder!) {
+        self.init(isNew: false)
+    }
+
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -75,12 +79,12 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         let interfaceOrientation = UIApplication.sharedApplication().statusBarOrientation
         prepareViewsForOrientation(interfaceOrientation)
 
-        if item {
+        if item != nil {
             nameField!.text = item!.itemName
             serialNumberField!.text = item!.serialNumber
             valueField!.text = String(item!.valueInDollars)
 
-            if !dateFormatter {
+            if dateFormatter == nil {
                 dateFormatter = NSDateFormatter()
                 dateFormatter!.dateStyle = .MediumStyle
                 dateFormatter!.timeStyle = .NoStyle
@@ -96,7 +100,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             }
             var typeLabel: String
             var labelText: AnyObject? = item!.assetType?.valueForKey("label")
-            if labelText {
+            if labelText != nil {
                 typeLabel = labelText as String
             }
             else {
@@ -116,13 +120,13 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         imgView.setTranslatesAutoresizingMaskIntoConstraints(false)
 
         view.addSubview(imgView)
-        imageView = imgView
+        imageView? = imgView
 
         // Set the vertical priorities to be less than those of the other subviews
-        imageView!.setContentHuggingPriority(200, forAxis: .Vertical)
-        imageView!.setContentCompressionResistancePriority(200, forAxis: .Vertical)
+        imageView?.setContentHuggingPriority(200, forAxis: .Vertical)
+        imageView?.setContentCompressionResistancePriority(200, forAxis: .Vertical)
 
-        let nameMap = [
+        let nameMap: [NSString: AnyObject] = [
             "imageView": imageView!,
             "changeDateButton": changeDateButton!,
             "toolbar": toolbar!
@@ -151,7 +155,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         // Clear first responder
         view.endEditing(true)
 
-        if item {
+        if (item != nil) {
             // Save changes to Item
             item!.itemName = nameField!.text
             item!.serialNumber = serialNumberField!.text
@@ -179,7 +183,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 item!.setThumbnailFromImage(image)
                 ImageStore.sharedStore.setImage(image, forKey: imageKey)
                 imageView!.image = image
-                if imagePickerPopover {
+                if (imagePickerPopover != nil) {
                     imagePickerPopover!.dismissPopoverAnimated(true)
                     imagePickerPopover = nil
                 }
@@ -201,10 +205,10 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     // Mark: UIPopoverControllerDelegate
     func popoverControllerDidDismissPopover(popoverController: UIPopoverController) {
         println("User dismissed popover")
-        if imagePickerPopover {
+        if (imagePickerPopover != nil) {
             imagePickerPopover = nil
         }
-        if assetPickerPopover {
+        if (assetPickerPopover != nil) {
             assetPickerPopover = nil
         }
     }
@@ -245,7 +249,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     @IBAction func takePicture(sender: UIBarButtonItem) {
 
         // If the popover is already up, get rid of it
-        if imagePickerPopover {
+        if (imagePickerPopover != nil) {
             if imagePickerPopover!.popoverVisible {
                 imagePickerPopover!.dismissPopoverAnimated(true)
                 imagePickerPopover = nil
@@ -287,7 +291,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
 
     // Silver challenge: Allow a user to remove an item's image.
     @IBAction func removePicture(sender: UIBarButtonItem) {
-        if imageView!.image {
+        if (imageView!.image != nil) {
             println("Alert dialog shown")
             // Show an alert dialog before deleting an image.
             var alert = UIAlertController(title: "Remove Image?", message: "",
@@ -331,7 +335,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
                 self.assetPickerPopover = nil
                 var typeLabel: String
                 var labelText: AnyObject? = self.item!.assetType?.valueForKey("label")
-                if labelText {
+                if labelText != nil {
                     typeLabel = labelText as String
                 }
                 else {
@@ -355,7 +359,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     }
 
     func cancel(sender: AnyObject) {
-        if item {
+        if item != nil {
             ItemStore.sharedStore.removeItem(item!)
             presentingViewController.dismissViewControllerAnimated(true) {
                 println("Cancelling new item creation and asking to dismiss DetailViewController.")
@@ -382,7 +386,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
     }
 
     override func encodeRestorableStateWithCoder(coder: NSCoder!) {
-        if item {
+        if item != nil {
             println("Encoding item information for restoration later")
             coder.encodeObject(item!.itemKey, forKey: "item.itemKey")
 
@@ -405,8 +409,8 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
         let allItems = ItemStore.sharedStore.allItems
 
         for item in allItems {
-            if itemKey {
-                if item.itemKey {
+            if itemKey != nil {
+                if (item.itemKey != nil) {
                     if itemKey == item.itemKey! {
                         self.item = item
                         break;

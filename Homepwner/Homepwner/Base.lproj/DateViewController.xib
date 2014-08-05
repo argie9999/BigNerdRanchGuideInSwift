@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6205" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DateViewController" customModule="Homepwner" customModuleProvider="target">
@@ -12,13 +12,13 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="bOP-0u-qNr">
                     <rect key="frame" x="-160" y="-81" width="320" height="162"/>
                     <date key="date" timeIntervalSinceReferenceDate="425206605.24073201">
-                        <!--<__NSDate Class=2014-06-23 08:56:45 +0000 timeInterval=425206605.240732 ISO8601=2014-06-23T01:56:45.241-0700>-->
+                        <!--2014-06-23 08:56:45 +0000-->
                     </date>
                 </datePicker>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QNJ-1C-23R">
@@ -26,7 +26,6 @@
                     <state key="normal" title="Confirm Change">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <variation key="heightClass=regular-widthClass=compact"/>
                     <connections>
                         <action selector="confirmDateChange:" destination="-1" eventType="touchUpInside" id="6rj-Vq-RCr"/>
                     </connections>
@@ -46,9 +45,11 @@
                 <constraint firstItem="bOP-0u-qNr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="qLh-J1-uaF"/>
                 <constraint firstItem="QNJ-1C-23R" firstAttribute="top" secondItem="bOP-0u-qNr" secondAttribute="bottom" constant="75" id="qPX-3Y-eEg"/>
             </constraints>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="AbstractSizeClassScreen[heightClass=regular-widthClass=compact]"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="AbstractSizeClassScreen[heightClass=regular-widthClass=compact]">
+                <size key="portraitSize" width="400" height="800"/>
+                <size key="landscapeSize" width="400" height="800"/>
+            </simulatedScreenMetrics>
             <variation key="default">
                 <mask key="subviews">
                     <exclude reference="bOP-0u-qNr"/>
@@ -73,8 +74,6 @@
                     <include reference="bOP-0u-qNr"/>
                     <include reference="QNJ-1C-23R"/>
                 </mask>
-            </variation>
-            <variation key="heightClass=regular-widthClass=compact">
                 <mask key="constraints">
                     <include reference="EYi-bV-qia"/>
                     <include reference="T8w-VZ-T3T"/>

@@ -14,10 +14,13 @@ class AssetTypeViewController: UITableViewController, UIPopoverControllerDelegat
     var item: Item?
     var dismissBlock: (() -> ())?
 
-    convenience init() {
-        self.init(style: .Plain)
-
+    override init() {
+        super.init(style: .Plain)
         self.navigationItem.title = NSLocalizedString("Asset Type", comment: "AssetTypeViewController title")
+    }
+
+     convenience required init(coder aDecoder: NSCoder!) {
+        self.init()
     }
 
     override func viewDidLoad() {
@@ -40,7 +43,7 @@ class AssetTypeViewController: UITableViewController, UIPopoverControllerDelegat
         let assetLabel = assetType.valueForKey("label") as String
         cell.textLabel.text = assetLabel
 
-        if item {
+        if item != nil {
             // Checkmark the one that is currently selected
             if assetType == item!.assetType? {
                 cell.accessoryType = .Checkmark
@@ -65,7 +68,7 @@ class AssetTypeViewController: UITableViewController, UIPopoverControllerDelegat
             navigationController.popViewControllerAnimated(true)
         }
         else {
-            if dismissBlock {
+            if dismissBlock != nil {
                 dismissBlock!()
             }
         }

@@ -7,16 +7,20 @@ public class HypnosisView: UIView {
     }
     }
 
-    init() {
+    override init() {
         circleColor = UIColor.lightGrayColor()
         super.init(frame: frame)
         backgroundColor = UIColor.clearColor()
     }
 
-    init(frame: CGRect) {
+    override init(frame: CGRect) {
         circleColor = UIColor.lightGrayColor()
         super.init(frame: frame)
         backgroundColor = UIColor.clearColor()
+    }
+
+    required public convenience init(coder aDecoder: NSCoder!) {
+        self.init(coder: aDecoder)
     }
 
     public override func drawRect(rect: CGRect) {

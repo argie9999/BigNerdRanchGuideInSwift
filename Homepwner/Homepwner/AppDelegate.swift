@@ -8,7 +8,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    init() {
+    override init() {
         let defaults = NSUserDefaults.standardUserDefaults()
         let factorySettings = [
             NEXT_ITEM_VALUE_PREFS_KEY: 75,

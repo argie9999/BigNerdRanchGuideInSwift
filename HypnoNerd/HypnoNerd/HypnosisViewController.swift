@@ -13,10 +13,14 @@ class HypnosisViewController: UIViewController, UITextFieldDelegate {
 
     var textField: UITextField?
 
-    init() {
+    override init() {
         super.init(nibName: nil, bundle: nil)
         tabBarItem.title = "Hypnotize"
         tabBarItem.image = UIImage(named: "Hypno.png")
+    }
+
+    required init(coder aDecoder: NSCoder!) {
+        super.init(coder: aDecoder)
     }
 
     override func loadView() {
@@ -50,7 +54,7 @@ class HypnosisViewController: UIViewController, UITextFieldDelegate {
 
         UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 0.25,
             initialSpringVelocity: 0.0, options: nil, animations: {
-                if self.textField {
+                if self.textField != nil {
                     self.textField!.frame = CGRectMake(40, 70, 240, 30)
                 }
             }, completion: nil)

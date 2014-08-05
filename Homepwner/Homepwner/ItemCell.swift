@@ -17,7 +17,7 @@ class ItemCell: UITableViewCell {
     var actionBlock: (() -> ())?
 
     @IBAction func showImage(id: UIButton) {
-        if actionBlock {
+        if actionBlock != nil {
             actionBlock!()
         }
     }

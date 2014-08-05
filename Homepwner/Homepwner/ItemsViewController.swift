@@ -6,8 +6,8 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
 {
     var imagePopover: UIPopoverController?
 
-    convenience init() {
-        self.init(style: .Plain)
+    override init() {
+        super.init(style: .Plain)
         navigationItem.title = NSLocalizedString("Homepwner", comment:"Name of application")
 
         // Report itemsViewController's restoration identifier for state restoration
@@ -29,6 +29,14 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         // NOTE: Same bug from above exists here as well.
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "localeChanged:",
             name: NSCurrentLocaleDidChangeNotification, object: nil)
+    }
+
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    convenience required init(coder aDecoder: NSCoder!) {
+        self.init(coder: aDecoder)
     }
 
     deinit {
@@ -77,7 +85,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
             static var currencyFormatter: NSNumberFormatter? = nil
         }
 
-        if !Static.currencyFormatter {
+        if Static.currencyFormatter != nil {
             Static.currencyFormatter = NSNumberFormatter()
             Static.currencyFormatter!.numberStyle = .CurrencyStyle
         }
@@ -91,12 +99,12 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         else {
             cell.valueLabel!.textColor = UIColor.redColor()
         }
-        cell.valueLabel!.text = Static.currencyFormatter!.stringFromNumber(
+        cell.valueLabel?.text = Static.currencyFormatter?.stringFromNumber(
             NSNumber.numberWithInt(item.valueInDollars))
 
         let img = item.thumbnail as UIImage?
 
-        if img {
+        if img != nil {
             cell.thumbnailView!.image = img
         }
 

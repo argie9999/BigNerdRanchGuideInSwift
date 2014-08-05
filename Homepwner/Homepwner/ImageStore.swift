@@ -11,7 +11,7 @@ class ImageStore: NSObject {
         return Static.instance
     }
 
-    init() {
+    override init() {
         let nc = NSNotificationCenter.defaultCenter()
         super.init()
 
@@ -42,11 +42,11 @@ class ImageStore: NSObject {
         var result = dictionary[key]
 
         // If we don't have the image, try to retrieve it from the filesystem
-        if !result {
+        if result == nil {
             let imagePath = imagePathForKey(key)
             result = UIImage(contentsOfFile: imagePath)
 
-            if result {
+            if result != nil {
                 println("Image was found in file system.")
                 dictionary[key] = result
             }

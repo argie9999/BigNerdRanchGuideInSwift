@@ -7,10 +7,14 @@ class QuizViewController: UIViewController {
     var questions: [String]
     var answers: [String]
 
-    init() {
+    override init() {
         questions = ["From what is cognac made?", "What is 7 + 7?", "What is the capital of Vermont?"]
         answers = ["Grapes", "14", "Montpelier"]
         super.init(nibName: nil, bundle: nil)
+    }
+
+    convenience required init(coder aDecoder: NSCoder!) {
+        self.init()
     }
 
     override func prefersStatusBarHidden() -> Bool {
