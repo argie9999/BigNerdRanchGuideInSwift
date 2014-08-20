@@ -7,14 +7,18 @@ class QuizViewController: UIViewController {
     var questions: [String]
     var answers: [String]
 
-    override init() {
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         questions = ["From what is cognac made?", "What is 7 + 7?", "What is the capital of Vermont?"]
         answers = ["Grapes", "14", "Montpelier"]
-        super.init(nibName: nil, bundle: nil)
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
-    convenience required init(coder aDecoder: NSCoder!) {
-        self.init()
+    convenience override init() {
+        self.init(nibName: "QuizViewController", bundle: NSBundle.mainBundle())
+    }
+
+    convenience required init(coder aDecoder: NSCoder) {
+        self.init(coder: aDecoder)
     }
 
     override func prefersStatusBarHidden() -> Bool {
