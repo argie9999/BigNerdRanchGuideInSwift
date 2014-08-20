@@ -19,7 +19,7 @@ class HypnosisViewController: UIViewController, UITextFieldDelegate {
         tabBarItem.image = UIImage(named: "Hypno.png")
     }
 
-    required init(coder aDecoder: NSCoder!) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 

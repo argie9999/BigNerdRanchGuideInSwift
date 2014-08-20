@@ -18,7 +18,7 @@ public class ReminderViewController: UIViewController {
         tabBarItem.image = UIImage(named: "Time.png")
     }
 
-    public required init(coder aDecoder: NSCoder!) {
+    public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
@@ -29,7 +29,7 @@ public class ReminderViewController: UIViewController {
 
     public override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        datePicker!.minimumDate = NSDate(timeIntervalSinceNow: 60)
+        datePicker?.minimumDate = NSDate(timeIntervalSinceNow: 60)
     }
 
     @IBAction public func addReminder(sender: AnyObject) {

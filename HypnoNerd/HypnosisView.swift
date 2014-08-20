@@ -19,7 +19,7 @@ public class HypnosisView: UIView {
         backgroundColor = UIColor.clearColor()
     }
 
-    required public convenience init(coder aDecoder: NSCoder!) {
+    required public convenience init(coder aDecoder: NSCoder) {
         self.init(coder: aDecoder)
     }
 
