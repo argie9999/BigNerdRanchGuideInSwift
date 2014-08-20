@@ -42,8 +42,8 @@ class ItemStore: NSObject {
         let storeURL = NSURL(fileURLWithPath: path)
         var error: NSError?
 
-        if !psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL,
-            options: nil, error: &error)
+        if psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL,
+            options: nil, error: &error) == nil
         {
             let ex = NSException(name: "OpenFailure", reason: error!.localizedDescription,
                 userInfo: nil)
@@ -168,7 +168,7 @@ class ItemStore: NSObject {
 
         var error: NSError?
         let result = context!.executeFetchRequest(request, error: &error)
-        if !result {
+        if result == nil {
             let ex = NSException(name: "Fetch failed", reason: "\(error!.localizedDescription)", userInfo: nil)
             ex.raise()
         }
@@ -184,7 +184,7 @@ class ItemStore: NSObject {
         var error: NSError?
         let result = context!.executeFetchRequest(request, error: &error)
 
-        if !result {
+        if !(result != nil) {
             let ex = NSException(name: "Fetch failed", reason: "\(error!.localizedDescription)",
                 userInfo: nil)
             ex.raise()

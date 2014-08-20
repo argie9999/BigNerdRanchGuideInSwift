@@ -35,7 +35,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         super.init(nibName: nil, bundle: nil)
     }
 
-    convenience required init(coder aDecoder: NSCoder!) {
+    convenience required init(coder aDecoder: NSCoder) {
         self.init(coder: aDecoder)
     }
 
@@ -114,7 +114,7 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
 
             let strongCell = weakCell
             if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-                if item.itemKey {
+                if item.itemKey != nil {
                     let itemKey = item.itemKey!
 
                     // If there is no image, don't display anything
@@ -235,13 +235,10 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
         var identifier: String?
 
         // Build fails when testing two optionals in DP 2 :(, will test again in DP 3.
-        if idx {
-            if view {
+        if idx != nil && view != nil {
                 let item = ItemStore.sharedStore.allItems[idx.row]
                 identifier = item.itemKey
-            }
         }
-
         return identifier
     }
 
@@ -250,16 +247,14 @@ class ItemsViewController: UITableViewController, UITableViewDelegate,
     {
         var indexPath: NSIndexPath?
 
-        if identifier {
-            if view {
-                let items = ItemStore.sharedStore.allItems
+        if identifier != nil && view != nil {
+            let items = ItemStore.sharedStore.allItems
 
-                for item in items {
-                    if identifier == item.itemKey {
-                        let row = items.indexOf() { $0 === item }
-                        indexPath = NSIndexPath(forRow: row!, inSection: 0)
-                        break
-                    }
+            for item in items {
+                if identifier == item.itemKey {
+                    let row = items.indexOf() { $0 === item }
+                    indexPath = NSIndexPath(forRow: row!, inSection: 0)
+                    break
                 }
             }
         }

@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool
     {
         // If state restoration did not occur, set up the view controller hierarchy
-        if !window!.rootViewController {
+        if window?.rootViewController == nil {
             let ivc = ItemsViewController()
             let navController = UINavigationController(rootViewController: ivc)
 

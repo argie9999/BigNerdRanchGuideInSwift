@@ -7,7 +7,7 @@ class CrosshairView: UIView {
         super.init(frame: frame)
     }
 
-    convenience required init(coder aDecoder: NSCoder!) {
+    convenience required init(coder aDecoder: NSCoder) {
         self.init(frame: CGRectZero)
     }
 

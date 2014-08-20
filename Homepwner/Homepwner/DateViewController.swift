@@ -13,7 +13,7 @@ class DateViewController: UIViewController {
         restorationClass = classForCoder
     }
 
-    convenience required init(coder aDecoder: NSCoder!) {
+    convenience required init(coder aDecoder: NSCoder) {
         self.init(coder: aDecoder)
     }
 

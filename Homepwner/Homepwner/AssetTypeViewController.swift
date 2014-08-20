@@ -19,7 +19,7 @@ class AssetTypeViewController: UITableViewController, UIPopoverControllerDelegat
         self.navigationItem.title = NSLocalizedString("Asset Type", comment: "AssetTypeViewController title")
     }
 
-     convenience required init(coder aDecoder: NSCoder!) {
+     convenience required init(coder aDecoder: NSCoder) {
         self.init()
     }
 

@@ -16,7 +16,7 @@ class ImageTransformer: NSValueTransformer {
     }
 
     override func transformedValue(value: AnyObject!) -> AnyObject! {
-        if !value {
+        if value == nil {
             return nil
         }
         if let val = value as? NSData {

@@ -19,7 +19,7 @@ class DarkPopoverBackgroundView: UIPopoverBackgroundView {
         backgroundColor = UIColor.blackColor()
     }
 
-    convenience required init(coder aDecoder: NSCoder!) {
+    convenience required init(coder aDecoder: NSCoder) {
         self.init(frame: CGRectZero)
     }
 

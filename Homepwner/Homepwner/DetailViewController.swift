@@ -55,7 +55,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate,
             name: NSUserDefaultsDidChangeNotification, object: nil)
     }
 
-    required convenience init(coder aDecoder: NSCoder!) {
+    required convenience init(coder aDecoder: NSCoder) {
         self.init(isNew: false)
     }
 
