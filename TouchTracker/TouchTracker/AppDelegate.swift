@@ -10,16 +10,19 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
     var window: UIWindow?
 
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+    func application(application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool
+    {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
         // Override point for customization after application launch.
         let drawViewController = DrawViewController()
-        window!.rootViewController = drawViewController
-        window!.backgroundColor = UIColor.whiteColor()
-        window!.makeKeyAndVisible()
+        window?.rootViewController = drawViewController
+        window?.backgroundColor = UIColor.whiteColor()
+        window?.makeKeyAndVisible()
 
         return true
     }

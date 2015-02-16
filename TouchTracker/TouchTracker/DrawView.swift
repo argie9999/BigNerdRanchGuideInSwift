@@ -22,13 +22,13 @@ extension Array {
 
 class DrawView: UIView, UIGestureRecognizerDelegate {
     // MARK: Line related variables
-    var linesInProgress: Dictionary<NSValue, Line>
-    var finishedLines: Array<Line>
+    var linesInProgress: [NSValue: Line]
+    var finishedLines: [Line]
     weak var selectedLine: Line?
 
     // MARK: Gesture recognizers
-    let moveRecognizer: UIPanGestureRecognizer?
-    let threeFingerRecognizer: UISwipeGestureRecognizer?
+    var moveRecognizer: UIPanGestureRecognizer?
+    var threeFingerRecognizer: UISwipeGestureRecognizer?
 
     // MARK: Color Palette related outlets and variable
     @IBOutlet weak var darkBlueColor: UIButton?
@@ -41,26 +41,29 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     var selectedColor: UIColor?
 
     // Needed for loading a nib
-    init(coder aDecoder: NSCoder!) {
-        finishedLines = Array<Line>()
-        linesInProgress = Dictionary<NSValue, Line>()
+    required init(coder aDecoder: NSCoder) {
+        finishedLines = [Line]()
+        linesInProgress = [NSValue: Line]()
         super.init(coder: aDecoder)
     }
 
-    init(frame: CGRect) {
-        finishedLines = Array<Line>()
-        linesInProgress = Dictionary<NSValue, Line>()
+    override init(frame: CGRect) {
+        finishedLines = [Line]()
+        linesInProgress = [NSValue: Line]()
         super.init(frame: frame)
 
         // Double taps
-        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "doubleTap:")
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self,
+            action: "doubleTap:")
         doubleTapRecognizer.numberOfTapsRequired = 2
 
         // Single tap
-        let singleTapRecognizer = UITapGestureRecognizer(target: self, action: "singleTap:")
+        let singleTapRecognizer = UITapGestureRecognizer(target: self,
+            action: "singleTap:")
 
         // Long press gesture
-        let pressRecognizer = UILongPressGestureRecognizer(target: self, action: "pressRecognizer:")
+        let pressRecognizer = UILongPressGestureRecognizer(target: self,
+            action: "pressRecognizer:")
 
         // Pan gesture
         moveRecognizer = UIPanGestureRecognizer(target: self, action: "moveLine:")
@@ -68,7 +71,8 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         moveRecognizer!.cancelsTouchesInView = false
 
         // Three finger swipe gesture
-        threeFingerRecognizer = UISwipeGestureRecognizer(target: self, action: "showColorPalette:")
+        threeFingerRecognizer = UISwipeGestureRecognizer(target: self,
+            action: "showColorPalette:")
         threeFingerRecognizer!.delegate = self
         threeFingerRecognizer!.cancelsTouchesInView = true
         threeFingerRecognizer!.numberOfTouchesRequired = 3
@@ -102,7 +106,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         // dictates is color once it has been added to finishedLines
 
         for line in finishedLines {
-            if !selectedColor {
+            if selectedColor == nil {
                 let dx = CFloat(line.end.x) - CFloat(line.begin.x)
                 let dy = CFloat(line.end.y) - CFloat(line.begin.y)
 
@@ -128,7 +132,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             }
             line.color.set()
             strokeLine(line)
-            if selectedLine {
+            if selectedLine != nil {
                 UIColor.greenColor().set()
                 strokeLine(selectedLine!)
             }
@@ -136,9 +140,8 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
 
         UIColor.redColor().set()
         for key in linesInProgress.keys {
-            let line = linesInProgress[key]
-            if line {
-                strokeLine(line!)
+            if let line = linesInProgress[key] {
+                strokeLine(line)
             }
         }
     }
@@ -165,89 +168,96 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     }
 
     // MARK: Touch events
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         println("-- Touch started -- Class: DrawView. Method: touchesBegan")
 
-        // If color palette is active, don't draw lines. i.e. wait for user to select a color.
-        if colorPaletteView { return }
+        // If color palette is active, don't draw lines.
+        // i.e. wait for user to select a color.
+        if colorPaletteView != nil {
+            return
+        }
 
         // If the delete menu is active, don't do anything
         // Silver challenge: Mysterious lines bug
         if UIMenuController.sharedMenuController().menuVisible {
             return
         }
-        let allTouches = touches.allObjects as [UITouch]
 
-        for touch in allTouches {
-            let location = touch.locationInView(self)
+        for touch in touches {
+            if let touch = touch as? UITouch {
+                let location = touch.locationInView(self)
 
-            let line = Line(begin: location, end: location)
-            let key = NSValue(nonretainedObject: touch)
-            linesInProgress[key] = line
+                let line = Line(begin: location, end: location)
+                let key = NSValue(nonretainedObject: touch)
+                linesInProgress[key] = line
+            }
         }
         setNeedsDisplay()
     }
 
-    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
         // println("-- Touch moved -- Class: DrawView. Method: touchesMoved")
-        let allTouches = touches.allObjects as [UITouch]
+        for touch in touches {
+            if let touch = touch as? UITouch {
+                let key = NSValue(nonretainedObject: touch)
+                let line = linesInProgress[key]
+                if line != nil {
+                    line!.end = touch.locationInView(self)
 
-        for touch in allTouches {
-            let key = NSValue(nonretainedObject: touch)
-            let line = linesInProgress[key]
-            if line {
-                line!.end = touch.locationInView(self)
+                    // Gold challenge: Speed and Size: Adjust line thickness to match velocity
+                    let velocityInVew = moveRecognizer!.velocityInView(self)
+                    let rawVelocity = hypot(velocityInVew.x, velocityInVew.y)
 
-                // Gold challenge: Speed and Size: Adjust line thickness to match velocity
-                let velocityInVew = moveRecognizer!.velocityInView(self)
-                let rawVelocity = hypot(velocityInVew.x, velocityInVew.y)
-                switch rawVelocity {
-                case let vel where vel > 5000.0:
-                    line!.thickness = 20.0
-                case let vel where vel > 3000.0:
-                    line!.thickness = 10.0
-                case let vel where vel > 2000.0:
-                    line!.thickness = 8.0
-                case let vel where vel > 1000.0:
-                    line!.thickness = 5.0
-                case let vel where vel > 500.0:
-                    line!.thickness = 3.0
-                case let vel where vel > 200.0:
-                    line!.thickness = 2.0
-                default:
-                    line!.thickness = 1.0
+                    switch rawVelocity {
+                    case let vel where vel > 5000.0:
+                        line!.thickness = 20.0
+                    case let vel where vel > 3000.0:
+                        line!.thickness = 10.0
+                    case let vel where vel > 2000.0:
+                        line!.thickness = 8.0
+                    case let vel where vel > 1000.0:
+                        line!.thickness = 5.0
+                    case let vel where vel > 500.0:
+                        line!.thickness = 3.0
+                    case let vel where vel > 200.0:
+                        line!.thickness = 2.0
+                    default:
+                        line!.thickness = 1.0
+                    }
+                }
+            }
+            setNeedsDisplay()
+        }
+    }
+
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        println("-- Touch ended -- Class: DrawView. Method: touchesEnded")
+
+        for touch in touches {
+            if let touch = touch as? UITouch {
+                let key = NSValue(nonretainedObject: touch)
+                let line = linesInProgress[key]
+
+                if let line = line {
+                    if selectedColor != nil {
+                        line.color = selectedColor!
+                    }
+                    finishedLines.append(line)
+                    linesInProgress.removeValueForKey(key)
                 }
             }
         }
         setNeedsDisplay()
     }
 
-    override func touchesEnded(touches: NSSet!, withEvent event: UIEvent!) {
-        println("-- Touch ended -- Class: DrawView. Method: touchesEnded")
-        let allTouches = touches.allObjects as [UITouch]
+    override func touchesCancelled(touches: Set<NSObject>, withEvent event: UIEvent) {
+        println("-- Touch cancelled -- Class: DrawView. Method: touchesCancelled")
 
-        for touch in allTouches {
-            let key = NSValue(nonretainedObject: touch)
-            let line = linesInProgress[key]
-
-            if line {
-                if selectedColor {
-                    line!.color = selectedColor!
-                }
-                finishedLines += line!
+        for touch in touches {
+            if let touch = touch as? UITouch {
+                let key = NSValue(nonretainedObject: touch)
                 linesInProgress.removeValueForKey(key)
             }
-        }
-        setNeedsDisplay()
-    }
-
-    override func touchesCancelled(touches: NSSet!, withEvent event: UIEvent!) {
-        println("-- Touch cancelled -- Class: DrawView. Method: touchesCancelled")
-        let allTouches = touches.allObjects as [UITouch]
-
-        for touch in allTouches {
-            let key = NSValue(nonretainedObject: touch)
-            linesInProgress.removeValueForKey(key)
         }
         setNeedsDisplay()
     }
@@ -274,7 +284,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
         selectedLine = lineAtPoint(point)
 
         // Show a action menu bar when user selects a line
-        if selectedLine {
+        if selectedLine != nil {
             // Make ourselves the target of menu item action messages
             becomeFirstResponder()
             let menu = UIMenuController.sharedMenuController()
@@ -298,7 +308,7 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
             let point = gesture.locationInView(self)
             selectedLine = lineAtPoint(point)
 
-            if selectedLine {
+            if selectedLine != nil {
                 linesInProgress.removeAll(keepCapacity: false)
             }
         }
@@ -341,15 +351,23 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     }
 
     func showColorPalette(gesture: UISwipeGestureRecognizer) {
-        if gesture.state == .Began && !colorPaletteView {
-            colorPaletteView = NSBundle.mainBundle().loadNibNamed("ColorPaletteView", owner: self, options: nil)[0] as? UIView
-            if colorPaletteView {
+        if gesture.state == .Began && colorPaletteView == nil {
+            let mainBundle = NSBundle.mainBundle()
+
+            colorPaletteView = mainBundle.loadNibNamed("ColorPaletteView",
+                owner: self, options: nil)[0] as? UIView
+
+            if let colorPaletteView = colorPaletteView {
                 println("Color Palette shown.")
-                colorPaletteView!.frame = CGRectMake(0, bounds.height, bounds.width, 50)
-                addSubview(colorPaletteView!)
-                UIView.animateWithDuration(0.2, delay: 0.2, options: .CurveEaseIn, animations: {
-                    self.colorPaletteView!.frame = CGRectMake(0, self.bounds.height - 50, self.bounds.width, 50)
+                colorPaletteView.frame = CGRectMake(0, bounds.height, bounds.width, 50)
+                addSubview(colorPaletteView)
+
+                UIView.animateWithDuration(0.2, delay: 0.2, options: .CurveEaseIn,
+                    animations: {
+                        self.colorPaletteView!.frame = CGRectMake(0,
+                        self.bounds.height - 50, self.bounds.width, 50)
                     }, completion: nil)
+
                 UIView.commitAnimations()
             }
         }
@@ -368,12 +386,10 @@ class DrawView: UIView, UIGestureRecognizerDelegate {
     }
 
     // MARK: UIGestureRecognizerDelegate
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!,
-        shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWithGestureRecognizer
+        otherGestureRecognizer: UIGestureRecognizer) -> Bool
     {
-        if gestureRecognizer == moveRecognizer {
-            return true
-        }
-        return false
+        return gestureRecognizer == moveRecognizer ? true : false
     }
 }
