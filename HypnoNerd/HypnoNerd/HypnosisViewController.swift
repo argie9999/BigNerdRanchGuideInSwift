@@ -36,7 +36,7 @@ class HypnosisViewController: UIViewController, UITextFieldDelegate {
         view = backgroundView
     }
 
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         drawHypnoticMessage(textField.text)
         textField.text = ""
         textField.resignFirstResponder()
