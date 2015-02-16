@@ -25,7 +25,7 @@ class QuizViewController: UIViewController {
         return true
     }
 
-    @IBAction func showQuestion(sender: AnyObject) {
+    @IBAction func showQuestion(sender: UIButton) {
         currentQuestionIndex++
         if currentQuestionIndex == questions.count {
             currentQuestionIndex = 0
@@ -43,7 +43,7 @@ class QuizViewController: UIViewController {
         answerLabel!.text = "???"
     }
 
-    @IBAction func showAnswer(sender: AnyObject) {
+    @IBAction func showAnswer(sender: UIButton) {
         if questionLabel!.text != "" {
             answerLabel!.text = answers[currentQuestionIndex]
             answerLabel!.frame = CGRectMake(-200, self.view.bounds.height - 90, view.bounds.width, 44)
