@@ -15,9 +15,15 @@ class HypnosisView: UIView {
     }
     }
 
-    init(frame: CGRect) {
+    override init(frame: CGRect) {
         circleColor = UIColor.lightGrayColor()
         super.init(frame: frame)
+        backgroundColor = UIColor.clearColor()
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        circleColor = UIColor.lightGrayColor()
+        super.init(coder: aDecoder)
         backgroundColor = UIColor.clearColor()
     }
 
@@ -43,7 +49,7 @@ class HypnosisView: UIView {
         path.stroke()
     }
 
-    override func touchesBegan(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         println("%@ was touched", self)
         let red = CGFloat(Double(arc4random() % 100) / Double(100.0))
         let green = CGFloat(Double(arc4random() % 100) / Double(100.0))
