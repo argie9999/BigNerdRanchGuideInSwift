@@ -17,7 +17,7 @@ class ColorViewController: UIViewController {
     @IBOutlet weak var blueSlider: UISlider?
 
     // MARK: Stored Properties
-    var existingColor: Bool = false
+    var existingColor = false
     var colorDescription: ColorDescription?
 
     override func viewWillAppear(animated: Bool) {
@@ -53,16 +53,16 @@ class ColorViewController: UIViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
 
-        if let colorDesc = colorDescription {
+        if let colorDesc = colorDescription, color = view.backgroundColor {
             colorDesc.name = textfield!.text
-            colorDesc.color = view.backgroundColor
+            colorDesc.color = color
         }
     }
 
     // MARK: Actions
 
     @IBAction func dismiss(sender: UIBarButtonItem) {
-        presentingViewController.dismissViewControllerAnimated(true, completion: nil)
+        presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func changeColor(sender: UISlider) {
