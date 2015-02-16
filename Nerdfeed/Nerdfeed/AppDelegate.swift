@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
+        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
             window = UIWindow(frame: UIScreen.mainScreen().bounds)
             // Override point for customization after application launch.
             let cvc = CoursesViewController(style: .Plain)

@@ -17,21 +17,21 @@ class WebViewController: UIViewController, UISplitViewControllerDelegate {
             return self.URL
         }
         set (newUrl) {
-            if newUrl {
-                let request = NSURLRequest(URL: newUrl)
-                (view as UIWebView).loadRequest(request)
+            if newUrl != nil {
+                let request = NSURLRequest(URL: newUrl!)
+                (view as! UIWebView).loadRequest(request)
             }
         }
     }
 
     func goBack(sender: UIBarButtonItem) {
         println("Back button clicked")
-        (view as UIWebView).goBack()
+        (view as! UIWebView).goBack()
     }
 
     func goForward(sender: UIBarButtonItem) {
         println("Forward button clicked")
-        (view as UIWebView).goForward()
+        (view as! UIWebView).goForward()
     }
 
     override func loadView() {
@@ -49,7 +49,7 @@ class WebViewController: UIViewController, UISplitViewControllerDelegate {
         forwardButton.enabled = webView.canGoForward ? true : false
 
         toolbar!.items = [backButton, forwardButton]
-        view.addSubview(toolbar)
+        view.addSubview(toolbar!)
     }
 
     // MARK: UISplitViewControllerDelegate methods
